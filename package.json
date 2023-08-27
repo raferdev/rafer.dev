@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "types.check":"pnpm dlx tsc --noEmit"
+    "types.check":"pnpm dlx tsc *.ts /*.tsx --noEmit"
   },
   "dependencies": {
     "@types/node": "20.5.6",
