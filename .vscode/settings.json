@@ -27,7 +27,7 @@
     "typescript.preferences.importModuleSpecifierEnding": "minimal",
     "css.lint.unknownAtRules": "ignore",
     "tailwindCSS.experimental.classRegex": [
-      ["ClassNameMerger(?:<[^>]*>)?(([^)]*))", "[\"'`]([^\"'`]*).*?[\"'`]", "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"]
+      ["cn(?:<[^>]*>)?(([^)]*))", "[\"'`]([^\"'`]*).*?[\"'`]", "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"]
     ],
     "githubPullRequests.ignoredPullRequestBranches": [
       "main"
