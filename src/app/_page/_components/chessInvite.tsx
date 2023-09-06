@@ -18,7 +18,7 @@ export const ChessInvite = () => {
           I started to play chess a few months, have mercy please
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-2 gap-4">
+      <CardContent className="grid grid-rows-2 gap-4 md:grid-cols-2">
         <div className="flex items-center">
           <img
             className="mr-6 h-20 w-20"
