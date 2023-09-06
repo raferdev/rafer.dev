@@ -17,7 +17,7 @@ export const MyworldxCard = () => {
         <CardTitle className="text-2xl">Check This Out</CardTitle>
         <CardDescription>My new open source project Myworldx</CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-2 gap-4">
+      <CardContent className="md:grid-col-2 grid grid-rows-2 gap-4">
         <div className="flex items-center">
           <img
             className="mr-4 h-20"
