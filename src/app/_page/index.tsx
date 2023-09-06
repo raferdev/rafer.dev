@@ -11,7 +11,7 @@ export default function DefaultPage() {
   return (
     <>
       <main className="relative flex w-screen flex-col items-center gap-4 overflow-x-hidden">
-        <Section className="h-screen">
+        <Section className="flex h-screen flex-wrap content-center items-center justify-center">
           <GreetingSection />
         </Section>
         <Section className="flex items-end">

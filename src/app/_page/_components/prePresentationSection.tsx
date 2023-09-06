@@ -1,5 +1,3 @@
-import { Badge } from '@/components/ Badge'
-import { Icons } from '@/components/Icons'
 import { Separator } from '@/components/Separator'
 
 export const PrePresentationSection = () => {

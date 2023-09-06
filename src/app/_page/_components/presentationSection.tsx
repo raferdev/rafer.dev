@@ -10,8 +10,8 @@ export const PresentationSection = () => {
   return (
     <>
       <PageHeader>
-        <PageHeaderHeading className="flex gap-4">
-          Software Engineer <WakatimeBadge />
+        <PageHeaderHeading className="flex flex-wrap gap-4">
+          Software Engineer <WakatimeBadge className="w-[200px] md:w-[250px]" />
         </PageHeaderHeading>
         <PageHeaderDescription>
           Working building web solutions with NodeJS, NextJS, tests with Jest,
