@@ -13,8 +13,8 @@ import {
 export const FooterSection = () => {
   return (
     <Card className="w-full border-0 bg-inherit shadow-none">
-      <CardContent className="grid grid-cols-2 gap-4">
-        <div className="flex items-center">
+      <CardContent className="grid w-full grid-rows-2 gap-2">
+        <div className="flex w-full items-center">
           <Balancer>
             This landing page are open source and you can find it
             <Button variant="outline" className="ml-4" asChild>
