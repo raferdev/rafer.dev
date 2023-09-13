@@ -10,7 +10,7 @@ export const Marquee = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      'flex h-[90px] w-full items-center gap-x-4 overflow-hidden bg-stone-200 py-[10px]',
+      'flex h-[90px] w-full items-center gap-x-4 overflow-hidden bg-primary py-[10px]',
       className
     )}
     {...props}
