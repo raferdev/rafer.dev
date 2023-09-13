@@ -1,0 +1,20 @@
+{
+    "name": "Next.js Dev Container",
+    "build": {
+      "dockerfile": "docker/dev/Dockerfile"
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": ["dbaeumer.vscode-eslint"]
+      }
+    },
+
+    "remoteUser": "node",
+    "features": {
+       "ghcr.io/devcontainers/features/git:1.1.5": "os-provided"
+    },
+
+    "remoteEnv": {
+      "DISPLAY": ":0"
+    }
+  }
