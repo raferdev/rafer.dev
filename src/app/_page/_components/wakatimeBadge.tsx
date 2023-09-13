@@ -15,11 +15,7 @@ export const WakatimeBadge = ({
   props?: ImageProps
 }) => {
   return (
-    <Button
-      variant="outline"
-      className="h-min border-none bg-inherit p-0 shadow-none"
-      asChild
-    >
+    <Button variant="outline" asChild>
       <a href="https://wakatime.com/@ac875cb4-d4ee-453f-b6fc-44cb2103c59d">
         <img
           src="https://wakatime.com/badge/user/ac875cb4-d4ee-453f-b6fc-44cb2103c59d.svg"
