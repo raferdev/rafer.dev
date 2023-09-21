@@ -1,15 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  output: 'export',
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ['tsx', 'ts'],
-
-  experimental: {
-    mdxRs: true,
-    serverActions: true,
-    instrumentationHook: true,
-  },
 
   compiler: {
     removeConsole: true,
