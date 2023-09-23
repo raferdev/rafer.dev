@@ -10,7 +10,7 @@ services:
     depends_on:
       - builder
     ports:
-      - 3000:80
+      - 80:80
 
   builder:
     env_file:
