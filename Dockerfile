@@ -19,6 +19,5 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN pnpm run build
-RUN mkdir build/
 
 CMD ["pnpm","run","exec.prod"]
