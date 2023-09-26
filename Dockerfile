@@ -20,4 +20,4 @@ COPY . .
 
 RUN pnpm run build
 
-CMD ["pnpm","run","exec.prod"]
+CMD ["cp","-fr","out","build"]

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "exec.prod":"mv out build && exit 0",
+    "exec.prod":"./bin/bash -c",
     "docker.prod":"docker-compose up -f docker-compose.yaml --no-cache --log-level 0",
     "test": "docker-compose up -d && pnpm run test:playwright",
     "test:playwright": "npx playwright test",
