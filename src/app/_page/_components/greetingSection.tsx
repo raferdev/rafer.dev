@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 
 import { Icons } from '@/components/Icons'
@@ -7,7 +8,10 @@ export const GreetingSection = () => {
   return (
     <Section className="flex h-screen flex-wrap content-center items-center justify-center">
       <div className="h-[175px] w-[175px] md:ml-8 md:h-[250px] md:w-[250px]">
-        <Image
+        <img
+          loading="lazy"
+          decoding="async"
+          data-nimg="1"
           height={250}
           width={250}
           alt=""
