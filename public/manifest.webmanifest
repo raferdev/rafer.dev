@@ -3,9 +3,11 @@
   "name": "Raferdev",
   "short_name": "Raferdev",
   "background_color": "#FDFBF1",
-  "display": "minimal-ui",
+  "display": "minimal-ui",  
   "start_url": "/",
   "scope": "/",
+  "theme_color": "#FDFBF1",
+  "lang":"en",
     "icons": [
       {
         "src": "/apple-touch-icon.png",
@@ -24,6 +26,5 @@
       }
     ],
     "related_applications": [],
-    "capture_links": "none",
-    "theme_color": "#FDFBF1"
+    "capture_links": "none"
   }
