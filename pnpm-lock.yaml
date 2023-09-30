@@ -8,9 +8,6 @@ overrides:
   next@latest: 13.0.6
 
 dependencies:
-  '@datadog/browser-rum':
-    specifier: ^4.48.2
-    version: 4.48.2
   '@radix-ui/react-dialog':
     specifier: ^1.0.4
     version: 1.0.4(@types/react-dom@18.2.7)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)
@@ -769,37 +766,6 @@ packages:
     requiresBuild: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
-
-  /@datadog/browser-core@4.48.2:
-    resolution:
-      {
-        integrity: sha512-ewQDLouh9jymJPTRq5M8Hz0FFzMaVlJCwHHY5gMUmGyIaBEzS8wd3AeZ56kQ32ZOcyz83au1/yZ/zcIB8LDoyA==,
-      }
-    dev: false
-
-  /@datadog/browser-rum-core@4.48.2:
-    resolution:
-      {
-        integrity: sha512-LUlaYAC7MGXZbIPT6LvSVxaZBG0irer+meQp1LfJBdSy/lLb4OrNowrc9dcHeh4Fw9rNNLWl2Pz+4dBqRtR87g==,
-      }
-    dependencies:
-      '@datadog/browser-core': 4.48.2
-    dev: false
-
-  /@datadog/browser-rum@4.48.2:
-    resolution:
-      {
-        integrity: sha512-SGxjKJLUJq8AjWedhHTQicIr4rvAcDMwBr6gHvZr3h9llCBpDxPzd/RPKCK69HMxBGt/Cw7KCpjAjy9IaCURWQ==,
-      }
-    peerDependencies:
-      '@datadog/browser-logs': 4.48.2
-    peerDependenciesMeta:
-      '@datadog/browser-logs':
-        optional: true
-    dependencies:
-      '@datadog/browser-core': 4.48.2
-      '@datadog/browser-rum-core': 4.48.2
-    dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.48.0):
     resolution:

@@ -17,7 +17,6 @@
     "check.eslint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --quiet --fix"
   },
   "dependencies": {
-    "@datadog/browser-rum": "^4.48.2",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
