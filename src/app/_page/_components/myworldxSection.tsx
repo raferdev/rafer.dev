@@ -23,6 +23,8 @@ export const MyworldxSection = () => {
       <SectionContent className="grid grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
         <div className="flex items-center">
           <img
+            loading="lazy"
+            decoding="async"
             className="mr-4 h-20"
             src="myworldx-logo.png"
             alt="myworldx logo"

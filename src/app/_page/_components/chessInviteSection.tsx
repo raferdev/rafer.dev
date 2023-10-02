@@ -24,6 +24,8 @@ export const ChessInviteSection = () => {
       <SectionContent className="grid w-full grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
         <div className="flex items-center">
           <img
+            loading="lazy"
+            decoding="async"
             className="mr-6 h-20 w-20"
             src="chess-icon.png"
             alt="chess.com logo"

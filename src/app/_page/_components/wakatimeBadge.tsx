@@ -18,6 +18,8 @@ export const WakatimeBadge = ({
     <Button variant="outline" asChild>
       <a href="https://wakatime.com/@ac875cb4-d4ee-453f-b6fc-44cb2103c59d">
         <img
+          loading="lazy"
+          decoding="async"
           src="https://wakatime.com/badge/user/ac875cb4-d4ee-453f-b6fc-44cb2103c59d.svg"
           alt="Total time coded since Jan 17 2022"
           className={cn('w-52 object-cover', className)}
