@@ -5,13 +5,23 @@ export const LogosContainer = () => {
   return (
     <div className="flex h-[50px] min-w-full flex-none animate-scroll-left items-center justify-around gap-x-4">
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/aws.png" alt="AWS" />
+        <img loading="lazy" decoding="async" src="./logos/aws.png" alt="AWS" />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/mongo.png" alt="mongodb" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/mongo.png"
+          alt="mongodb"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/jest.png" alt="jest" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/jest.png"
+          alt="jest"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
         <img src="./logos/nodejs.png" alt="nodejs" />
@@ -20,16 +30,36 @@ export const LogosContainer = () => {
         <img src="./logos/nextjs.png" alt="nextjs" />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/docker.png" alt="docker" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/docker.png"
+          alt="docker"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/tailwind.png" alt="Tailwind" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/tailwind.png"
+          alt="Tailwind"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/postgresql.png" alt="postgresql" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/postgresql.png"
+          alt="postgresql"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/cypress.png" alt="cypress" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/cypress.png"
+          alt="cypress"
+        />
       </div>
     </div>
   )

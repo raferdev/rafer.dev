@@ -15,6 +15,7 @@ export const Marquee = React.forwardRef<
     )}
     {...props}
   >
+    <span className="sr-only">Some of my main stack </span>
     <LogosContainer />
     <LogosContainer />
   </div>
