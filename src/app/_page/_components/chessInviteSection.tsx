@@ -14,7 +14,7 @@ import {
 
 export const ChessInviteSection = () => {
   return (
-    <Section className="w-full border-0 bg-inherit shadow-none">
+    <Section className="min-h-64 w-full border-0 bg-inherit shadow-none">
       <SectionHeader className="space-y-1">
         <SectionTitle className="text-2xl">Let's play a Chess?</SectionTitle>
         <SectionDescription>
@@ -27,27 +27,31 @@ export const ChessInviteSection = () => {
             loading="lazy"
             decoding="async"
             className="mr-6 h-20 w-20"
-            src="chess-icon.png"
+            src="./logos/chess-icon.png"
             alt="chess.com logo"
           />
 
           <Balancer className="text-secondary-foreground text-base font-normal sm:text-lg">
-            I started to play chess a few months, have mercy please
+            I started to play chess in 2022, and i'm accepting new daily games,
+            have mercy pls
           </Balancer>
         </div>
-        <div className="grid place-content-center">
+        <div className="grid w-full grid-cols-1 place-content-center justify-items-center gap-2">
           <Button asChild>
             <a
               href="https://www.chess.com/play/online/new?isInvited=1&opponent=raferdev"
               target="_blank"
             >
               <p className="flex text-sm font-bold text-muted-foreground">
-                Chess.com -{' '}
-                <span className="flex text-center font-normal text-foreground">
-                  <Icons.bellsPlus size={35} className="h-5" />
-                  Invite
-                </span>
+                Chess.com
               </p>
+              <span className="ml-2 flex w-full text-center font-normal text-foreground ">
+                <Icons.bellsPlus
+                  size={16}
+                  className="mr-2 fill-icons-yellow-200"
+                />
+                Invite
+              </span>
             </a>
           </Button>
         </div>
