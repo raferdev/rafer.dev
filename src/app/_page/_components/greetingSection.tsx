@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import Image from 'next/image'
-
 import { Icons } from '@/components/Icons'
 import { Section } from '@/components/Section'
 
@@ -9,22 +7,19 @@ export const GreetingSection = () => {
     <Section className="flex h-screen flex-wrap content-center items-center justify-center">
       <div className="h-[175px] w-[175px] md:ml-8 md:h-[250px] md:w-[250px]">
         <img
-          loading="lazy"
-          decoding="async"
-          data-nimg="1"
           height={250}
           width={250}
           alt=""
           src="/android-chrome-512x512.png"
         />
       </div>
-      <article className="items-center pt-10 text-neutral-950 md:pt-4">
+      <article className="items-center px-4 pt-10 text-neutral-950 md:pt-4">
         <div className="w-full justify-center">
           <h3 className="mr-9 flex text-2xl font-extrabold leading-tight tracking-tighter md:text-4xl">
             Hello,
             <Icons.handMetal
               color="#000"
-              className="ml-4 h-6 w-6 fill-neutral-200 md:h-8 md:w-8"
+              className="ml-4 h-6 w-6 fill-icons-greetings-hand md:h-8 md:w-8"
             />
           </h3>
           <h2 className="text-xl font-thin leading-tight tracking-tighter md:text-3xl">
