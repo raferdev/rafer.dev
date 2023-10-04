@@ -15,9 +15,10 @@ const buttonVariants = cva(
         link: 'text-accent-foreground underline-offset-4 hover:underline',
       },
       size: {
-        default: 'h-22 px-4 py-2',
+        default: 'h-22 w-full max-w-lg p-2 px-6 md:w-auto md:min-w-[16rem]',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
+        none: '',
       },
     },
     defaultVariants: {
