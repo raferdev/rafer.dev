@@ -7,10 +7,12 @@ import {
   Heart,
   HeartHandshake,
   Home,
+  Instagram,
   Linkedin,
   Mail,
   Terminal,
   TrendingUp,
+  Twitter,
   X,
   Youtube,
 } from 'lucide-react'
@@ -34,6 +36,7 @@ export const Icons = {
     )
   },
   heartHandShase: HeartHandshake,
+  instagram: Instagram,
   fileText: FileText,
   home: Home,
   x: X,
@@ -46,6 +49,7 @@ export const Icons = {
   email: Mail,
   terminal: Terminal,
   chevronRight: ChevronRight,
+  twitter: Twitter,
   handPeace: (props: React.HTMLAttributes<SVGElement>) => {
     return (
       <svg
