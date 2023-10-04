@@ -5,18 +5,21 @@ import { Section, SectionContent, SectionFooter } from '@/components/Section'
 
 export const FooterSection = () => {
   return (
-    <Section className="w-full border-0 bg-inherit shadow-none" asChild>
+    <Section
+      className="min-h-64 w-full border-0 bg-inherit shadow-none"
+      asChild
+    >
       <footer>
         <SectionContent className="grid w-full grid-rows-2 gap-2">
           <div className="flex w-full items-center">
             <Balancer className="text-secondary-foreground text-base font-normal sm:text-lg">
               This landing page are open source and you can find it
-              <Button variant="link" asChild>
+              <Button variant="link" size="sm" asChild>
                 <a
                   href="https://github.com/raferdev/landing-page"
                   target="_blank"
                 >
-                  <span className="text-lg">here</span>
+                  <span className="text-base sm:text-lg">here</span>
                 </a>
               </Button>
               , see you soon!
