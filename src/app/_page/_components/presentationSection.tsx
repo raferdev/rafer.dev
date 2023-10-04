@@ -14,9 +14,9 @@ export const PresentationSection = () => {
     <Section className="flex items-end">
       <PageHeader>
         <SectionHeader>
-          <PageHeaderHeading className="flex flex-wrap items-baseline gap-4">
-            Software Engineer{' '}
-            <WakatimeBadge className="w-[180px] md:w-[200px]" />
+          <PageHeaderHeading className="flex flex-wrap content-start items-baseline gap-4">
+            Software Engineer
+            <WakatimeBadge className="w-44 md:w-52" />
           </PageHeaderHeading>
           <PageHeaderDescription>
             Pragmatism with creativity to create new things
