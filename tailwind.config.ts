@@ -18,6 +18,8 @@ module.exports = {
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
+          'blue-300': 'hsl(var(--secondary-blue-300))',
+          'neutral-300': 'hsl(var(--secondary-neutral-300))',
         },
         destructive: {
           DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
@@ -30,6 +32,17 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
+        },
+        icons: {
+          github: 'hsl(var(--icon-github))',
+          linkedin: 'hsl(var(--icon-linkedin))',
+          youtube: 'hsl(var(--icon-youtube))',
+          instagram: 'hsl(var(--icon-instagram))',
+          twitter: 'hsl(var(--icon-twitter))',
+          white: 'hsl(var(--icon-white))',
+          'yellow-200': 'hsl(var(--icon-yellow-200))',
+          'cyan-200': 'hsl(var(--icon-cyan-200))',
+          'greetings-hand': 'hsl(var(--icon-greetings-hand))',
         },
       },
       borderRadius: {
