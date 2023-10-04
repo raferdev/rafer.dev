@@ -11,7 +11,7 @@ const Section = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        'flex w-full flex-wrap items-center gap-x-8 rounded-xl px-14',
+        'flex w-full flex-wrap items-center gap-x-8 rounded-xl px-0 sm:px-14',
         className
       )}
       {...props}
