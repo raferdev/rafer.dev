@@ -12,7 +12,7 @@ export const LogosContainer = () => {
           loading="lazy"
           decoding="async"
           src="./logos/mongo.png"
-          alt="mongodb"
+          alt="Mongodb"
         />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
@@ -20,21 +20,31 @@ export const LogosContainer = () => {
           loading="lazy"
           decoding="async"
           src="./logos/jest.png"
-          alt="jest"
+          alt="Jest"
         />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/nodejs.png" alt="nodejs" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/nodejs.png"
+          alt="Nodejs"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
-        <img src="./logos/nextjs.png" alt="nextjs" />
+        <img
+          loading="lazy"
+          decoding="async"
+          src="./logos/nextjs.png"
+          alt="Nextjs"
+        />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
         <img
           loading="lazy"
           decoding="async"
           src="./logos/docker.png"
-          alt="docker"
+          alt="Docker"
         />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
@@ -50,15 +60,15 @@ export const LogosContainer = () => {
           loading="lazy"
           decoding="async"
           src="./logos/postgresql.png"
-          alt="postgresql"
+          alt="Postgresql"
         />
       </div>
       <div className="flex h-[50px] w-[100px] justify-center">
         <img
           loading="lazy"
           decoding="async"
-          src="./logos/cypress.png"
-          alt="cypress"
+          src="./logos/playwright.png"
+          alt="Playwright"
         />
       </div>
     </div>
