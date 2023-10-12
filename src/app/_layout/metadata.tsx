@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 
     template: `%s | ${siteConfig.name}`,
   },
-
   description: siteConfig.description,
   referrer: 'origin-when-cross-origin',
 
