@@ -4,24 +4,18 @@ import Balancer from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
-import {
-  Section,
-  SectionContent,
-  SectionDescription,
-  SectionHeader,
-  SectionTitle,
-} from '@/components/Section'
+import { Section } from '@/components/Section'
 
 export const ChessInviteSection = () => {
   return (
-    <Section className="min-h-64 w-full border-0 bg-inherit shadow-none">
-      <SectionHeader className="space-y-1">
-        <SectionTitle className="text-2xl">Let's play a Chess?</SectionTitle>
-        <SectionDescription>
+    <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
+      <Section.Header className="space-y-1">
+        <Section.Title className="text-2xl">Let's play a Chess?</Section.Title>
+        <Section.Description>
           Invite me to play a chess game on chess.com
-        </SectionDescription>
-      </SectionHeader>
-      <SectionContent className="grid w-full grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
+        </Section.Description>
+      </Section.Header>
+      <Section.Content className="grid w-full grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
         <div className="flex items-center">
           <img
             loading="lazy"
@@ -55,7 +49,7 @@ export const ChessInviteSection = () => {
             </a>
           </Button>
         </div>
-      </SectionContent>
-    </Section>
+      </Section.Content>
+    </Section.Container>
   )
 }

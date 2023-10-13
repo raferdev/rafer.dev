@@ -1,25 +1,19 @@
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
-import {
-  Section,
-  SectionContent,
-  SectionDescription,
-  SectionHeader,
-  SectionTitle,
-} from '@/components/Section'
+import { Section } from '@/components/Section'
 
 export function LinksSection() {
   return (
-    <Section className="min-h-64 w-full border-0 bg-inherit shadow-none">
-      <SectionHeader className="space-y-1">
-        <SectionTitle id="links" className="text-2xl">
+    <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
+      <Section.Header className="space-y-1">
+        <Section.Title id="links" className="text-2xl">
           See more
-        </SectionTitle>
-        <SectionDescription>
+        </Section.Title>
+        <Section.Description>
           You can see more about me in the following links
-        </SectionDescription>
-      </SectionHeader>
-      <SectionContent className="min-h-40 grid w-full grid-cols-1 place-content-center justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-3">
+        </Section.Description>
+      </Section.Header>
+      <Section.Content className="min-h-40 grid w-full grid-cols-1 place-content-center justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-3">
         <Button asChild>
           <a href="https://github.com/raferdev" target="_blank">
             <Icons.github className="mr-2 h-4 w-4 fill-icons-github" />
@@ -62,7 +56,7 @@ export function LinksSection() {
             Instagram
           </a>
         </Button>
-      </SectionContent>
-    </Section>
+      </Section.Content>
+    </Section.Container>
   )
 }

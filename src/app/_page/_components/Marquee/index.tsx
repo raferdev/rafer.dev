@@ -20,3 +20,5 @@ export const Marquee = React.forwardRef<
     <LogosContainer />
   </div>
 ))
+
+Marquee.displayName = 'Marquee'

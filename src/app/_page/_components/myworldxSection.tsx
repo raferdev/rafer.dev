@@ -3,24 +3,18 @@ import Balance from 'react-wrap-balancer'
 
 import { Button } from '@/components/Button'
 import { Icons } from '@/components/Icons'
-import {
-  Section,
-  SectionContent,
-  SectionDescription,
-  SectionHeader,
-  SectionTitle,
-} from '@/components/Section'
+import { Section } from '@/components/Section'
 
 export const MyworldxSection = () => {
   return (
-    <Section className="min-h-64 w-full border-0 bg-inherit shadow-none">
-      <SectionHeader className="space-y-1">
-        <SectionTitle className="text-2xl">Check This Out</SectionTitle>
-        <SectionDescription>
+    <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
+      <Section.Header className="space-y-1">
+        <Section.Title className="text-2xl">Check This Out</Section.Title>
+        <Section.Description>
           My new open source project Myworldx
-        </SectionDescription>
-      </SectionHeader>
-      <SectionContent className="grid grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
+        </Section.Description>
+      </Section.Header>
+      <Section.Content className="grid grid-rows-2 gap-4 md:grid-cols-2 md:grid-rows-1">
         <div className="flex items-center">
           <img
             loading="lazy"
@@ -69,7 +63,7 @@ export const MyworldxSection = () => {
             </a>
           </Button>
         </div>
-      </SectionContent>
-    </Section>
+      </Section.Content>
+    </Section.Container>
   )
 }

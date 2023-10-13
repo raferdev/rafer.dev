@@ -4,7 +4,7 @@ import { Section } from '@/components/Section'
 
 export const GreetingSection = () => {
   return (
-    <Section className="flex h-screen flex-wrap content-center items-center justify-center">
+    <Section.Container className="flex h-screen flex-wrap content-center items-center justify-center">
       <div className="h-[175px] w-[175px] md:ml-8 md:h-[250px] md:w-[250px]">
         <img height={250} width={250} alt="" src="/logo-250x250.png" />
       </div>
@@ -31,6 +31,6 @@ export const GreetingSection = () => {
           Code is just consequence
         </p>
       </article>
-    </Section>
+    </Section.Container>
   )
 }

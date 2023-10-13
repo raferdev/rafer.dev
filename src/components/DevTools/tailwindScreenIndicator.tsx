@@ -1,6 +1,4 @@
-export function TailwindIndicator() {
-  if (process.env.NODE_ENV === 'production') return null
-
+export function TailwindScreenIndicator() {
   return (
     <div
       data-testid="tailwind-indicator"

@@ -3,7 +3,7 @@ import './global.css'
 import { cn } from '@/utils/cn'
 
 import { fontMono } from '@/lib/fonts'
-import { TailwindIndicator } from '@/components/ScreenIndicator'
+import { DevTools } from '@/components/DevTools'
 
 import { GoogleAnalytics } from './gtag'
 import { RumAnalytics } from './rum'
@@ -28,7 +28,7 @@ export default function DefaultLayout({
         >
           {children}
 
-          <TailwindIndicator />
+          <DevTools />
         </body>
       </html>
     </>
