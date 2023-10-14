@@ -2,7 +2,7 @@ import packageJson from '@/../package.json'
 
 const { version } = packageJson
 
-export const __site = {
+const __site = {
   metadata: {
     name: 'Software Engineer | Raferdev',
     description: 'An open source landing page of Raferdev Software Engineer.',
@@ -46,3 +46,5 @@ export const __site = {
     },
   },
 }
+
+export { __site }

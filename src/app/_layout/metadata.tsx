@@ -1,14 +1,16 @@
 import { Metadata } from 'next'
 
-import { siteConfig } from '@/config/meta'
+import { __site } from '@/config/site'
+
+const { metadata: meta } = __site
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
+    default: meta.name,
 
-    template: `%s | ${siteConfig.name}`,
+    template: `%s | ${meta.name}`,
   },
-  description: siteConfig.description,
+  description: meta.description,
   referrer: 'origin-when-cross-origin',
 
   keywords: ['Nextjs', 'Software Engineer', 'Open Source', 'Raferdev'],
@@ -23,25 +25,25 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  creator: 'Rafael',
+  creator: '@raferdev',
   themeColor: [{ media: '(prefers-color-scheme: light)', color: 'white' }],
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    images: [`${siteConfig.url}/og.jpg`],
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
+    images: [`${meta.url}/og.jpg`],
+    url: meta.url,
+    title: meta.name,
+    description: meta.description,
+    siteName: meta.name,
   },
   alternates: {
-    canonical: siteConfig.url,
+    canonical: meta.url,
   },
   twitter: {
     card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
+    title: meta.name,
+    description: meta.description,
+    images: [`${meta.url}/og.jpg`],
     creator: '@raferdev',
   },
   icons: {
@@ -53,5 +55,5 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  manifest: `${meta.url}/site.webmanifest`,
 }
