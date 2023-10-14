@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '@/components/Button'
+import { Link } from '@/components/Link'
 
 const meta = {
-  title: 'Button',
-  component: Button,
+  title: 'Link',
+  component: Link,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Button>
+} satisfies Meta<typeof Link>
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 export const Primary: Story = {
   args: {
     variant: 'default',
-    children: 'Button',
+    children: 'Link',
   },
 }
 
