@@ -3,7 +3,7 @@ version: '3'
 services:
   ngnix:
     container_name: server
-    restart: always
+    restart: on-failure
     build: ./nginx
     volumes:
       - builder_nginx_vol:/www/data
