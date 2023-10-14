@@ -2,11 +2,12 @@
 
 import Balancer from 'react-wrap-balancer'
 
-import { Button } from '@/components/Button'
-import { Icons } from '@/components/Icons'
+import { __site } from '@/config/site'
+import { Link } from '@/components/Link'
 import { Section } from '@/components/Section'
 
 export const ChessInviteSection = () => {
+  const { links } = __site
   return (
     <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
       <Section.Header className="space-y-1">
@@ -31,23 +32,15 @@ export const ChessInviteSection = () => {
           </Balancer>
         </div>
         <div className="grid w-full grid-cols-1 place-content-center justify-items-center gap-2">
-          <Button asChild>
-            <a
-              href="https://www.chess.com/play/online/new?isInvited=1&opponent=raferdev"
-              target="_blank"
-            >
-              <p className="flex text-sm font-bold text-muted-foreground">
-                Chess.com
-              </p>
-              <span className="ml-2 flex w-full text-center font-normal text-foreground ">
-                <Icons.bellsPlus
-                  size={16}
-                  className="mr-2 fill-icons-yellow-200"
-                />
-                Invite
-              </span>
-            </a>
-          </Button>
+          <Link
+            iconFill="fill-icons-yellow-200"
+            iconName="BellPlus"
+            label="Chess.com"
+            target="_blank"
+            href={links.chess.invite}
+          >
+            Invite
+          </Link>
         </div>
       </Section.Content>
     </Section.Container>

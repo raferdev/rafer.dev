@@ -1,11 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import Balance from 'react-wrap-balancer'
 
-import { Button } from '@/components/Button'
-import { Icons } from '@/components/Icons'
+import { __site } from '@/config/site'
+import { Link } from '@/components/Link'
 import { Section } from '@/components/Section'
 
 export const MyworldxSection = () => {
+  const { links } = __site
   return (
     <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
       <Section.Header className="space-y-1">
@@ -29,39 +30,33 @@ export const MyworldxSection = () => {
           </Balance>
         </div>
         <div className="grid w-full grid-cols-1 grid-rows-3 place-content-center justify-items-center gap-y-4">
-          <Button asChild>
-            <a href="https://myworldx.dev">
-              <p className="flex text-sm font-bold text-muted-foreground">
-                Myworldx
-              </p>
-              <span className="ml-2 flex w-full text-center font-normal text-foreground">
-                <Icons.home size={16} className="mr-2 fill-icons-cyan-200" />
-                Home
-              </span>
-            </a>
-          </Button>
-          <Button asChild>
-            <a href="https://myworldx.dev/raferdev">
-              <p className="flex text-sm font-bold text-muted-foreground ">
-                Myworldx
-              </p>
-              <span className="ml-2 flex w-full text-center font-normal text-foreground ">
-                <Icons.fileText size={16} className="mr-2 fill-icons-white" />
-                My page
-              </span>
-            </a>
-          </Button>
-          <Button asChild>
-            <a href="https://github.com/myworldx/myworldx">
-              <p className="flex text-sm font-bold text-muted-foreground ">
-                Myworldx
-              </p>
-              <span className="ml-2 flex w-full text-center font-normal text-foreground ">
-                <Icons.github size={16} className="mr-2 fill-icons-github" />
-                Repository
-              </span>
-            </a>
-          </Button>
+          <Link
+            iconFill="fill-icons-cyan-200"
+            iconName="Home"
+            label="Myworldx"
+            href={links.myworldx.home}
+            target="_blank"
+          >
+            Home
+          </Link>
+          <Link
+            iconFill="fill-icons-white"
+            iconName="FileText"
+            label="Myworldx"
+            href={links.myworldx.raferdev}
+            target="_blank"
+          >
+            My page
+          </Link>
+          <Link
+            iconFill="fill-icons-github"
+            iconName="Github"
+            label="Myworldx"
+            href={links.myworldx.repository}
+            target="_blank"
+          >
+            Repository
+          </Link>
         </div>
       </Section.Content>
     </Section.Container>

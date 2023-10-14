@@ -1,8 +1,9 @@
-import { Button } from '@/components/Button'
-import { Icons } from '@/components/Icons'
+import { __site } from '@/config/site'
+import { Link } from '@/components/Link'
 import { Section } from '@/components/Section'
 
-export function LinksSection() {
+export const LinksSection = () => {
+  const { links } = __site
   return (
     <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
       <Section.Header className="space-y-1">
@@ -14,48 +15,54 @@ export function LinksSection() {
         </Section.Description>
       </Section.Header>
       <Section.Content className="min-h-40 grid w-full grid-cols-1 place-content-center justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-3">
-        <Button asChild>
-          <a href="https://github.com/raferdev" target="_blank">
-            <Icons.github className="mr-2 h-4 w-4 fill-icons-github" />
-            Github
-          </a>
-        </Button>
-        <Button asChild>
-          <a
-            href="https://www.youtube.com/channel/UClg1tYQi4CvnPRL2SAswVcg"
-            target="_blank"
-          >
-            <Icons.youtube className="mr-2 h-4 w-4 fill-icons-youtube" />
-            Youtube
-          </a>
-        </Button>
-        <Button asChild>
-          <a href="https://linkedin.com/u/raferdev" target="_blank">
-            <Icons.linkedin className="mr-2 h-4 w-4 fill-icons-linkedin" />
-            Linkedin
-          </a>
-        </Button>
-        <Button asChild>
-          <a
-            href="mailto:contact@rafer.dev?subject=Contact&body=Hello, i want talk about..."
-            target="_blank"
-          >
-            <Icons.email className="mr-2 h-4 w-4 fill-icons-white" />
-            Email
-          </a>
-        </Button>
-        <Button asChild>
-          <a href="https://twitter.com/raferdev" target="_blank">
-            <Icons.twitter className="mr-2 h-4 w-4 fill-icons-twitter" />
-            Twitter / X
-          </a>
-        </Button>
-        <Button asChild>
-          <a href="https://instagram.com/raferdev" target="_blank">
-            <Icons.instagram className="mr-2 h-4 w-4 fill-icons-instagram" />
-            Instagram
-          </a>
-        </Button>
+        <Link
+          iconFill="fill-icons-github"
+          iconName="Github"
+          href={links.profile.github}
+          target="_blank"
+        >
+          Github
+        </Link>
+        <Link
+          iconFill="fill-icons-youtube"
+          iconName="Youtube"
+          href={links.profile.youtube}
+          target="_blank"
+        >
+          Youtube
+        </Link>
+        <Link
+          iconFill="fill-icons-linkedin"
+          iconName="Linkedin"
+          href={links.profile.linkedin}
+          target="_blank"
+        >
+          Linkedin
+        </Link>
+        <Link
+          iconFill="fill-icons-white"
+          iconName="Mail"
+          href={links.profile.email.raferdev}
+          target="_blank"
+        >
+          Email
+        </Link>
+        <Link
+          iconFill="fill-icons-twitter"
+          iconName="Mail"
+          href={links.profile.twitter}
+          target="_blank"
+        >
+          Twitter / X
+        </Link>
+        <Link
+          iconFill="fill-icons-instagram"
+          iconName="Instagram"
+          href={links.profile.instagram}
+          target="_blank"
+        >
+          Instagram
+        </Link>
       </Section.Content>
     </Section.Container>
   )
