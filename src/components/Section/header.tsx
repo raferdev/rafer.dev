@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { cn } from '@/utils/cn'
 
-export const SectionHeader = React.forwardRef<
+const SectionHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
@@ -12,3 +12,5 @@ export const SectionHeader = React.forwardRef<
   />
 ))
 SectionHeader.displayName = 'SectionHeader'
+
+export { SectionHeader }

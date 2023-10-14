@@ -27,7 +27,7 @@ const Container = React.forwardRef<
 
 Container.displayName = 'Section'
 
-export const Section = {
+const Section = {
   Container,
   Header: SectionHeader,
   Footer: SectionFooter,
@@ -35,3 +35,5 @@ export const Section = {
   Description: SectionDescription,
   Content: SectionContent,
 }
+
+export { Section }

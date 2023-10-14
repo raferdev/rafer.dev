@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { cn } from '@/utils/cn'
 
-export const SectionTitle = React.forwardRef<
+const SectionTitle = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
@@ -15,3 +15,5 @@ export const SectionTitle = React.forwardRef<
   />
 ))
 SectionTitle.displayName = 'SectionTitle'
+
+export { SectionTitle }
