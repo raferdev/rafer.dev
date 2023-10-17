@@ -16,7 +16,7 @@ export const LinksSection = () => {
       </Section.Header>
       <Section.Content className="min-h-40 grid w-full grid-cols-1 place-content-center justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-3">
         <Link
-          iconFill="fill-icons-github"
+          iconFillColor="github"
           iconName="Github"
           href={links.profile.github}
           target="_blank"
@@ -24,7 +24,7 @@ export const LinksSection = () => {
           Github
         </Link>
         <Link
-          iconFill="fill-icons-youtube"
+          iconFillColor="youtube"
           iconName="Youtube"
           href={links.profile.youtube}
           target="_blank"
@@ -32,7 +32,7 @@ export const LinksSection = () => {
           Youtube
         </Link>
         <Link
-          iconFill="fill-icons-linkedin"
+          iconFillColor="linkedin"
           iconName="Linkedin"
           href={links.profile.linkedin}
           target="_blank"
@@ -40,7 +40,7 @@ export const LinksSection = () => {
           Linkedin
         </Link>
         <Link
-          iconFill="fill-icons-white"
+          iconFillColor="white"
           iconName="Mail"
           href={links.profile.email.raferdev}
           target="_blank"
@@ -48,15 +48,15 @@ export const LinksSection = () => {
           Email
         </Link>
         <Link
-          iconFill="fill-icons-twitter"
-          iconName="Mail"
+          iconFillColor="twitter"
+          iconName="Twitter"
           href={links.profile.twitter}
           target="_blank"
         >
           Twitter / X
         </Link>
         <Link
-          iconFill="fill-icons-instagram"
+          iconFillColor="instagram"
           iconName="Instagram"
           href={links.profile.instagram}
           target="_blank"

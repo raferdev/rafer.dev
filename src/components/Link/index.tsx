@@ -3,14 +3,25 @@ import { LinkProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 
 import { icons } from '../../../node_modules/lucide-react'
+import { iconVariants } from './iconVariants'
 import { linkVariants } from './linkVariants'
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    { className, iconFill, label, variant, iconName, size, children, ...props },
+    {
+      className,
+      iconFillColor,
+      iconVariant,
+      label,
+      variant,
+      iconName,
+      size,
+      children,
+      ...props
+    },
     ref
   ) => {
-    const LucideIcon = iconName ? icons[iconName] : null
+    const Icon = iconName ? icons[iconName] : null
 
     return (
       <>
@@ -25,8 +36,13 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
             </p>
           )}
           <span className="ml-2 flex w-full text-center font-normal text-foreground">
-            {LucideIcon && (
-              <LucideIcon size={16} className={cn('mr-2', iconFill)} />
+            {Icon && (
+              <Icon
+                size={16}
+                className={cn(
+                  iconVariants({ variant: iconVariant, color: iconFillColor })
+                )}
+              />
             )}
             {children}
           </span>

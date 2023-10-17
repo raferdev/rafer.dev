@@ -31,7 +31,7 @@ export const MyworldxSection = () => {
         </div>
         <div className="grid w-full grid-cols-1 grid-rows-3 place-content-center justify-items-center gap-y-4">
           <Link
-            iconFill="fill-icons-cyan-200"
+            iconFillColor="cyan-200"
             iconName="Home"
             label="Myworldx"
             href={links.myworldx.home}
@@ -40,7 +40,7 @@ export const MyworldxSection = () => {
             Home
           </Link>
           <Link
-            iconFill="fill-icons-white"
+            iconFillColor="white"
             iconName="FileText"
             label="Myworldx"
             href={links.myworldx.raferdev}
@@ -49,7 +49,7 @@ export const MyworldxSection = () => {
             My page
           </Link>
           <Link
-            iconFill="fill-icons-github"
+            iconFillColor="github"
             iconName="Github"
             label="Myworldx"
             href={links.myworldx.repository}

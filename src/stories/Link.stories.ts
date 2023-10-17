@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Link } from '@/components/Link'
 
 const meta = {
-  title: 'Link',
+  title: 'Components/Link',
   component: Link,
   parameters: {
     layout: 'centered',
@@ -18,12 +18,18 @@ export const Primary: Story = {
   args: {
     variant: 'default',
     children: 'Link',
+    iconName: 'Link',
+    label: 'Link',
+    iconFillColor: 'yellow-200',
   },
 }
 
 export const Outline: Story = {
   args: {
     variant: 'outline',
+    label: 'Link',
+    iconName: 'Link',
+    iconFillColor: 'yellow-200',
   },
 }
 

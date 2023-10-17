@@ -33,7 +33,7 @@ export const ChessInviteSection = () => {
         </div>
         <div className="grid w-full grid-cols-1 place-content-center justify-items-center gap-2">
           <Link
-            iconFill="fill-icons-yellow-200"
+            iconFillColor="yellow-200"
             iconName="BellPlus"
             label="Chess.com"
             target="_blank"

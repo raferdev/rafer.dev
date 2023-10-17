@@ -5,19 +5,20 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build.storybook": "storybook build",
+    "build.tailwind": "pnpm dlx tailwindcss -o ./src/styles/tailwind.css",
     "start": "next start",
+    "start.storybook": "storybook dev -p 6006",
     "prepare": "husky install",
     "exec.prod": "./bin/bash -c",
     "release": "npx changeset",
     "version": "npx changeset version",
     "docker.prod": "docker compose up -f docker-compose.yaml --no-cache --log-level 0",
     "test": "docker-compose -f docker-compose.test.yaml up",
-    "test:playwright": "npx playwright test",
-    "test:playwright:debug": "npx playwright test --debug",
+    "test.playwright": "npx playwright test",
+    "test.playwright.debug": "npx playwright test --debug",
     "types.check": "pnpm dlx tsc *.ts /*.tsx --noEmit",
-    "check.eslint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --quiet --fix",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "check.eslint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --quiet --fix"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.4",
