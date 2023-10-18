@@ -15,6 +15,7 @@ const iconVariants = cva(
         twitter: 'fill-icons-twitter',
         instagram: 'fill-icons-instagram',
         greetingsHand: 'fill-icons-greetings-hand',
+        storybook: 'fill-icons-storybook',
         'yellow-200': 'fill-icons-yellow-200',
         'cyan-200': 'fill-icons-cyan-200',
         white: 'fill-icons-white',

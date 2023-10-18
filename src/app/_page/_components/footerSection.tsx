@@ -12,7 +12,7 @@ export const FooterSection = () => {
       asChild
     >
       <footer>
-        <Section.Content className="flex h-full w-full content-end items-end justify-center align-bottom">
+        <Section.Content className="flex h-full w-full content-end items-baseline justify-center align-bottom">
           <Balancer className="text-base font-normal sm:text-lg">
             This landing page are open source and you can find it
             <Link

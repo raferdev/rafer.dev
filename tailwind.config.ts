@@ -34,6 +34,7 @@ module.exports = {
           foreground: 'hsl(var(--accent-foreground))',
         },
         icons: {
+          storybook: 'hsl(var(--icon-storybook))',
           github: 'hsl(var(--icon-github))',
           linkedin: 'hsl(var(--icon-linkedin))',
           youtube: 'hsl(var(--icon-youtube))',

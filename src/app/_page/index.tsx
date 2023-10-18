@@ -5,6 +5,7 @@ import { LinksSection } from './_components/linksSection'
 import { Marquee } from './_components/Marquee'
 import { MyworldxSection } from './_components/myworldxSection'
 import { PresentationSection } from './_components/presentationSection'
+import { StorybookSection } from './_components/storybookSection'
 
 export default function DefaultPage() {
   return (
@@ -14,6 +15,7 @@ export default function DefaultPage() {
         <PresentationSection />
         <Marquee className="my-14" />
         <MyworldxSection />
+        <StorybookSection />
         <ChessInviteSection />
         <LinksSection />
         <FooterSection />

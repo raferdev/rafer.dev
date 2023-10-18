@@ -16,12 +16,13 @@
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
+    --icon-greetings-hand: 0 0% 90%;
+    --icon-storybook: 340 100% 64%;
+    --icon-instagram: 278, 52%, 68%;
+    --icon-linkedin: 200 98% 39%;
     --icon-youtube: 0 91% 71%;
     --icon-github: 0 0% 0%;
-    --icon-linkedin: 200 98% 39%;
-    --icon-instagram: 278, 52%, 68%;
     --icon-twitter: 203 89% 53%;
-    --icon-greetings-hand: 0 0% 90%;
     --icon-yellow-200: 60 100% 65%;
     --icon-cyan-200: 202 94% 57%;
     --icon-white: 0 0% 100%;

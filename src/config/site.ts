@@ -44,6 +44,7 @@ const __site = {
 
       instagram: 'https://instagram.com/raferdev',
     },
+    storybook: 'https://storybook.rafer.dev',
   },
 }
 
