@@ -17,7 +17,7 @@ const Container = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        'flex w-full flex-wrap items-center gap-x-8 rounded-xl px-0 sm:px-14',
+        'flex min-h-[17rem] w-full flex-wrap items-center gap-x-8 rounded-xl px-0 sm:px-14',
         className
       )}
       {...props}

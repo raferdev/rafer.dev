@@ -8,8 +8,8 @@ const linkVariants = cva(
         default:
           'bg-primary text-accent-foreground hover:bg-accent hover:opacity-70',
         outline:
-          'h-min border-none bg-inherit p-0 shadow-none hover:bg-accent hover:text-accent-foreground',
-        link: 'text-accent-foreground underline-offset-4 hover:underline',
+          'box-content border-2 border-slate-400	bg-inherit p-2 shadow-none hover:bg-accent hover:text-accent-foreground',
+        raw: 'text-accent-foreground underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-22 w-full max-w-lg p-2 px-6 md:w-auto md:min-w-[16rem]',

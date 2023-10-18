@@ -9,7 +9,7 @@ import { Section } from '@/components/Section'
 export const ChessInviteSection = () => {
   const { links } = __site
   return (
-    <Section.Container className="min-h-64 w-full border-0 bg-inherit shadow-none">
+    <Section.Container className="w-full border-0 bg-inherit shadow-none">
       <Section.Header className="space-y-1">
         <Section.Title className="text-2xl">Let's play a Chess?</Section.Title>
         <Section.Description>

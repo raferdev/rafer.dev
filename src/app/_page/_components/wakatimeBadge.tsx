@@ -19,13 +19,13 @@ export const WakatimeBadge = ({
   badgeLink: string
 }) => {
   return (
-    <Link href={profileLink} variant="outline" size="none">
+    <Link className="p-0" href={profileLink} variant="outline" size="none">
       <img
         loading="lazy"
         decoding="async"
         src={badgeLink}
         alt="Total time coded since Jan 17 2022"
-        className={cn('w-52 object-cover', className)}
+        className={cn('object-cover', className)}
         {...props}
       />
     </Link>
