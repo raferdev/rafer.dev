@@ -4,21 +4,13 @@ import { __site } from '@/config/site'
 import { PageHeader } from '@/components/PageHeader'
 import { Section } from '@/components/Section'
 
-import { WakatimeBadge } from './wakatimeBadge'
-
 export const PresentationSection = () => {
-  const { links } = __site
   return (
-    <Section.Container className="flex items-end">
+    <Section.Container className="flex min-h-[12rem] items-end">
       <PageHeader.Container>
         <Section.Header>
           <PageHeader.Heading className="flex flex-wrap content-start items-baseline gap-4">
             Software Engineer
-            <WakatimeBadge
-              profileLink={links.wakatime.profile}
-              badgeLink={links.wakatime.badge}
-              className="w-44 md:w-52"
-            />
           </PageHeader.Heading>
           <PageHeader.HeadingDescription>
             Pragmatism with creativity to create new things
