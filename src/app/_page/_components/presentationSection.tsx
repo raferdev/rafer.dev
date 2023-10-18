@@ -6,7 +6,7 @@ import { Section } from '@/components/Section'
 
 export const PresentationSection = () => {
   return (
-    <Section.Container className="flex min-h-[12rem] items-end">
+    <Section.Container className="flex min-h-[8rem] items-end">
       <PageHeader.Container>
         <Section.Header>
           <PageHeader.Heading className="flex flex-wrap content-start items-baseline gap-4">
