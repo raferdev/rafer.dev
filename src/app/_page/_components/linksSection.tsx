@@ -14,7 +14,7 @@ export const LinksSection = () => {
           You can see more about me in the following links
         </Section.Description>
       </Section.Header>
-      <Section.Content className="min-h-40 grid w-full grid-cols-1 place-content-center justify-items-center gap-y-4 md:grid-cols-2 lg:grid-cols-3">
+      <Section.Content className="min-h-40 grid w-full grid-cols-1 place-content-center justify-items-center gap-y-4 p-0 md:grid-cols-2 lg:grid-cols-3">
         <Link
           iconFillColor="github"
           iconName="Github"
