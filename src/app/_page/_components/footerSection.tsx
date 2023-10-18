@@ -8,11 +8,11 @@ export const FooterSection = () => {
   const { links } = __site
   return (
     <Section.Container
-      className="w-full border-0 bg-inherit shadow-none"
+      className="flex w-full content-end justify-center border-0 bg-inherit shadow-none"
       asChild
     >
       <footer>
-        <Section.Content className="flex h-full w-full content-end items-baseline justify-center align-bottom">
+        <Section.Content className="flex h-full w-full justify-center align-bottom">
           <Balancer className="text-base font-normal sm:text-lg">
             This landing page are open source and you can find it
             <Link
@@ -20,6 +20,7 @@ export const FooterSection = () => {
               target="_blank"
               variant="raw"
               size="sm"
+              className="m-0 p-0"
             >
               <span className="text-base sm:text-lg">here</span>
             </Link>
