@@ -4,9 +4,9 @@ services:
   ngnix:
     container_name: server
     restart: on-failure
-    build: ./nginx
+    build: ./nginx/tests
     volumes:
-      - builder_nginx_vol:/www/data
+      - builder_nginx_vol_tests:/www/data
     depends_on:
       - builder
     ports:
@@ -18,7 +18,7 @@ services:
     container_name: front-build
     build: '.'
     volumes:
-      - builder_nginx_vol:/app/build
+      - builder_nginx_vol_tests:/app/build
 
 volumes:
-  builder_nginx_vol:
+  builder_nginx_vol_tests:

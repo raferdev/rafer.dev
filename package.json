@@ -7,6 +7,7 @@
     "build": "next build",
     "build.storybook": "storybook build",
     "build.tailwind": "pnpm dlx tailwindcss -o ./src/styles/tailwind.css",
+    "move.prod":"cp -fr out build && cp -fr storybook-static build",
     "start": "next start",
     "start.storybook": "storybook dev -p 6006",
     "prepare": "husky install",
@@ -15,6 +16,7 @@
     "version": "npx changeset version",
     "docker.prod": "docker compose up -f docker-compose.yaml --no-cache --log-level 0",
     "test": "docker-compose -f docker-compose.test.yaml up",
+    "test.reset": "docker-compose -f docker-compose.test.yaml up --build",
     "test.playwright": "npx playwright test",
     "test.playwright.debug": "npx playwright test --debug",
     "types.check": "pnpm dlx tsc *.ts /*.tsx --noEmit",
@@ -64,10 +66,10 @@
       "next@latest": "13.0.6"
     }
   },
-  "packageManager": "pnpm@7.18.2",
+  "packageManager": "pnpm@8.9.2",
   "engines": {
     "node": "18.x",
-    "pnpm": "8.7.6"
+    "pnpm": "8.9.2"
   },
   "config": {
     "commitizen": {

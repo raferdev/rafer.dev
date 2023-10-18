@@ -1,7 +1,7 @@
 FROM nginx
 
 RUN mkdir /www/data/out -p
-RUN mkdir /www/data/storybook -p
+RUN mkdir /www/data/storybook-static -p
 RUN mkdir /var/cache/nginx -p
 
 RUN rm /etc/nginx/mime.types
