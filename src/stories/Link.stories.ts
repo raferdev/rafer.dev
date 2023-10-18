@@ -20,6 +20,7 @@ export const Primary: Story = {
     children: 'Link',
     iconName: 'Link',
     label: 'Link',
+    iconVariant: 'default',
     iconFillColor: 'yellow-200',
   },
 }
