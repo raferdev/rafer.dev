@@ -3,7 +3,11 @@
 module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
 
-  content: ['./src/app/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
+  content: [
+    './src/app/**/*.{ts,tsx}',
+    './src/components/**/*.{ts,tsx}',
+    './src/stories/**/*.mdx',
+  ],
   theme: {
     extend: {
       animation: {

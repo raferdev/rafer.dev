@@ -7,7 +7,6 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
     '@storybook/addon-interactions',
     '@storybook/addon-styling-webpack',
     {
@@ -38,7 +37,11 @@ const config: StorybookConfig = {
       },
     },
   ],
-
+  staticDirs: ['public'],
+  core: {
+    disableWhatsNewNotifications: true,
+    disableTelemetry: true,
+  },
   framework: {
     name: '@storybook/nextjs',
     options: {},
@@ -48,9 +51,6 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
 
-  core: {
-    disableWhatsNewNotifications: false,
-  },
   webpackFinal: async (config, {}) => {
     if (!config.resolve) {
       throw new Error('config.resolve is undefined')
