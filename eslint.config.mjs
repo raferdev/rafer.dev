@@ -19,6 +19,7 @@ const __eslintCofig = [
       'plugin:tailwindcss/recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:@next/next/recommended',
+      'plugin:mdx/recommended',
     ],
     parserOptions: {
       ecmaVersion: 'latest',
@@ -42,6 +43,8 @@ const __eslintCofig = [
       'tailwindcss/no-contradicting-classname': 'error',
     },
     settings: {
+      'mdx/code-blocks': true,
+      'mdx/language-mapper': {},
       next: {
         rootDir: '.',
       },
@@ -51,6 +54,13 @@ const __eslintCofig = [
       },
     },
     overrides: [
+      {
+        files: ['*.mdx'],
+        extends: 'plugin:mdx/recommended',
+        rules: {
+          '@typescript-eslint/no-unused-vars': 'off',
+        },
+      },
       {
         files: ['*.ts', '*.tsx'],
         parser: '@typescript-eslint/parser',

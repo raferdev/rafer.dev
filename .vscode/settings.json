@@ -1,35 +1,54 @@
 {
-    "editor.inlineSuggest.enabled": true,
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[css]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[html]": {
-      "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-  
-    "files.autoSave": "off",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "eslint.experimental.useFlatConfig": true,
-    "eslint.options": {
-      "overrideConfigFile": "eslint.config.mjs"
-    },
-    "editor.formatOnSave": true,
-    "typescript.preferences.importModuleSpecifierEnding": "minimal",
-    "css.lint.unknownAtRules": "ignore",
-    "tailwindCSS.experimental.classRegex": [
-      ["cn(?:<[^>]*>)?(([^)]*))", "[\"'`]([^\"'`]*).*?[\"'`]", "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"]
-    ],
-    "githubPullRequests.ignoredPullRequestBranches": [
-      "main"
-    ],
-  }
+  "editor.inlineSuggest.enabled": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "files.autoSave": "off",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.options": {
+    "overrideConfigFile": "eslint.config.mjs"
+  },
+  "eslint.nodeEnv": "ESLINT_USE_FLAT_CONFIG=true",
+  "eslint.validate": [
+    "markdown",
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.formatOnSave": true,
+  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "cn(?:<[^>]*>)?(([^)]*))",
+      "[\"'`]([^\"'`]*).*?[\"'`]",
+      "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"
+    ]
+  ],
+  "mdx.experimentalLanguageServer": true,
+
+  "githubPullRequests.ignoredPullRequestBranches": ["main"]
+}
