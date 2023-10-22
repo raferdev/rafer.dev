@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/blocks'
+
+import Image from 'next/image'
+
+import Logo from './assets/logo.png'
+
+import { H1, H2 } from './components/pageHeading'
+
+import { p, Span } from './components/pageTexting'
+
+<Meta title="Design/Logo" />
+
+<div className="w-full h-full flex flex-col box-border">
+  <div className="w-full flex flex-col">
+    <div className="w-full flex items-center flex-col max-w-2xl">
+      <H1>Logo Stories</H1>
+      <H2 className="!text-lg !ml-2 !text-stone-700 !font-bold !border-0">
+        What is the story behind the logo?
+      </H2>
+    </div>
+    <div className="flex w-full items-center flex-col ">
+      <Image
+        src={Logo}
+        width={150}
+        height={150}
+        alt="Globe with the text raferdev in the centre, blurry code in the top and ones and zeros at bottom"
+      />
+      <Span className="!italic !mt-2">Raferdev logo</Span>
+    </div>
+  </div>
+</div>

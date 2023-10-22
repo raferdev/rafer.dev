@@ -49,3 +49,7 @@
     content: counter(step);
   }
 }
+
+#storybook-docs > .sbdocs.sbdocs-wrapper.css-k7lbue {
+  background-color: transparent !important;
+}
