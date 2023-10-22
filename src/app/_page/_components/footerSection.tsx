@@ -14,7 +14,7 @@ export const FooterSection = () => {
       <footer>
         <Section.Content className="flex h-full w-full justify-center align-bottom">
           <Balancer className="text-base font-normal sm:text-lg">
-            This landing page are open source and you can find it
+            This landing page is open source and you can find it
             <Link
               href={links.self.repository}
               target="_blank"
