@@ -10,7 +10,7 @@ const Container = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('grid h-full w-full grid-cols-2', className)}
+      className={cn('grid h-full w-full grid-cols-1 md:grid-cols-2', className)}
       {...props}
     />
   )
@@ -62,7 +62,10 @@ const Paragraph = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('!text-md !ml-2 !font-normal md:!text-lg', className)}
+      className={cn(
+        '!text-md !ml-2 !font-thin  !text-muted-foreground md:!text-lg',
+        className
+      )}
       {...props}
     />
   )

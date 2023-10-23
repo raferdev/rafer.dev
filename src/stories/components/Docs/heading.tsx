@@ -23,7 +23,7 @@ const Title = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!text-xl !font-bold !leading-tight !tracking-tighter !text-foreground md:!text-2xl lg:!leading-[1.1]',
+        '!text-xl !font-bold !leading-tight !tracking-tighter !text-foreground md:!text-2xl md:!leading-[1.1]',
         className
       )}
       {...props}
@@ -43,7 +43,7 @@ const SubTitle = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!border-0 !text-lg !font-extrabold !text-muted-foreground sm:text-xl',
+        '!border-0 !text-lg !font-extrabold !text-secondary md:!text-xl',
         className
       )}
       {...props}

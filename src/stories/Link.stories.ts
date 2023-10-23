@@ -21,7 +21,7 @@ export const Primary: Story = {
     iconName: 'Link',
     label: 'Link',
     iconVariant: 'default',
-    iconFillColor: 'yellow-200',
+    iconFillColor: 'cyan-200',
   },
 }
 

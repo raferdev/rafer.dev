@@ -10,22 +10,22 @@ import { p, Span } from './components/pageTexting'
 
 <Meta title="Design/Logo" />
 
-<div className="w-full h-full flex flex-col box-border">
-  <div className="w-full flex flex-col">
-    <div className="w-full flex items-center flex-col max-w-2xl">
+<div className="box-border flex h-full w-full flex-col">
+  <div className="flex w-full flex-col">
+    <div className="flex w-full max-w-2xl flex-col items-center">
       <H1>Logo Stories</H1>
-      <H2 className="!text-lg !ml-2 !text-stone-700 !font-bold !border-0">
+      <H2 className="!ml-2 !border-0 !text-lg !font-bold !text-stone-700">
         What is the story behind the logo?
       </H2>
     </div>
-    <div className="flex w-full items-center flex-col ">
+    <div className="flex w-full flex-col items-center ">
       <Image
         src={Logo}
         width={150}
         height={150}
         alt="Globe with the text raferdev in the centre, blurry code in the top and ones and zeros at bottom"
       />
-      <Span className="!italic !mt-2">Raferdev logo</Span>
+      <Span className="!mt-2 !italic">Raferdev logo</Span>
     </div>
   </div>
 </div>
