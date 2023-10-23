@@ -1,37 +1,66 @@
 import Image from 'next/image'
 import { Meta } from '@storybook/blocks'
+import Balancer from 'react-wrap-balancer'
 
 import { __site } from '../config/site'
 import billboard from './assets/billboard.png'
-import HandWaving from './assets/handWaving'
+import HandWaving from './assets/handWaving.svg'
 import { Docs } from './components/Docs'
 import { P } from './components/pageTexting'
 
 <Meta title="About" />
 
-<div className="box-border flex h-full w-full flex-col justify-center">
-  <Docs.Heading.Container className="box-border h-full w-full">
+<Docs.Container>
+  <Docs.Heading.Container>
+      <Docs.Heading.Title asChild>
+        <h1>First Steps</h1>
+      </Docs.Heading.Title>
+
     <div className="flex gap-4">
-      <Docs.Heading.Title1>
-        I will give you a brief overview!
-      </Docs.Heading.Title1>
-      <HandWaving />
+    <Docs.Heading.SubTitle asChild>
+      <h2>I will give you a brief overview!</h2>
+    </Docs.Heading.SubTitle>
+    <Image src={HandWaving} width={32} height={32} alt="" />
     </div>
+
   </Docs.Heading.Container>
+
   <Docs.Content.Container>
-    <div className="px-4">
-      <Docs.Heading.Title2>General</Docs.Heading.Title2>
-      <P>
-        Here you will see the design system of the
-        <a href={__site.metadata.url}>rafer.dev</a> website.
-      </P>
-      <Docs.Heading.Title2>Navigating</Docs.Heading.Title2>
-      <P>You can select the items listed on the left menu.</P>
-      <Docs.Heading.Title2>More</Docs.Heading.Title2>
-      <P>
-        You can access this project repo
-        <a href={__site.metadata.links.github}>here</a>.
-      </P>
+    <div className="flex flex-col gap-8 pl-4 pr-6 pt-6">
+    <div className="flex flex-col">
+      <Docs.Content.Topic asChild>
+        <h3>General</h3>
+      </Docs.Content.Topic>
+      <Balancer as={'div'}>
+        <Docs.Content.Paragraph asChild>
+          <p>Here you will see the design system of the <a href={__site.metadata.url}>rafer.dev</a> website.</p>
+        </Docs.Content.Paragraph>
+      </Balancer>
+    </div>
+    <div className="flex flex-col">
+      <Docs.Content.Topic asChild>
+      <h3>Navigating</h3>
+      </Docs.Content.Topic>
+
+       <Balancer as={'div'}>
+      <Docs.Content.Paragraph asChild>
+        <p>You can select the items listed on the left menu.</p>
+      </Docs.Content.Paragraph>
+       </Balancer>
+    </div>
+
+    <div className="flex flex-col">
+      <Docs.Content.Topic asChild>
+        <h3>More</h3>
+      </Docs.Content.Topic>
+
+      <Balancer as={'div'}>
+      <Docs.Content.Paragraph asChild>
+        <p>You can access this project repo <a href={__site.metadata.links.github}>here</a>.</p>
+      </Docs.Content.Paragraph>
+      </Balancer>
+    </div>
+
     </div>
     <div className="border-0">
       <Image
@@ -41,5 +70,6 @@ import { P } from './components/pageTexting'
         alt="The top of rafer.dev site showing logo and greetings text"
       />
     </div>
+
   </Docs.Content.Container>
-</div>
+</Docs.Container>

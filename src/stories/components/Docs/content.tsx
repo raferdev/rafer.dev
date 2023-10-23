@@ -18,8 +18,79 @@ const Container = React.forwardRef<
 
 Container.displayName = 'Docs.Content.Container'
 
+const Topic = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'h3'
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn(
+        '!m-0 !text-lg !font-extrabold !text-foreground md:!text-xl',
+        className
+      )}
+      {...props}
+    />
+  )
+})
+
+Topic.displayName = 'Topic'
+
+const SubTopic = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'h4'
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn('!m-0 !text-lg !font-extrabold !text-stone-900', className)}
+      {...props}
+    />
+  )
+})
+
+const Paragraph = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'p'
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn('!text-md !ml-2 !font-normal md:!text-lg', className)}
+      {...props}
+    />
+  )
+})
+
+const Span = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'span'
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn('!text-lg !font-extrabold !text-stone-900', className)}
+      {...props}
+    />
+  )
+})
+
+Paragraph.displayName = 'Span'
+
 const Content = {
   Container,
+  Topic,
+  SubTopic,
+  Paragraph,
+  Span,
 }
 
 export { Content }
