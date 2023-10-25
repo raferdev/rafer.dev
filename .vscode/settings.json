@@ -48,7 +48,5 @@
       "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"
     ]
   ],
-  "mdx.experimentalLanguageServer": true,
-
-  "githubPullRequests.ignoredPullRequestBranches": ["main"]
+  "mdx.experimentalLanguageServer": true
 }

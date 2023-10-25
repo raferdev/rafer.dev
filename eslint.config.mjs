@@ -14,12 +14,12 @@ const __eslintCofig = [
     parser: '@typescript-eslint/parser',
     extends: [
       'prettier',
+      'plugin:mdx/recommended',
       'plugin:prettier/recommended',
       'plugin:storybook/recommended',
       'plugin:tailwindcss/recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:@next/next/recommended',
-      'plugin:mdx/recommended',
     ],
     parserOptions: {
       ecmaVersion: 'latest',
@@ -56,7 +56,7 @@ const __eslintCofig = [
     overrides: [
       {
         files: ['*.mdx'],
-        extends: 'plugin:mdx/recommended',
+        extends: ['plugin:mdx/recommended', 'plugin:@next/next/recommended'],
         rules: {
           '@typescript-eslint/no-unused-vars': 'off',
         },

@@ -25,8 +25,9 @@ module.exports = {
   importOrderSeparation: false,
   importOrderSortSpecifiers: true,
   importOrderBuiltinModulesToTop: true,
-  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+  importOrderParserPlugins: ['typescript', 'jsx', 'mdx', 'decorators-legacy'],
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
+  embeddedLanguageFormatting: 'auto',
   plugins: ['@ianvs/prettier-plugin-sort-imports'],
 }
