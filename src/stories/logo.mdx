@@ -1,31 +1,141 @@
-import { Meta } from '@storybook/blocks'
-
 import Image from 'next/image'
+import { Meta } from '@storybook/blocks'
+import Balancer from 'react-wrap-balancer'
 
-import Logo from './assets/logo.png'
+import FigmaIcon from './assets/figma-icon.png'
 
-import { H1, H2 } from './components/pageHeading'
-
-import { p, Span } from './components/pageTexting'
+import LogoDraft from './assets/logo-drafts.png'
+import LogoExplainBottom from './assets/logo-explain-bottom.png'
+import LogoExplainTop from './assets/logo-explain-top.png'
+import { Docs } from './components/Docs'
 
 <Meta title="Design/Logo" />
 
-<div className="box-border flex h-full w-full flex-col">
-  <div className="flex w-full flex-col">
-    <div className="flex w-full max-w-2xl flex-col items-center">
-      <H1>Logo Stories</H1>
-      <H2 className="!ml-2 !border-0 !text-lg !font-bold !text-stone-700">
-        What is the story behind the logo?
-      </H2>
+<Docs.Container>
+  <Docs.Heading.Container>
+    <Docs.Heading.Title asChild>
+      <h1>Logo</h1>
+    </Docs.Heading.Title>
+    <div className="flex items-baseline gap-4">
+      <Docs.Heading.SubTitle asChild>
+        <h2>Made with love.</h2>
+      </Docs.Heading.SubTitle>
     </div>
-    <div className="flex w-full flex-col items-center ">
-      <Image
-        src={Logo}
-        width={150}
-        height={150}
-        alt="Globe with the text raferdev in the centre, blurry code in the top and ones and zeros at bottom"
-      />
-      <Span className="!mt-2 !italic">Raferdev logo</Span>
+
+  </Docs.Heading.Container>
+  <Docs.Content.Container>
+     <div className="m-0 flex max-h-80 w-full items-center justify-center border-0 align-middle md:order-2">
+        <Image
+        src={LogoDraft}
+        width={400}
+        height={280}
+        alt=""
+        />
+      </div>
+    <div className="flex flex-col gap-8 pl-4 pr-6 pt-6">
+    <div className="flex flex-col">
+      <Docs.Content.Topic asChild>
+        <h3>Overview</h3>
+      </Docs.Content.Topic>
+      <Balancer as={'div'}>
+        <Docs.Content.Paragraph asChild>
+          <p>This logo was designed thinking on
+           make something that looks simple but with a 
+           lot of information, minimalist and dark but with some colorful.
+           Trying to pass the identity of pragmatism, matematical and logical
+           think but with a creativity and people oriented.</p>
+        </Docs.Content.Paragraph>
+      </Balancer>
     </div>
+    <div className="flex flex-col">
+      <Docs.Content.Topic asChild>
+        <h3>Structure Analisys</h3>
+      </Docs.Content.Topic>
+      <Docs.Content.SubTopic asChild>
+        <h4>Top</h4>
+      </Docs.Content.SubTopic>
+      <div className="align-center !my-8 flex w-full justify-center">
+        <Image
+        src={LogoExplainTop}
+        width={200}
+        height={280}
+        alt=""
+        /> 
+      </div>
+      <Balancer as={'div'}>
+        <Docs.Content.Paragraph asChild>
+          <p> The top part of this logo was designed 
+           to be the expression of the criativity 
+           and oriented on user, to deliver things
+           thinking on people. The piece of code
+           showed on the top of this logo is a css code
+           that i use on my first html + css project.
+           And taking advantage of the fact this language is
+           well-known for transform the same content
+           on something enjoyable and understandable.</p>
+        </Docs.Content.Paragraph>
+      </Balancer>
+      <Docs.Content.SubTopic asChild>
+        <h4>Bottom</h4>
+      </Docs.Content.SubTopic>
+      <div className="align-center !my-4 flex w-full justify-center">
+        <Image
+        src={LogoExplainBottom}
+        width={200}
+        height={280}
+        alt=""
+        />
+      </div>
+      <Balancer as={'div'}>
+        <Docs.Content.Paragraph asChild>
+          <p> On the other hand this part takes the view of logical basis,
+          the mathematics and physics aspects knowledge and interest.
+          Using the binary numbers representation to show it all have a beginning,
+          by two states, zeros and ones, to all the abstractions that we discovered
+          and will discover. And I use a little difference by the text weight
+          to make number lines with the binary representation of a knowing phrase
+          in Portuguese.</p>
+        </Docs.Content.Paragraph>
+      </Balancer>
+    </div>
+
+    <div className="flex flex-col">
+      <Docs.Content.Topic asChild>
+        <h3>Details</h3>
+      </Docs.Content.Topic>
+      <div className="!my-8 flex w-full justify-center">
+        <a href="https://figma.com" target="_blank">
+          <Image
+          src={FigmaIcon}
+          width={27}
+          height={30}
+          alt=""
+          /></a>
+      <Balancer as={'div'}>
+        <Docs.Content.Paragraph asChild>
+          <p>This logo was designed on <a href="https://figma.com" target="_blank">figma</a>.</p>
+        </Docs.Content.Paragraph>
+      </Balancer>
+      </div>
+      <div className="">
+        <Docs.Content.SubTopic asChild>
+          <h4>Font</h4>
+        </Docs.Content.SubTopic>
+        <Balancer className="!ml-2" as={'div'}>
+          <Docs.Content.Paragraph asChild>
+            <p><Docs.Content.Span asChild><span>Family:</span></Docs.Content.Span> Mplus1 1p</p>
+          </Docs.Content.Paragraph>
+          <Docs.Content.Paragraph asChild>
+            <p><Docs.Content.Span asChild><span>Weight:</span></Docs.Content.Span> Extrabold</p>
+          </Docs.Content.Paragraph>
+           <Docs.Content.Paragraph asChild>
+            <p><Docs.Content.Span asChild><span>Letter Spacing:</span></Docs.Content.Span> -10%</p>
+          </Docs.Content.Paragraph>
+        </Balancer>
+      </div>
+
+    </div>
+
   </div>
-</div>
+  </Docs.Content.Container>
+</Docs.Container>

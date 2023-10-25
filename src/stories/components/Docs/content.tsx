@@ -47,11 +47,16 @@ const SubTopic = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('!m-0 !text-lg !font-extrabold !text-stone-900', className)}
+      className={cn(
+        '!m-0 !ml-2 !text-lg !font-extrabold !text-secondary',
+        className
+      )}
       {...props}
     />
   )
 })
+
+SubTopic.displayName = 'SubTopic'
 
 const Paragraph = React.forwardRef<
   HTMLDivElement,
@@ -63,7 +68,7 @@ const Paragraph = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!text-md !ml-2 !font-thin  !text-muted-foreground md:!text-lg',
+        '!text-md !ml-2 !text-justify !font-thin !text-muted-foreground md:!text-lg',
         className
       )}
       {...props}
