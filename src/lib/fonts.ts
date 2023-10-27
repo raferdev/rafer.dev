@@ -1,6 +1,26 @@
-import { JetBrains_Mono as FontMono } from 'next/font/google'
+import { Ubuntu } from 'next/font/google'
 
-export const fontMono = FontMono({
+export const fontSans = Ubuntu({
   subsets: ['latin'],
-  variable: '--font-mono',
+  display: 'swap',
+  fallback: [
+    'ui-sans-serif',
+    'system-ui',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'Noto Sans',
+    'sans-serif',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji',
+  ],
+
+  preload: true,
+  variable: '--font-sans',
+  weight: ['300', '400', '500', '700'],
 })
