@@ -1,7 +1,8 @@
-import 'tailwindcss/tailwind.css'
-import '../src/app/_layout/global.css'
-
 import type { Preview } from '@storybook/react'
+
+import '../src/app/_layout/global.css'
+import './public/css/font.css'
+import './public/css/bgTransparent.css'
 
 const preview: Preview = {
   parameters: {

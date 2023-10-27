@@ -49,13 +49,13 @@ const config: StorybookConfig = {
 
   docs: {
     autodocs: 'tag',
+    defaultName: 'Raferdev',
   },
 
   webpackFinal: async (config, {}) => {
     if (!config.resolve) {
       throw new Error('config.resolve is undefined')
     }
-    config.resolve.modules = [path.resolve(__dirname, '..'), 'node_modules']
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src'),
@@ -63,4 +63,5 @@ const config: StorybookConfig = {
     return config
   },
 }
+
 export default config
