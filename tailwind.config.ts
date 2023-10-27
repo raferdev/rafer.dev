@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+      },
       animation: {
         'scroll-left': 'scroll 10s linear infinite',
       },
@@ -24,10 +27,6 @@ module.exports = {
           DEFAULT: 'hsl(var(--secondary))',
           'blue-300': 'hsl(var(--secondary-blue-300))',
           'neutral-300': 'hsl(var(--secondary-neutral-300))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
-          foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
