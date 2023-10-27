@@ -2,7 +2,7 @@ import './global.css'
 
 import { cn } from '@/utils/cn'
 
-import { fontMono } from '@/lib/fonts'
+import { fontSans } from '@/lib/fonts'
 import { DevTools } from '@/components/DevTools'
 
 import { GoogleAnalytics } from './gtag'
@@ -23,7 +23,7 @@ export default function DefaultLayout({
         <body
           className={cn(
             'flex min-h-screen items-center justify-center bg-background font-sans antialiased',
-            fontMono.variable
+            fontSans.variable
           )}
         >
           {children}
