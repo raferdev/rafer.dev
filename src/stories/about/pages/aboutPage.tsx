@@ -11,12 +11,10 @@ const AboutPage = () => {
   return (
     <Docs.Container>
       <Docs.Heading.Container>
-        <Docs.Heading.Title asChild>
-          <h1>About</h1>
-        </Docs.Heading.Title>
+        <Docs.Heading.Title>About</Docs.Heading.Title>
         <div className="flex items-baseline gap-4">
-          <Docs.Heading.SubTitle asChild>
-            <h2>I will give you a brief overview!</h2>
+          <Docs.Heading.SubTitle>
+            I will give you a brief overview!
           </Docs.Heading.SubTitle>
           <Image src={HandWaving} width={32} height={32} alt="" />
         </div>
@@ -33,45 +31,35 @@ const AboutPage = () => {
         </div>
         <div className="flex flex-col gap-8 pl-4 pr-6 pt-6">
           <div className="flex flex-col">
-            <Docs.Content.Topic asChild>
-              <h3>General</h3>
-            </Docs.Content.Topic>
+            <Docs.Content.Topic>General</Docs.Content.Topic>
             <Balancer as={'div'}>
-              <Docs.Content.Paragraph asChild>
-                <p>
-                  Storybook is a developer tool that enable the development,
-                  testing and documentation of UI components, in an isolated
-                  environment, and is used to create a design system of your
-                  company, project, ect.
-                </p>
+              <Docs.Content.Paragraph>
+                Storybook is a developer tool that enable the development,
+                testing and documentation of UI components, in an isolated
+                environment, and is used to create a design system of your
+                company, project, ect.
               </Docs.Content.Paragraph>
             </Balancer>
           </div>
           <div className="flex flex-col">
-            <Docs.Content.Topic asChild>
-              <h3>This App</h3>
-            </Docs.Content.Topic>
+            <Docs.Content.Topic>This App</Docs.Content.Topic>
 
             <Balancer as={'div'}>
-              <Docs.Content.Paragraph asChild>
-                <p>
-                  Here you will see the docs of{' '}
-                  <a href={__site.metadata.url}>rafer.dev</a> website. It's more
-                  about documenting insights about this project than showing UI
-                  and design docs, what this tool is suitable, using this
-                  powerful tool to organize ideas.
-                </p>
+              <Docs.Content.Paragraph>
+                Here you will see the docs of{' '}
+                <a href={__site.metadata.url}>rafer.dev</a> website. It's more
+                about documenting insights about this project than showing UI
+                and design docs, what this tool is suitable, using this powerful
+                tool to organize ideas.
               </Docs.Content.Paragraph>
             </Balancer>
           </div>
 
           <div className="flex flex-col">
-            <Docs.Content.Topic asChild>
-              <h3>More</h3>
-            </Docs.Content.Topic>
+            <Docs.Content.Topic>More</Docs.Content.Topic>
 
             <Balancer as={'div'}>
-              <Docs.Content.Paragraph asChild>
+              <Docs.Content.Paragraph>
                 <p>
                   This project is open source and you can access this repository{' '}
                   <a href={__site.metadata.links.github}>here</a>.
