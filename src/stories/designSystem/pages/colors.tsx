@@ -1,9 +1,8 @@
-import { Slot } from '@radix-ui/react-slot'
 import { ColorItem, ColorPalette } from '@storybook/blocks'
 
-const colorsTheme = () => {
+const ColorsThemePage = () => {
   return (
-    <Slot className="[&>div>*]:!font-sans">
+    <div className="rounded-md !border-2 !bg-white !p-4 [&>div]:!font-sans ">
       <ColorPalette>
         <ColorItem
           title="Background"
@@ -51,8 +50,8 @@ const colorsTheme = () => {
           }}
         />
       </ColorPalette>
-    </Slot>
+    </div>
   )
 }
 
-export { colorsTheme }
+export { ColorsThemePage }
