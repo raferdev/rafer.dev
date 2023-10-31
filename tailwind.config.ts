@@ -10,6 +10,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        default: 'minmax(200px, 300px) 1fr minmax(200px, 300px)',
+      },
+      gridTemplateRows: {
+        'stories-docs': '5.5rem 1fr',
+      },
       fontFamily: {
         sans: ['var(--font-sans)'],
       },
@@ -60,9 +66,6 @@ module.exports = {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(calc(-100% - 1rem))' },
         },
-      },
-      gridTemplateColumns: {
-        default: 'minmax(200px, 300px) 1fr minmax(200px, 300px)',
       },
     },
   },
