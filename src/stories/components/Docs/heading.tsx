@@ -9,7 +9,11 @@ const Container = React.forwardRef<
   const Comp = asChild ? Slot : 'div'
 
   return (
-    <Comp ref={ref} className={cn('box-border w-full', className)} {...props} />
+    <Comp
+      ref={ref}
+      className={cn('box-border h-[5.5rem] w-full', className)}
+      {...props}
+    />
   )
 })
 

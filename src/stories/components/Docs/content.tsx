@@ -10,7 +10,10 @@ const Container = React.forwardRef<
   return (
     <Comp
       ref={ref}
-      className={cn('grid h-full w-full grid-cols-1 md:grid-cols-2', className)}
+      className={cn(
+        'custom-scroll box-border flex h-full w-full flex-col gap-8 overflow-y-scroll text-clip',
+        className
+      )}
       {...props}
     />
   )
@@ -60,7 +63,7 @@ SubTopic.displayName = 'SubTopic'
 
 const Paragraph = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
+  React.HTMLAttributes<HTMLParagraphElement> & { asChild?: boolean }
 >(({ className, asChild, ...props }, ref) => {
   const Comp = asChild ? Slot : 'p'
 
@@ -77,6 +80,42 @@ const Paragraph = React.forwardRef<
 })
 
 const Span = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLSpanElement> & { asChild?: boolean }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'span'
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn(
+        '!font-sans !text-lg  !font-extrabold !text-stone-900',
+        className
+      )}
+      {...props}
+    />
+  )
+})
+
+const MainContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
+>(({ className, asChild, ...props }, ref) => {
+  const Comp = asChild ? Slot : 'span'
+
+  return (
+    <Comp
+      ref={ref}
+      className={cn(
+        '!font-sans !text-lg  !font-extrabold !text-stone-900',
+        className
+      )}
+      {...props}
+    />
+  )
+})
+
+const IllustrationContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLHeadingElement> & { asChild?: boolean }
 >(({ className, asChild, ...props }, ref) => {
@@ -102,6 +141,8 @@ const Content = {
   SubTopic,
   Paragraph,
   Span,
+  MainContent,
+  IllustrationContent,
 }
 
 export { Content }
