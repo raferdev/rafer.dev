@@ -6,52 +6,46 @@ import { icons } from '../../../node_modules/lucide-react'
 import { iconVariants } from './iconVariants'
 import { linkVariants } from './linkVariants'
 
-const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  (
-    {
-      className,
-      iconFillColor,
-      iconVariant,
-      label,
-      variant,
-      iconName,
-      size,
-      children,
-      ...props
-    },
-    ref
-  ) => {
-    const Icon = iconName ? icons[iconName] : null
+const Link = ({
+  className,
+  iconFillColor,
+  iconVariant,
+  variant = 'default',
+  iconName,
+  size,
+  children,
+  ...props
+}: LinkProps) => {
+  const Icon = iconName ? icons[iconName] : null
+  const LinkPointer = icons['MousePointerClick']
 
-    return (
-      <>
-        <a
-          className={cn(linkVariants({ variant, size, className }))}
-          ref={ref}
-          {...props}
-        >
-          {label && (
-            <p className="flex text-sm font-bold text-muted-foreground ">
-              {label}
-            </p>
+  return (
+    <>
+      <a className={cn(linkVariants({ variant, size, className }))} {...props}>
+        <span className="group-hover:text-accent">
+          {Icon && (
+            <Icon
+              size={22}
+              strokeWidth={2}
+              color="#0e0c0c"
+              className={cn(
+                iconVariants({ variant: iconVariant, color: iconFillColor })
+              )}
+            />
           )}
-          <span className="ml-2 flex w-full text-center font-normal text-foreground">
-            {Icon && (
-              <Icon
-                size={16}
-                className={cn(
-                  iconVariants({ variant: iconVariant, color: iconFillColor })
-                )}
-              />
-            )}
-            {children}
-          </span>
-        </a>
-      </>
-    )
-  }
-)
-
-Link.displayName = 'Link'
+          {children}
+        </span>
+        {variant === 'default' && (
+          <LinkPointer
+            size={22}
+            strokeWidth={2}
+            color="#67e8f9"
+            className="absolute right-4 space-x-2 opacity-0 group-hover:opacity-100"
+          />
+        )}
+      </a>
+    </>
+  )
+}
 
 export { Link }
