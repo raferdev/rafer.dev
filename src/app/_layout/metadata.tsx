@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    images: [`${meta.url}/og.jpg`],
+    images: [`${meta.url}/opengraph-image.png`],
     url: meta.url,
     title: meta.name,
     description: meta.description,
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: meta.name,
     description: meta.description,
-    images: [`${meta.url}/og.jpg`],
+    images: [`${meta.url}/opengraph-image.png`],
     creator: '@raferdev',
   },
   icons: {

@@ -1,21 +1,18 @@
 import Script from 'next/script'
 
-export const GoogleAnalytics = () => {
-  return (
-    <>
-      <Script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-B3WRYVBRFQ"
-      />
-      <Script id="google-analytics">
-        {`
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+import { __env } from '@/config/env'
 
-  gtag('config', 'G-B3WRYVBRFQ');
-    `}
-      </Script>
-    </>
-  )
-}
+export const GoogleAnalytics = () => (
+  <>
+    <Script async src={__env.NEXT_PUBLIC_GA_SRC} />
+    <Script id="google-analytics">
+      {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '${__env.NEXT_PUBLIC_GA_TAG_ID}');
+        `}
+    </Script>
+  </>
+)
