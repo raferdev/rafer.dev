@@ -31,7 +31,7 @@ const Topic = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!m-0 !font-sans !text-lg !font-extrabold !text-foreground md:!text-xl',
+        '!m-0 !font-sans !text-lg !font-bold !text-foreground md:!text-xl',
         className
       )}
       {...props}
@@ -51,7 +51,7 @@ const SubTopic = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!m-0 !ml-2 !font-sans !text-lg !font-extrabold !text-secondary',
+        '!m-0 !ml-2 !font-sans !text-lg !font-bold !text-secondary',
         className
       )}
       {...props}
@@ -89,7 +89,7 @@ const Span = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!font-sans !text-lg  !font-extrabold !text-stone-900',
+        '!font-sans !text-lg  !font-bold !text-stone-900',
         className
       )}
       {...props}
@@ -107,7 +107,7 @@ const MainContent = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!font-sans !text-lg  !font-extrabold !text-stone-900',
+        '!font-sans !text-lg  !font-bold !text-stone-900',
         className
       )}
       {...props}
@@ -125,7 +125,7 @@ const IllustrationContent = React.forwardRef<
     <Comp
       ref={ref}
       className={cn(
-        '!font-sans !text-lg  !font-extrabold !text-stone-900',
+        '!font-sans !text-lg  !font-bold !text-stone-900',
         className
       )}
       {...props}
