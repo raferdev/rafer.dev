@@ -1,12 +1,8 @@
 'use client'
 
-export default function GlobalError({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string }
-  reset: () => void
-}) {
+import { GlobalErrorProps } from '@/@types/elements'
+
+const GlobalError = ({ error, reset }: GlobalErrorProps) => {
   console.error(error)
   return (
     <html>
@@ -17,3 +13,5 @@ export default function GlobalError({
     </html>
   )
 }
+
+export default GlobalError
