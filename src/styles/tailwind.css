@@ -941,7 +941,7 @@ video {
   fill: hsl(var(--icon-cyan-200));
 }
 
-.fill-icons-github {
+.fill-neutral-800 {
   fill: hsl(var(--icon-github));
 }
 
@@ -949,19 +949,19 @@ video {
   fill: hsl(var(--icon-greetings-hand));
 }
 
-.fill-icons-instagram {
+.fill-amethyst-400 {
   fill: hsl(var(--icon-instagram));
 }
 
-.fill-icons-linkedin {
+.fill-blue-700 {
   fill: hsl(var(--icon-linkedin));
 }
 
-.fill-icons-storybook {
-  fill: hsl(var(--icon-storybook));
+.fill-cyclamen-300 {
+  fill: hsl(var(--cyclamen-300));
 }
 
-.fill-icons-twitter {
+.fill-celestial-500 {
   fill: hsl(var(--icon-twitter));
 }
 
@@ -969,7 +969,7 @@ video {
   fill: hsl(var(--icon-white));
 }
 
-.fill-icons-yellow-200 {
+.fill-yellow-200 {
   fill: hsl(var(--icon-yellow-200));
 }
 
@@ -1125,7 +1125,7 @@ video {
   font-weight: 700 !important;
 }
 
-.\!font-extrabold {
+.\!font-bold {
   font-weight: 800 !important;
 }
 
@@ -1137,7 +1137,7 @@ video {
   font-weight: 700;
 }
 
-.font-extrabold {
+.font-bold {
   font-weight: 800;
 }
 
@@ -1149,7 +1149,7 @@ video {
   font-weight: 400;
 }
 
-.font-thin {
+.font-light {
   font-weight: 100;
 }
 
