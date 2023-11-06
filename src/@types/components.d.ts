@@ -9,9 +9,7 @@ type iconColorProps = VariantProps<typeof iconVariants>
 interface LinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     VariantProps<typeof linkVariants> {
-  label?: string
   iconName?: keyof typeof icons
-  iconVariant?: iconColorProps['variant']
   iconFillColor?: iconColorProps['color']
 }
 
@@ -61,6 +59,13 @@ type AnimationColor = 'gray-900' | 'green-700' | 'rose-400'
 type IllustrationProps = {
   children: React.ReactNode
   animationColor: AnimationColor
+}
+
+type ContainerProps = {
+  className?: string
+  asChild?: boolean
+  children?: React.ReactNode
+  props?: React.HTMLAttributes<HTMLDivElement>
 }
 
 export {
