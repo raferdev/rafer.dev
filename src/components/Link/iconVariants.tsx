@@ -2,9 +2,6 @@ import { cva } from 'class-variance-authority'
 
 const iconVariants = cva('group-hover:fill-accent', {
   variants: {
-    variant: {
-      default: '',
-    },
     color: {
       default: 'fill-none',
       youtube: 'fill-red-300',
@@ -19,7 +16,6 @@ const iconVariants = cva('group-hover:fill-accent', {
     },
   },
   defaultVariants: {
-    variant: 'default',
     color: 'default',
   },
 })
