@@ -9,7 +9,6 @@ import { linkVariants } from './linkVariants'
 const Link = ({
   className,
   iconFillColor,
-  iconVariant,
   variant = 'default',
   iconName,
   size,
@@ -28,9 +27,7 @@ const Link = ({
               size={22}
               strokeWidth={2}
               color="#0e0c0c"
-              className={cn(
-                iconVariants({ variant: iconVariant, color: iconFillColor })
-              )}
+              className={cn(iconVariants({ color: iconFillColor }))}
             />
           )}
           {children}
