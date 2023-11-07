@@ -58,10 +58,12 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: storybook
+          path: storybook-static
       - name: Download Landing Page
         uses: actions/download-artifact@v3
         with:
           name: landing-page
+          path: out
 
       - name: Deploy Nginx
         run: |
