@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  builder:
+    env_file:
+      - .env.prod
+    container_name: front-build
+    tty: false
+    stdin_open: false
+    mem_limit: '2G'
+    build: '.'
+    volumes:
+      - builder_nginx_vol:/app/build
+
+volumes:
+  builder_nginx_vol:
+    external: true
