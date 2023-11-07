@@ -4,8 +4,6 @@ import { z } from 'zod'
 const __env = createEnv({
   server: {
     NODE_ENV: z.enum(['production', 'development']),
-    DEPLOY_STAGE: z.enum(['production', 'development', 'test']),
-    PORT: z.string(),
   },
 
   client: {
@@ -24,8 +22,6 @@ const __env = createEnv({
 
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    DEPLOY_STAGE: process.env.DEPLOY_STAGE,
-    PORT: process.env.PORT,
     NEXT_PUBLIC_GA_SRC: process.env.NEXT_PUBLIC_GA_SRC,
     NEXT_PUBLIC_GA_TAG_ID: process.env.NEXT_PUBLIC_GA_TAG_ID,
     NEXT_PUBLIC_DATADOG_CLIENT_TOKEN:

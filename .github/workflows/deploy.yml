@@ -58,8 +58,7 @@ jobs:
           filters: |
             ngnix:
               - '**/*
-      - name: Lint Markdown
-        if: ${{ steps.filter.outputs.nginx == 'true' }}
+      - name: Deploy Nginx
         run: |
           sudo docker compose build -f docker-compose.yaml --no-cache --log-level 0
           sudo docker compose down
