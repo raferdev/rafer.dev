@@ -1,7 +1,7 @@
 import { createEnv } from '@t3-oss/env-nextjs'
 import { z } from 'zod'
 
-export const __env = createEnv({
+const __env = createEnv({
   server: {
     NODE_ENV: z.enum(['production', 'development']),
     DEPLOY_STAGE: z.enum(['production', 'development', 'test']),
@@ -11,19 +11,40 @@ export const __env = createEnv({
   client: {
     NEXT_PUBLIC_DATADOG_CLIENT_TOKEN: z.string(),
     NEXT_PUBLIC_DATADOG_APPLICATION_ID: z.string(),
+    NEXT_PUBLIC_GA_SRC: z.string(),
     NEXT_PUBLIC_DATADOG_SITE: z.string(),
     NEXT_PUBLIC_DATADOG_ENV: z.string(),
+    NEXT_PUBLIC_DATADOG_SESSION_SAMPLE_RATE: z.string(),
+    NEXT_PUBLIC_DATADOG_REPLAY_SAMPLE_RATE: z.string(),
+    NEXT_PUBLIC_DATADOG_TRACK_USER_INTERACTIONS: z.string(),
+    NEXT_PUBLIC_DATADOG_ENV_TRACK_RESOURCES: z.string(),
+    NEXT_PUBLIC_DATADOG_ENV_TRACK_LONG_TASKS: z.string(),
+    NEXT_PUBLIC_GA_TAG_ID: z.string(),
   },
 
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     DEPLOY_STAGE: process.env.DEPLOY_STAGE,
     PORT: process.env.PORT,
+    NEXT_PUBLIC_GA_SRC: process.env.NEXT_PUBLIC_GA_SRC,
+    NEXT_PUBLIC_GA_TAG_ID: process.env.NEXT_PUBLIC_GA_TAG_ID,
     NEXT_PUBLIC_DATADOG_CLIENT_TOKEN:
       process.env.NEXT_PUBLIC_DATADOG_CLIENT_TOKEN,
     NEXT_PUBLIC_DATADOG_APPLICATION_ID:
       process.env.NEXT_PUBLIC_DATADOG_APPLICATION_ID,
     NEXT_PUBLIC_DATADOG_SITE: process.env.NEXT_PUBLIC_DATADOG_SITE,
     NEXT_PUBLIC_DATADOG_ENV: process.env.NEXT_PUBLIC_DATADOG_ENV,
+    NEXT_PUBLIC_DATADOG_SESSION_SAMPLE_RATE:
+      process.env.NEXT_PUBLIC_DATADOG_SESSION_SAMPLE_RATE,
+    NEXT_PUBLIC_DATADOG_REPLAY_SAMPLE_RATE:
+      process.env.NEXT_PUBLIC_DATADOG_REPLAY_SAMPLE_RATE,
+    NEXT_PUBLIC_DATADOG_TRACK_USER_INTERACTIONS:
+      process.env.NEXT_PUBLIC_DATADOG_TRACK_USER_INTERACTIONS,
+    NEXT_PUBLIC_DATADOG_ENV_TRACK_RESOURCES:
+      process.env.NEXT_PUBLIC_DATADOG_ENV_TRACK_RESOURCES,
+    NEXT_PUBLIC_DATADOG_ENV_TRACK_LONG_TASKS:
+      process.env.NEXT_PUBLIC_DATADOG_ENV_TRACK_LONG_TASKS,
   },
 })
+
+export { __env }

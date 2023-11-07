@@ -8,11 +8,11 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
+  tags: ['autodocs', 'Link', 'Component'],
   argTypes: {
     variant: {
       name: 'Link Variant',
-      options: ['default', 'outline', 'raw'],
+      options: ['default', 'raw'],
       description: 'The link styles.',
     },
     iconName: {
@@ -24,17 +24,6 @@ const meta = {
       description:
         'The text that will be showed on the center of this component.',
     },
-    label: {
-      name: 'Link Label',
-      description:
-        'The text that will be showed on the left of this component.',
-    },
-    iconVariant: {
-      name: 'Icon Variant',
-      description: 'The icon styles.',
-      defaultValue: 'default',
-      options: ['default'],
-    },
     iconFillColor: {
       name: 'Icon Fill Color',
       description: 'The icon fill color.',
@@ -45,22 +34,18 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     variant: 'default',
-    children: 'Link',
-    iconName: 'Link',
-    label: 'Link',
-    iconVariant: 'default',
-    iconFillColor: 'cyan-200',
+    children: 'Github',
+    iconName: 'Github',
+    iconFillColor: 'github',
   },
 }
 
-export const Outline: Story = {
+export const Raw: Story = {
   args: {
-    variant: 'outline',
-    label: 'Link',
-    iconName: 'Link',
-    iconFillColor: 'cyan-200',
+    variant: 'raw',
+    children: 'Github',
   },
 }

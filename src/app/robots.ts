@@ -1,13 +1,12 @@
 import { MetadataRoute } from 'next'
 
-export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/private/',
-      crawlDelay: 10,
-    },
-    sitemap: 'https://acme.com/sitemap.xml',
-  }
-}
+const robots = (): MetadataRoute.Robots => ({
+  rules: {
+    userAgent: '*',
+    allow: '/',
+    crawlDelay: 10,
+  },
+  sitemap: 'https://acme.com/sitemap.xml',
+})
+
+export default robots

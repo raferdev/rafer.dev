@@ -1,19 +1,21 @@
 import * as React from 'react'
+import { SectionDescriptionProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 
-const SectionDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
+const SectionDescription = ({
+  className,
+  children,
+  ...props
+}: SectionDescriptionProps) => (
   <p
-    ref={ref}
     className={cn(
-      'max-w-[750px] text-lg text-muted-foreground sm:text-xl',
+      'max-w-[750px] text-lg text-muted-foreground sm:text-[1.15rem] md:text-xl',
       className
     )}
     {...props}
-  />
-))
-SectionDescription.displayName = 'SectionDescription'
+  >
+    {children}
+  </p>
+)
 
 export { SectionDescription }

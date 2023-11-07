@@ -1,14 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
+import { GlobalErrorProps } from '@/@types/elements'
 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string }
-  reset: () => void
-}) {
+const Error = ({ error, reset }: GlobalErrorProps) => {
   useEffect(() => {
     console.error(error)
   }, [error])
@@ -20,3 +15,5 @@ export default function Error({
     </div>
   )
 }
+
+export default Error
