@@ -22,7 +22,7 @@ jobs:
           echo "${{ secrets.ENV_FILE }}" > .env
           echo "${{ secrets.ENV_LOCAL_FILE }}" > .env.prod
       - name: Clean
-        run: pnpm ci
+        run: pnpm i
       - name: Build
         run: pnpm run build
       - name: Run
