@@ -10,8 +10,6 @@ services:
     stdin_open: false
     volumes:
       - builder_nginx_vol:/www/data
-    depends_on:
-      - builder
     ports:
       - 80:80
 
