@@ -10,35 +10,43 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+
+      - name: Setup Node & Pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8.9.2
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'pnpm'
-      - name: 'Create env file'
+
+      - name: Create env file
         run: |
           echo "${{ secrets.ENV_FILE }}" > .env
           echo "${{ secrets.ENV_LOCAL_FILE }}" > .env.local
-      - name: Clean
+
+      - name: Install Deps
         run: pnpm i
+
       - name: Build
         run: pnpm run build
-      - name: Run
-        run: sudo pnpm run build.storybook
-      - name: Upload static files
+
+      - name: Build Storybook
+        run: pnpm run build.storybook
+
+      - name: Upload Landing Page Files
         uses: actions/upload-artifact@v3
         with:
           name: landing-page
           path: out
           retention-days: 1
-      - name: Upload static files#2
+      - name: Upload Storybook Files
         uses: actions/upload-artifact@v3
         with:
           name: storybook
           path: storybook-static
           retention-days: 1
+
   deploy:
     name: Deploy
     runs-on: self-hosted
@@ -48,16 +56,11 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: storybook
-      - name: Download Frontend
+      - name: Download Landing Page
         uses: actions/download-artifact@v3
         with:
           name: landing-page
-      - uses: dorny/paths-filter@v2.2.1
-        id: filter
-        with:
-          filters: |
-            ngnix:
-              - '**/*
+
       - name: Deploy Nginx
         run: |
           sudo docker compose build -f docker-compose.yaml --no-cache --log-level 0
@@ -68,3 +71,11 @@ jobs:
         run: |
           sudo docker cp ./out landing-page-server:/www/data/
           sudo docker cp ./storybook-static landing-page-server:/www/data/
+
+# - uses: dorny/paths-filter@v2.2.1
+# id: filter
+# with:
+#   filters: |
+#     ngnix:
+#       - '**/*
+#
