@@ -8,6 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.9.2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'pnpm'
       - name: Checkout
         uses: actions/checkout@v3
       - name: 'Create env file'
@@ -15,9 +22,9 @@ jobs:
           echo "${{ secrets.ENV_FILE }}" > .env
           echo "${{ secrets.ENV_LOCAL_FILE }}" > .env.prod
       - name: Clean
-        run: sudo pnpm i
+        run: pnpm ci
       - name: Build
-        run: sudo pnpm run build
+        run: pnpm run build
       - name: Run
         run: sudo pnpm run build.storybook
       - name: Upload static files
