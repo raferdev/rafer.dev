@@ -19,7 +19,6 @@ export const FooterSection = () => {
               href={links.self.repository}
               target="_blank"
               variant="raw"
-              size="sm"
               className="m-0 p-0"
             >
               <span className="text-base sm:text-lg">here</span>
