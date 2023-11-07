@@ -7,19 +7,20 @@ import { MyworldxSection } from './_components/myworldxSection'
 import { PresentationSection } from './_components/presentationSection'
 import { StorybookSection } from './_components/storybookSection'
 
-export default function DefaultPage() {
-  return (
-    <>
-      <main className="relative flex w-screen flex-col items-center gap-4 overflow-x-hidden">
-        <GreetingSection />
-        <PresentationSection />
-        <Marquee className="my-14" />
-        <MyworldxSection />
-        <StorybookSection />
-        <ChessInviteSection />
-        <LinksSection />
-        <FooterSection />
-      </main>
-    </>
-  )
-}
+const DefaultPage = () => (
+  <>
+    <main className="relative flex w-screen flex-col items-center gap-4 overflow-x-hidden">
+      <GreetingSection />
+      <PresentationSection className="relative">
+        <Marquee className="absolute -top-3  left-0" />
+      </PresentationSection>
+      <MyworldxSection />
+      <StorybookSection />
+      <ChessInviteSection />
+      <LinksSection />
+      <FooterSection />
+    </main>
+  </>
+)
+
+export default DefaultPage

@@ -2,12 +2,11 @@ import { __env } from '@/config/env'
 
 import { TailwindScreenIndicator } from './tailwindScreenIndicator'
 
-export function DevTools() {
-  if (!(__env.NODE_ENV === 'development')) return null
+const Tools = () => (
+  <>
+    <TailwindScreenIndicator />
+  </>
+)
+const DevTools = __env.NODE_ENV === 'development' ? Tools : () => <></>
 
-  return (
-    <>
-      <TailwindScreenIndicator />
-    </>
-  )
-}
+export { DevTools }

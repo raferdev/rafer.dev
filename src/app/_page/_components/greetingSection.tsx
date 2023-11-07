@@ -1,36 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
-import { Icons } from '@/components/Icons'
+
 import { Section } from '@/components/Section'
 
-export const GreetingSection = () => {
-  return (
-    <Section.Container className="flex h-screen flex-wrap content-center items-center justify-center">
-      <div className="h-[175px] w-[175px] md:ml-8 md:h-[250px] md:w-[250px]">
-        <img height={250} width={250} alt="" src="/logo-250x250.png" />
-      </div>
-      <article className="items-center px-4 pt-10 text-neutral-950 md:pt-4">
+import { LogoImage } from './logoImage'
+
+const GreetingSection = () => (
+  <Section.Container className="flex h-screen flex-col flex-wrap content-center items-center justify-center">
+    <div className="relative flex flex-col content-center items-center justify-center gap-20 lg:flex-row">
+      <LogoImage />
+
+      <article className="items-baseline text-neutral-950">
         <div className="w-full justify-center">
-          <p className="mr-9 flex text-2xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-            Hello,
-            <Icons.handMetal
-              color="#000"
-              className="ml-4 h-6 w-6 fill-icons-greetings-hand md:h-8 md:w-8"
-            />
-          </p>
-          <p className="text-xl font-thin leading-tight tracking-tighter md:text-3xl">
-            my name's <span className="font-bold">Rafael</span>
+          <p className="text-2xl font-light leading-tight tracking-tighter  sm:text-3xl md:text-[2.5rem]">
+            Hi! My name's <span className="font-bold">Rafael</span>
           </p>
         </div>
-        <p className="block text-xl font-thin leading-tight tracking-tighter md:text-3xl">
+        <p className="block text-2xl font-light leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
           I like to <span className="font-bold">solve problems</span>
         </p>
-        <p className="block text-xl font-thin leading-tight tracking-tighter md:text-3xl">
+        <p className="block text-2xl font-light leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
           And <span className="font-bold">build solutions</span>
         </p>
-        <p className="block text-xl font-extrabold leading-tight tracking-tighter md:text-3xl">
-          Code is just consequence
+        <p className="block text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
+          Code is just a consequence
         </p>
       </article>
-    </Section.Container>
-  )
-}
+    </div>
+  </Section.Container>
+)
+
+export { GreetingSection }

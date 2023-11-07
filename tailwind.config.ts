@@ -12,6 +12,8 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         default: 'minmax(200px, 300px) 1fr minmax(200px, 300px)',
+        'section-1': '200px 1fr',
+        'section-content': '1fr 300px',
       },
       gridTemplateRows: {
         'stories-docs': '5.5rem 1fr',
@@ -23,6 +25,48 @@ module.exports = {
         'scroll-left': 'scroll 10s linear infinite',
       },
       colors: {
+        yellow: {
+          200: 'hsl(var(--yellow-200))',
+        },
+        celestial: {
+          500: 'hsl(var(--celestial-500))',
+        },
+        red: {
+          300: 'hsl(var(--red-300))',
+        },
+        blue: {
+          700: 'hsl(var(--blue-700))',
+        },
+        amethyst: {
+          400: 'hsl(var(--amethyst-400))',
+        },
+        ice: {
+          300: 'hsl(var(--ice-300))',
+        },
+        gray: {
+          400: 'hsl(var(--gray-400))',
+          900: 'hsl(var(--gray-900))',
+        },
+        green: {
+          600: 'hsl(var(--green-600))',
+        },
+        zinc: {
+          400: 'hsl(var(--zinc-400))',
+        },
+        slate: {
+          500: 'hsl(var(--slate-500))',
+          600: 'hsl(var(--slate-600))',
+        },
+        neutral: {
+          800: 'hsl(var(--neutral-800))',
+          950: 'hsl(var(--neutral-950))',
+        },
+        stone: {
+          900: 'hsl(var(--stone-900))',
+        },
+        rose: {
+          400: 'hsl(var(--rose-400))',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         primary: {
@@ -41,18 +85,6 @@ module.exports = {
         accent: {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
-        },
-        icons: {
-          storybook: 'hsl(var(--icon-storybook))',
-          github: 'hsl(var(--icon-github))',
-          linkedin: 'hsl(var(--icon-linkedin))',
-          youtube: 'hsl(var(--icon-youtube))',
-          instagram: 'hsl(var(--icon-instagram))',
-          twitter: 'hsl(var(--icon-twitter))',
-          white: 'hsl(var(--icon-white))',
-          'yellow-200': 'hsl(var(--icon-yellow-200))',
-          'cyan-200': 'hsl(var(--icon-cyan-200))',
-          'greetings-hand': 'hsl(var(--icon-greetings-hand))',
         },
       },
       borderRadius: {

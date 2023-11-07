@@ -1,29 +1,44 @@
-import Balancer from 'react-wrap-balancer'
+import { PresentationSectionProps } from '@/@types/elements'
+import { cn } from '@/utils/cn'
 
 import { __site } from '@/config/site'
-import { PageHeader } from '@/components/PageHeader'
 import { Section } from '@/components/Section'
 
-export const PresentationSection = () => {
-  return (
-    <Section.Container className="flex min-h-[8rem] items-end">
-      <PageHeader.Container>
-        <Section.Header>
-          <PageHeader.Heading className="flex flex-wrap content-start items-baseline gap-4">
-            Software Engineer
-          </PageHeader.Heading>
-          <PageHeader.HeadingDescription>
-            Pragmatism with creativity to create new things
-          </PageHeader.HeadingDescription>
-        </Section.Header>
-      </PageHeader.Container>
-      <Section.Content className="ml-4">
-        <Balancer className="text-secondary-foreground text-base font-normal sm:text-lg">
-          Working building web solutions with NodeJS, NextJS, tests with Jest,
-          database SQL and NoSQL, Docker, and more. Deploy on server and
+const { Container, Header, Title, Description, Content } = Section
+
+const PresentationSection = ({
+  children,
+  className,
+}: PresentationSectionProps) => (
+  <Container
+    className={cn('w-full border-0 bg-inherit shadow-none', className)}
+  >
+    <Header>
+      <Title className="z-10">Software Engineer</Title>
+      <Description className="z-10">
+        Pragmatism and creativity to create new things
+      </Description>
+    </Header>
+    <Content className="flex flex-col pl-8 align-middle lg:grid lg:grid-cols-2">
+      <div>
+        <p>
+          Working on building web solutions with NodeJS, NextJS, tests with
+          Jest, database SQL and NoSQL, Docker, and more Deploy on servers and
           serveless environments with CI/CD.
-        </Balancer>
-      </Section.Content>
-    </Section.Container>
-  )
-}
+        </p>
+      </div>
+      <div>
+        <p>
+          I have worked since 2019 with development using VBA, Python to create
+          macros and other automations, and Nocode websites. Since January 2022,
+          I've been working with FullStack web development. I'm graduating from
+          physics and starting a software engineering degree. Just a curious
+          guy.
+        </p>
+      </div>
+    </Content>
+    {children}
+  </Container>
+)
+
+export { PresentationSection }

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { SectionProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -6,26 +7,28 @@ import { SectionContent } from './content'
 import { SectionDescription } from './description'
 import { SectionFooter } from './footer'
 import { SectionHeader } from './header'
+import { SubSection } from './SubSection'
 import { SectionTitle } from './title'
 
-const Container = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
+const Container = ({
+  children,
+  className,
+  asChild = false,
+  ...props
+}: SectionProps) => {
   const Comp = asChild ? Slot : 'section'
   return (
     <Comp
-      ref={ref}
       className={cn(
-        'flex min-h-[17rem] w-full flex-wrap items-center gap-x-8 rounded-xl px-0 sm:px-14',
+        'flex  w-full max-w-[90rem] flex-wrap items-center gap-8 rounded-xl px-0 sm:px-14 md:min-h-[17rem] md:gap-y-10',
         className
       )}
       {...props}
-    />
+    >
+      {children}
+    </Comp>
   )
-})
-
-Container.displayName = 'Section'
+}
 
 const Section = {
   Container,
@@ -34,6 +37,7 @@ const Section = {
   Title: SectionTitle,
   Description: SectionDescription,
   Content: SectionContent,
+  SubSection,
 }
 
 export { Section }

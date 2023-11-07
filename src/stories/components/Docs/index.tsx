@@ -1,32 +1,31 @@
 import * as React from 'react'
+import { ContainerProps } from '@/@types/stories'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
-import { Content } from './content'
-import { Heading } from './heading'
+import { Content } from './Content'
+import { Header } from './Header'
 
-const Container = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
+const Container = ({
+  className,
+  asChild = false,
+  ...props
+}: ContainerProps) => {
   const Comp = asChild ? Slot : 'div'
   return (
     <Comp
-      ref={ref}
       className={cn(
-        'box-border grid h-[calc(100vh-128px)] w-full grid-cols-1 flex-col items-center justify-center gap-8 overflow-hidden text-clip md:grid-cols-2',
+        'custom-scroll box-border grid h-[calc(100vh-128px)] w-full grid-cols-1 flex-col items-center justify-center gap-8 overflow-hidden overflow-y-scroll text-clip',
         className
       )}
       {...props}
     />
   )
-})
-
-Container.displayName = 'Docs.Container'
+}
 
 const Docs = {
   Container,
-  Heading,
+  Header,
   Content,
 }
 
