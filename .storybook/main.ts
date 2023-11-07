@@ -37,6 +37,19 @@ const config: StorybookConfig = {
       },
     },
   ],
+
+  previewHead: (head) => `
+  ${head}
+  <script async src="${process.env.GA_STORYBOOK_SRC}"></script>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '${process.env.GA_STORYBOOK_ID}');
+  </script>
+  
+  `,
   staticDirs: ['public'],
   core: {
     disableWhatsNewNotifications: true,

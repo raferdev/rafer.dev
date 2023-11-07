@@ -5,6 +5,9 @@ services:
     container_name: server
     restart: always
     build: ./nginx
+    mem_limit: '2G'
+    tty: false
+    stdin_open: false
     volumes:
       - builder_nginx_vol:/www/data
     depends_on:
@@ -16,6 +19,9 @@ services:
     env_file:
       - .env.prod
     container_name: front-build
+    tty: false
+    stdin_open: false
+    mem_limit: '2G'
     build: '.'
     volumes:
       - builder_nginx_vol:/app/build
