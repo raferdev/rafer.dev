@@ -1,10 +1,11 @@
-name: Test, Build and Deploy
+name: Build and Deploy
 on:
   push:
     branches: [main]
 jobs:
   build:
-    runs-on: self-hosted
+    name: Build
+    runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - name: Checkout
@@ -14,8 +15,50 @@ jobs:
           echo "${{ secrets.ENV_FILE }}" > .env
           echo "${{ secrets.ENV_LOCAL_FILE }}" > .env.prod
       - name: Clean
-        run: sudo docker compose down
+        run: sudo pnpm i
       - name: Build
-        run: sudo docker compose build
+        run: sudo pnpm run build
       - name: Run
-        run: sudo docker compose up -d
+        run: sudo pnpm run build.storybook
+      - name: Upload static files
+        uses: actions/upload-artifact@v3
+        with:
+          name: landing-page
+          path: out
+          retention-days: 1
+      - name: Upload static files#2
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook
+          path: storybook-static
+          retention-days: 1
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Download Storybook
+        uses: actions/download-artifact@v3
+        with:
+          name: storybook
+      - name: Download Frontend
+        uses: actions/download-artifact@v3
+        with:
+          name: landing-page
+      - uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            ngnix:
+              - '**/*
+      - name: Lint Markdown
+        if: ${{ steps.filter.outputs.nginx == 'true' }}
+        run: |
+          sudo docker compose build -f docker-compose.yaml --no-cache --log-level 0
+          sudo docker compose down
+          sudo docker compose up -d
+
+      - name: Update content
+        run: |
+          sudo docker cp ./out landing-page-server:/www/data/
+          sudo docker cp ./storybook-static landing-page-server:/www/data/
