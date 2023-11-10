@@ -21,6 +21,7 @@ const LinksSection = () => (
         iconFillColor="github"
         iconName="Github"
         href={links.profile.github}
+        aria-label='Github "raferdev" profile'
         target="_blank"
       >
         Github
@@ -29,6 +30,7 @@ const LinksSection = () => (
         iconFillColor="youtube"
         iconName="Youtube"
         href={links.profile.youtube}
+        aria-label='Youtube "raferdev" channel'
         target="_blank"
       >
         Youtube
@@ -37,6 +39,7 @@ const LinksSection = () => (
         iconFillColor="linkedin"
         iconName="Linkedin"
         href={links.profile.linkedin}
+        aria-label='Linkedin "raferdev" profile'
         target="_blank"
       >
         Linkedin
@@ -45,6 +48,7 @@ const LinksSection = () => (
         iconFillColor="white"
         iconName="Mail"
         href={links.profile.email.raferdev}
+        aria-label="Email"
         target="_blank"
       >
         Email
@@ -53,6 +57,7 @@ const LinksSection = () => (
         iconFillColor="twitter"
         iconName="Twitter"
         href={links.profile.twitter}
+        aria-label='Twitter "raferdev" profile'
         target="_blank"
       >
         Twitter / X
@@ -61,6 +66,7 @@ const LinksSection = () => (
         iconFillColor="instagram"
         iconName="Instagram"
         href={links.profile.instagram}
+        aria-label='Instagram "raferdev" profile'
         target="_blank"
       >
         Instagram
