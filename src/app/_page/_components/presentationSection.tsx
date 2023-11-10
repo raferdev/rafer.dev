@@ -22,18 +22,21 @@ const PresentationSection = ({
     <Content className="flex flex-col pl-8 align-middle lg:grid lg:grid-cols-2">
       <div>
         <p>
-          Working on building web solutions with NodeJS, NextJS, tests with
-          Jest, database SQL and NoSQL, Docker, and more Deploy on servers and
-          serveless environments with CI/CD.
+          I have worked since 2019 with development using VBA, Python to create
+          macros and other automations, and Nocode websites. Since January 2022,
+          I've been working with FullStack web development. I'm graduating from
+          physics and starting a software engineering degree.
         </p>
       </div>
       <div>
         <p>
-          I have worked since 2019 with development using VBA, Python to create
-          macros and other automations, and Nocode websites. Since January 2022,
-          I've been working with FullStack web development. I'm graduating from
-          physics and starting a software engineering degree. Just a curious
-          guy.
+          I'm working on building web solutions with NodeJS, NextJS, and tests
+          with Jest, database SQL and NoSQL, Docker, deploy servers, and
+          serveless environments with CI/CD. I selected other languages to be
+          familiar with and probably work with. The objective is to build a
+          solid base of knowledge and experience to solve problems and create
+          new things, regardless of the tools, framework, or technology. Until
+          then, I will become a specialist in what I do now.
         </p>
       </div>
     </Content>
