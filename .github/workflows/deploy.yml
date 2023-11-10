@@ -64,8 +64,15 @@ jobs:
         with:
           name: landing-page
           path: out
-
+      - name: Filter
+        uses: dorny/paths-filter@v2.2.1
+        id: filter
+        with:
+          filters: |
+            ngnix:
+            - '**/*
       - name: Deploy Nginx
+        if: ${{ steps.filter.outputs.ngnix }} == 'true'
         run: |
           sudo docker compose -f docker-compose.yaml build --no-cache
           sudo docker compose down
@@ -75,11 +82,3 @@ jobs:
         run: |
           sudo docker cp ./out server:/www/data/
           sudo docker cp ./storybook-static server:/www/data/
-
-# - uses: dorny/paths-filter@v2.2.1
-# id: filter
-# with:
-#   filters: |
-#     ngnix:
-#       - '**/*
-#
