@@ -16,11 +16,16 @@ const MyworldxSection = () => (
     </Header>
     <Content>
       <SubSection.Content.Container>
-        <SubSection.Content.Illustration animationColor="gray-900">
+        <SubSection.Content.Illustration
+          color_big="gray_400"
+          color_small="gray_300"
+        >
           <img
             loading="lazy"
             decoding="async"
-            className="h-28 w-auto"
+            height="96"
+            width="108"
+            className="h-24 w-auto"
             src="./logos/myworldx-logo.png"
             alt=""
           />
@@ -39,6 +44,7 @@ const MyworldxSection = () => (
           iconName="Home"
           iconFillColor="home"
           href={links.myworldx.home}
+          aria-label="MyWorldx home"
           target="_blank"
         >
           Home
@@ -47,6 +53,7 @@ const MyworldxSection = () => (
           iconName="FileText"
           iconFillColor="white"
           href={links.myworldx.raferdev}
+          aria-label="MyWorldx profile page"
           target="_blank"
         >
           My page
@@ -55,6 +62,7 @@ const MyworldxSection = () => (
           iconFillColor="github"
           iconName="Github"
           href={links.myworldx.repository}
+          aria-label="MyWorldx github repository"
           target="_blank"
         >
           Repository
