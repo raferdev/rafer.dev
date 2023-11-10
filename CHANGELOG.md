@@ -1,5 +1,20 @@
 # landing-page
 
+## 1.8.0
+
+### Minor Changes
+
+- Add new link border
+  Add aria-label
+  Change sections images to the same size and tiny png
+  Illustration background animation is now equal in all sections
+
+## 1.7.0 2023-11-10
+
+### Minor Changes
+
+- 268e214: Add new cicd workflow
+
 ## 1.6.3 - 2023-10-28
 
 ### Patch Changes
