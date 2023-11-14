@@ -20,17 +20,8 @@ export default defineConfig({
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
       name: 'Mobile Chrome',
       use: { ...devices['Galaxy S9+'] },
-    },
-    {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
     },
   ],
 
