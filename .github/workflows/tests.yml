@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: '18'
           cache: 'pnpm'
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_TEST_FILE }}" > .env.local
       - name: Install dependencies
         run: pnpm i
       - name: Install Playwright Browsers
