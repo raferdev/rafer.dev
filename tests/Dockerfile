@@ -19,6 +19,7 @@ COPY --from=deps /app/node_modules /app/node_modules
 COPY ../tests /app/tests
 COPY /../playwright.config.ts /app
 RUN pnpm exec playwright install
+RUN pnpm exec playwright install chrome
 
 EXPOSE 3000
 
