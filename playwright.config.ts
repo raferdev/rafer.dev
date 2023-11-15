@@ -21,7 +21,7 @@ export default defineConfig({
   ],
 
   webServer: {
-    command: 'npm run tests',
+    command: 'npm run test',
     url: process.env.WEB_SERVER_URL || 'http://localhost:3000',
     reuseExistingServer: true,
     timeout: 20 * 60 * 1000,
