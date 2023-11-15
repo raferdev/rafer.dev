@@ -48,7 +48,8 @@ module.exports = {
           900: 'hsl(var(--gray-900))',
         },
         green: {
-          600: 'hsl(var(--green-600))',
+          200: 'hsl(var(--green-200))',
+          300: 'hsl(var(--green-300))',
         },
         zinc: {
           400: 'hsl(var(--zinc-400))',
@@ -65,7 +66,8 @@ module.exports = {
           900: 'hsl(var(--stone-900))',
         },
         rose: {
-          400: 'hsl(var(--rose-400))',
+          200: 'hsl(var(--rose-200))',
+          250: 'hsl(var(--rose-250))',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

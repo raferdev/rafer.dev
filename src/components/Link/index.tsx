@@ -25,7 +25,7 @@ const Link = ({
           {Icon && (
             <Icon
               size={22}
-              strokeWidth={2}
+              strokeWidth={1.6}
               color="#0e0c0c"
               className={cn(iconVariants({ color: iconFillColor }))}
             />

@@ -69,6 +69,7 @@ const config: StorybookConfig = {
     if (!config.resolve) {
       throw new Error('config.resolve is undefined')
     }
+    config.devtool = 'inline-source-map'
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(__dirname, '../src'),

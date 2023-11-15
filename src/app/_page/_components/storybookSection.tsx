@@ -18,11 +18,16 @@ const StorybookSection = () => (
     </Header>
     <Content>
       <SubSection.Content.Container>
-        <SubSection.Content.Illustration animationColor="rose-400">
+        <SubSection.Content.Illustration
+          color_big="rose_250"
+          color_small="rose_200"
+        >
           <img
             loading="lazy"
             decoding="async"
             className="h-24"
+            height="96"
+            width="108"
             src="./logos/storybook.png"
             alt="storybook logo"
           />
@@ -41,6 +46,7 @@ const StorybookSection = () => (
           iconName="BookOpen"
           target="_blank"
           className="md:row-start-2"
+          aria-label="Storybook Home"
           href={links.storybook}
         >
           About

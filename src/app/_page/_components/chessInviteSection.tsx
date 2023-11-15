@@ -18,11 +18,16 @@ const ChessInviteSection = () => (
     </Header>
     <Content>
       <SubSection.Content.Container>
-        <SubSection.Content.Illustration animationColor="green-700">
+        <SubSection.Content.Illustration
+          color_big="green_300"
+          color_small="green_200"
+        >
           <img
             loading="lazy"
             decoding="async"
             className="h-24"
+            height="96"
+            width="108"
             src="./logos/chess-icon.png"
             alt="chess.com logo"
           />
@@ -41,6 +46,7 @@ const ChessInviteSection = () => (
           iconName="BellPlus"
           target="_blank"
           className="md:row-start-2"
+          aria-label='Chess.com "Play with a friend" page'
           href={links.chess.invite}
         >
           Invite

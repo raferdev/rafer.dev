@@ -3,6 +3,7 @@ import { icons } from 'lucide-react'
 
 import { iconVariants } from '@/components/Link/iconVariants'
 import { linkVariants } from '@/components/Link/linkVariants'
+import { animationVariants } from '@/components/Section/SubSection/animations'
 
 type iconColorProps = VariantProps<typeof iconVariants>
 
@@ -54,11 +55,10 @@ type ReactChildrenProps = {
   children: React.ReactNode
 }
 
-type AnimationColor = 'gray-900' | 'green-700' | 'rose-400'
+type AnimationColor = VariantProps<typeof animationVariants>
 
-type IllustrationProps = {
+interface IllustrationProps extends AnimationBacklightProps {
   children: React.ReactNode
-  animationColor: AnimationColor
 }
 
 type ContainerProps = {
@@ -68,10 +68,17 @@ type ContainerProps = {
   props?: React.HTMLAttributes<HTMLDivElement>
 }
 
+type AnimationVariantProps = VariantProps<typeof animationVariants>
+
+interface AnimationBacklightProps
+  extends Required<Pick<AnimationVariantProps, 'color_big'>>,
+    Required<Pick<AnimationVariantProps, 'color_small'>> {}
+
 export {
   LinkProps,
   ReactChildrenProps,
   IllustrationProps,
+  AnimationBacklightProps,
   SectionTitleProps,
   SectionProps,
   SectionHeaderProps,

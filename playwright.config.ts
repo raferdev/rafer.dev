@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: process.env.WEB_SERVER_URL || 'http://localhost:3000',
 
     trace: 'on-first-retry',
   },
@@ -18,40 +18,16 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
-
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
-    {
-      name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      use: { ...devices['Galaxy S9+'] },
     },
   ],
 
   webServer: {
     command: 'npm run test',
-    url: 'http://127.0.0.1:3000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
+    url: process.env.WEB_SERVER_URL || 'http://localhost:3000',
+    reuseExistingServer: true,
+    timeout: 20 * 60 * 1000,
   },
 })

@@ -61,14 +61,14 @@ const ColorsThemePage = () => (
         subtitle="White theme"
         colors={{
           'red-300': 'hsl(0 91% 71%)',
-          'rose-400': 'hsl(340 100% 64%)',
+          'rose-200': 'hsl(340 100% 84%)',
         }}
       />
       <ColorItem
         title="Green"
         subtitle="White theme"
         colors={{
-          'green-600': 'hsl(92 42% 43%)',
+          'green-300': 'hsl(92 42% 73%)',
         }}
       />
       <ColorItem

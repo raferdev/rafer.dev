@@ -6,7 +6,7 @@ const linkVariants = cva(
     variants: {
       variant: {
         default:
-          'group relative w-full border-neutral-500 bg-neutral-600 text-base font-bold text-white hover:opacity-70 [&>span]:flex [&>span]:min-w-[122px] [&>span]:gap-4',
+          'group relative w-full border-2 border-muted-foreground bg-neutral-600 text-base font-bold text-white shadow-md hover:border-accent hover:opacity-70 [&>span]:flex [&>span]:min-w-[122px] [&>span]:gap-4',
         raw: 'text-accent-foreground underline-offset-4 hover:underline',
       },
       size: {
