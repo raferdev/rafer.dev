@@ -7,8 +7,12 @@ services:
     build: ./nginx/tests
     ports:
       - 3000:80
+    volumes:
+      - /out:/www/data/out
     networks:
       - running-tests
 
+volumes:
+  builder_nginx_vol:
 networks:
   running-tests:
