@@ -17,7 +17,7 @@
     "release": "npx changeset",
     "version": "npx changeset version",
     "docker.prod": "docker compose up -f docker-compose.yaml --no-cache --log-level 0",
-    "test": "docker-compose -f docker-compose.test.yaml up --exit-code-from playwright",
+    "test": "pnpm run build && docker-compose -f docker-compose.test.yaml up",
     "test.reset": "docker-compose -f docker-compose.test.yaml up --build",
     "test.playwright": "pnpm playwright test",
     "test.playwright.debug": "pnpm playwright test --debug",

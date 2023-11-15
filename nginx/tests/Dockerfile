@@ -9,5 +9,8 @@ RUN rm /etc/nginx/conf.d/default.conf
 
 COPY ./nginx.conf /etc/nginx/
 COPY ./mime.types /etc/nginx/conf/
+COPY ./default.conf /etc/nginx/conf.d/
+COPY ../../out /www/data/out
+COPY ../../storybook-static /www/data/storybook-static
 
 EXPOSE 80
