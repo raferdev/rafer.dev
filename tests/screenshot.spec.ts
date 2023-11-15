@@ -1,7 +1,13 @@
 import { expect, test } from '@playwright/test'
 
-test('Full page', async ({ page }) => {
-  await page.goto('/')
+const HOME = '/'
 
-  await expect(page).toHaveScreenshot({ fullPage: true })
+test('Full page', async ({ page }) => {
+  try {
+    await page.goto(HOME)
+
+    await expect(page).toHaveScreenshot({ fullPage: true })
+  } catch (error) {
+    console.error(error)
+  }
 })

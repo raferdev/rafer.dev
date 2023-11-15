@@ -4,11 +4,11 @@ services:
   nginx:
     container_name: server_nginx
     restart: 'no'
-    build: ./nginx/tests
+    build:
+      context: .
+      dockerfile: ./nginx/tests/Dockerfile
     ports:
       - 3000:80
-    volumes:
-      - /out:/www/data/out
     networks:
       - running-tests
 

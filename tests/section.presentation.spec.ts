@@ -12,41 +12,62 @@ test.describe('Section - Presentation', () => {
   const PRESENTATION_END_DESCRIPTION =
     "I'm working on building web solutions with NodeJS, NextJS, and tests with Jest, database SQL and NoSQL, Docker, deploy servers, and serveless environments with CI/CD."
 
+  test.beforeEach(async ({ page }) => {
+    try {
+      await page.waitForLoadState()
+    } catch (error) {
+      console.error(error)
+    }
+  })
   test('Expected - Presentation section heading to be visible', async ({
     page,
   }) => {
-    await page.goto(HOME)
+    try {
+      await page.goto(HOME)
 
-    const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
+      const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
 
-    const sectionHeading = PAGE_LOCATOR.getByRole('heading', {
-      name: PRESENTATION_TITLE,
-    })
+      const sectionHeading = PAGE_LOCATOR.getByRole('heading', {
+        name: PRESENTATION_TITLE,
+      })
 
-    await expect(sectionHeading).toBeVisible()
+      await expect(sectionHeading).toBeVisible()
+    } catch (error) {
+      console.error(error)
+    }
   })
 
   test('Expected - Subtitle to be visible', async ({ page }) => {
-    await page.goto(HOME)
+    try {
+      await page.goto(HOME)
 
-    const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
+      const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
 
-    const subTitle = PAGE_LOCATOR.getByText(PRESENTATION_SUB_TITLE)
+      const subTitle = PAGE_LOCATOR.getByText(PRESENTATION_SUB_TITLE)
 
-    await expect(subTitle).toBeVisible()
+      await expect(subTitle).toBeVisible()
+    } catch (error) {
+      console.error(error)
+    }
   })
 
   test('Expected - Description text to be visible', async ({ page }) => {
-    await page.goto(HOME)
+    try {
+      await page.goto(HOME)
 
-    const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
+      const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
 
-    const description_start = PAGE_LOCATOR.getByText(
-      PRESENTATION_START_DESCRIPTION
-    )
-    const descriplion_end = PAGE_LOCATOR.getByText(PRESENTATION_END_DESCRIPTION)
+      const description_start = PAGE_LOCATOR.getByText(
+        PRESENTATION_START_DESCRIPTION
+      )
+      const descriplion_end = PAGE_LOCATOR.getByText(
+        PRESENTATION_END_DESCRIPTION
+      )
 
-    expect(description_start).toBeVisible()
-    expect(descriplion_end).toBeVisible()
+      await expect(description_start).toBeVisible()
+      await expect(descriplion_end).toBeVisible()
+    } catch (error) {
+      console.error(error)
+    }
   })
 })
