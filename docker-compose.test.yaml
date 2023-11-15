@@ -1,25 +1,18 @@
 version: '3'
 
 services:
-  ngnix:
-    container_name: server
-    restart: on-failure
-    tty: true
-    build: ./nginx/tests
-    volumes:
-      - builder_nginx_vol_tests:/www/data
-    depends_on:
-      - builder
+  nginx:
+    container_name: server_nginx
+    restart: 'no'
+    build:
+      context: .
+      dockerfile: ./nginx/tests/Dockerfile
     ports:
       - 3000:80
-
-  builder:
-    env_file:
-      - .env.local
-    container_name: front-build
-    build: '.'
-    volumes:
-      - builder_nginx_vol_tests:/app/build
+    networks:
+      - running-tests
 
 volumes:
-  builder_nginx_vol_tests:
+  builder_nginx_vol:
+networks:
+  running-tests:

@@ -1,11 +1,4 @@
-Dockerfile
-.dockerignore
+Dockerfile.dockerignore
 node_modules
-npm-debug.log
-README.md
-.next
-.git
-.husky
-.changeset
-.vscode
-tests
+npm - debug.log
+README.md.next.git.husky.changeset.vscode

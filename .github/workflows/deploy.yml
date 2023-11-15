@@ -1,4 +1,8 @@
 name: Build and Deploy
+concurrency:
+  group: production
+  cancel-in-progress: true
+
 on:
   push:
     branches: [main]
@@ -80,5 +84,5 @@ jobs:
 
       - name: Update content
         run: |
-          sudo docker cp ./out server:/www/data/
-          sudo docker cp ./storybook-static server:/www/data/
+          sudo docker cp ./out nginx_server:/www/data/
+          sudo docker cp ./storybook-static nginx_server:/www/data/

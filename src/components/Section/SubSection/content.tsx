@@ -20,7 +20,7 @@ const Illustration = ({
 )
 
 const Description = ({ children }: ReactChildrenProps) => (
-  <div className=" pl-4 pr-24">{children}</div>
+  <div className="md:pl-4 md:pr-24">{children}</div>
 )
 
 const Content = {

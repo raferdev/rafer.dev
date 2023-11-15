@@ -35,7 +35,7 @@ const __site = {
     profile: {
       github: 'https://github.com/raferdev',
       youtube: 'https://www.youtube.com/channel/UClg1tYQi4CvnPRL2SAswVcg',
-      linkedin: 'https://linkedin.com/u/raferdev',
+      linkedin: 'https://linkedin.com/in/raferdev',
       email: {
         raferdev:
           'mailto:contact@rafer.dev?subject=Contact&body=Hello, i want to talk about...',
