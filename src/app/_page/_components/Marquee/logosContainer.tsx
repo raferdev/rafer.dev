@@ -3,10 +3,19 @@
 const LogosContainer = () => (
   <div className="z-10 flex h-[50px] min-w-full  flex-none items-center justify-around gap-x-4">
     <div className="flex h-[50px] w-[100px] justify-center">
-      <img loading="lazy" decoding="async" src="./logos/aws.png" alt="AWS" />
+      <img
+        loading="lazy"
+        decoding="async"
+        height="50px"
+        width="auto"
+        src="./logos/aws.png"
+        alt="AWS"
+      />
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/mongo.png"
@@ -14,10 +23,19 @@ const LogosContainer = () => (
       />
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
-      <img loading="lazy" decoding="async" src="./logos/jest.png" alt="Jest" />
+      <img
+        loading="lazy"
+        decoding="async"
+        height="50px"
+        width="auto"
+        src="./logos/jest.png"
+        alt="Jest"
+      />
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/nodejs.png"
@@ -26,6 +44,8 @@ const LogosContainer = () => (
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/nextjs.png"
@@ -34,6 +54,8 @@ const LogosContainer = () => (
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/docker.png"
@@ -42,6 +64,8 @@ const LogosContainer = () => (
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/tailwind.png"
@@ -50,6 +74,8 @@ const LogosContainer = () => (
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/postgresql.png"
@@ -58,6 +84,8 @@ const LogosContainer = () => (
     </div>
     <div className="flex h-[50px] w-[100px] justify-center">
       <img
+        height="50px"
+        width="auto"
         loading="lazy"
         decoding="async"
         src="./logos/playwright.png"
