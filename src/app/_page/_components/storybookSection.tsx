@@ -25,9 +25,8 @@ const StorybookSection = () => (
           <img
             loading="lazy"
             decoding="async"
-            className="h-24"
-            height="96"
-            width="108"
+            height="96px"
+            width="108px"
             src="./logos/storybook.png"
             alt="storybook logo"
           />
