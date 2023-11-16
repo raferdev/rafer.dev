@@ -25,9 +25,9 @@ const ChessInviteSection = () => (
           <img
             loading="lazy"
             decoding="async"
-            height="96px"
-            width="108px"
-            className="aspect-auto h-[96px] w-[108px]"
+            height="24rem"
+            width="auto"
+            className="h-24 w-auto"
             src="./logos/chess-icon.png"
             alt="chess.com logo"
           />
