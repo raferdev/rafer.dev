@@ -5,13 +5,12 @@
 
 <h3 align="center">Raferdev Landing Page</h3>
 
-<p align="center">
+<div align="center">
 
 [![Build and Deploy](https://github.com/raferdev/landing-page/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/raferdev/landing-page/actions/workflows/deploy.yml)
-
 [![Playwright Tests](https://github.com/raferdev/landing-page/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/raferdev/landing-page/actions/workflows/tests.yml)
 
-</p>
+</div>
 
 ---
 
@@ -24,6 +23,8 @@
 ## 🧐 About <a name = "about"></a>
 
 Hello, here you can see the personal landing page of user @raferdev. I overengineered some aspects to build content that used a little of all, and I would like to see in the past to understand better the web functionality, like server, http config, tests, and the frontend aspects themselves. I think seeing something end-to-end can clarify how thoughts connect and how they can be more complex with time, features, and security aspects. See this as an example.
+
+docs: [storybook.rafer.dev](https://storybook.rafer.dev)
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
