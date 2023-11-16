@@ -1,13 +1,13 @@
 # landing-page
 
-## 1.8.0
+## 1.8.0 2023-11-12
 
 ### Minor Changes
 
 - Add new link border
-  Add aria-label
-  Change sections images to the same size and tiny png
-  Illustration background animation is now equal in all sections
+- Add aria-label
+- Change sections images to the same size and tiny png
+- Illustration background animation is now equal in all sections
 
 ## 1.7.0 2023-11-10
 
