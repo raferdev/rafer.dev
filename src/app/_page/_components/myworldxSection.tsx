@@ -23,9 +23,8 @@ const MyworldxSection = () => (
           <img
             loading="lazy"
             decoding="async"
-            height="96"
-            width="108"
-            className="h-24 w-auto"
+            height="96px"
+            width="108px"
             src="./logos/myworldx-logo.png"
             alt=""
           />
