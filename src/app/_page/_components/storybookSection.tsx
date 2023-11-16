@@ -27,6 +27,7 @@ const StorybookSection = () => (
             decoding="async"
             height="96px"
             width="108px"
+            className="aspect-auto h-[96px] w-[108px]"
             src="./logos/storybook.png"
             alt="storybook logo"
           />
