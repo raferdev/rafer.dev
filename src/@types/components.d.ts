@@ -6,6 +6,38 @@ import { linkVariants } from '@/components/Link/linkVariants'
 import { animationVariants } from '@/components/Section/SubSection/animations'
 
 type iconColorProps = VariantProps<typeof iconVariants>
+type AnimationVariantProps = VariantProps<typeof animationVariants>
+type AnimationColor = VariantProps<typeof animationVariants>
+
+type Children = {
+  children: React.ReactNode
+}
+
+type OptChildren = {
+  children?: React.ReactNode
+}
+
+type OptClassName = {
+  className?: string
+}
+
+type OptAsChild = {
+  asChild?: boolean
+}
+
+type OptProps<T> = {
+  props?: React.HTMLAttributes<T>
+}
+
+type OptChildClassNameProps = {
+  children?: React.ReactNode
+  className?: string
+}
+
+type NextErrorProps = {
+  error: Error & { digest?: string }
+  reset: () => void
+}
 
 interface LinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
@@ -14,75 +46,16 @@ interface LinkProps
   iconFillColor?: iconColorProps['color']
 }
 
-type SectionTitleProps = {
-  className?: string
-  children: React.ReactNode
-  asChild?: boolean
-  props?: React.HTMLAttributes<HTMLHeadingElement>
-}
-
-type SectionProps = {
-  className?: string
-  children: React.ReactNode
-  props?: React.HTMLAttributes<HTMLDivElement>
-  asChild?: boolean
-}
-
-type SectionHeaderProps = {
-  className?: string
-  children: React.ReactNode
-  props?: React.HTMLAttributes<HTMLDivElement>
-}
-
-type SectionFooterProps = {
-  className?: string
-  children: React.ReactNode
-  props?: React.HTMLAttributes<HTMLDivElement>
-}
-type SectionDescriptionProps = {
-  className?: string
-  children: React.ReactNode
-  props?: React.HTMLAttributes<HTMLParagraphElement>
-}
-
-type SectionContentProps = {
-  className?: string
-  children: React.ReactNode
-  props?: React.HTMLAttributes<HTMLDivElement>
-}
-
-type ReactChildrenProps = {
-  children: React.ReactNode
-}
-
-type AnimationColor = VariantProps<typeof animationVariants>
-
-interface IllustrationProps extends AnimationBacklightProps {
-  children: React.ReactNode
-}
-
-type ContainerProps = {
-  className?: string
-  asChild?: boolean
-  children?: React.ReactNode
-  props?: React.HTMLAttributes<HTMLDivElement>
-}
-
-type AnimationVariantProps = VariantProps<typeof animationVariants>
-
 interface AnimationBacklightProps
   extends Required<Pick<AnimationVariantProps, 'color_big'>>,
     Required<Pick<AnimationVariantProps, 'color_small'>> {}
 
-export {
-  LinkProps,
-  ReactChildrenProps,
-  IllustrationProps,
-  AnimationBacklightProps,
-  SectionTitleProps,
-  SectionProps,
-  SectionHeaderProps,
-  SectionFooterProps,
-  SectionDescriptionProps,
-  SectionContentProps,
+interface OptReactCompProps<T>
+  extends OptClassName,
+    OptChildren,
+    OptAsChild,
+    OptProps<T> {}
+
+interface IllustrationProps extends AnimationBacklightProps {
+  children: React.ReactNode
 }
