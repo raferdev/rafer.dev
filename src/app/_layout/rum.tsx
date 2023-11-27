@@ -3,7 +3,7 @@ import Script from 'next/script'
 import { __env } from '@/config/env'
 import { __site } from '@/config/site'
 
-export const RumAnalytics = () => (
+const RumAnalytics = () => (
   <Script id="rum-analytics">
     {`(function(h,o,u,n,d) {
    h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
@@ -30,3 +30,5 @@ export const RumAnalytics = () => (
  })`}
   </Script>
 )
+
+export { RumAnalytics }

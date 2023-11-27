@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
-import { GlobalErrorProps } from '@/@types/elements'
+import { NextErrorProps } from '@/@types/components'
 
-const Error = ({ error, reset }: GlobalErrorProps) => {
+const Error = ({ error, reset }: NextErrorProps) => {
   useEffect(() => {
     console.error(error)
   }, [error])

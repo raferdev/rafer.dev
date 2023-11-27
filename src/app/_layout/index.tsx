@@ -1,5 +1,6 @@
 import './global.css'
 
+import { Children } from '@/@types/components'
 import { cn } from '@/utils/cn'
 
 import { fontSans } from '@/lib/fonts'
@@ -8,7 +9,7 @@ import { DevTools } from '@/components/DevTools'
 import { GoogleAnalytics } from './gtag'
 import { RumAnalytics } from './rum'
 
-const DefaultLayout = ({ children }: { children: React.ReactNode }) => (
+const DefaultLayout = ({ children }: Children) => (
   <>
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -18,7 +19,7 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => (
       <RumAnalytics />
       <body
         className={cn(
-          'flex min-h-screen items-center justify-center bg-background font-sans antialiased',
+          'flex min-h-screen items-center justify-center bg-background bg-gradient-to-b from-gray-900 to-gray-600 font-sans antialiased',
           fontSans.variable
         )}
       >
@@ -31,4 +32,5 @@ const DefaultLayout = ({ children }: { children: React.ReactNode }) => (
 )
 
 export { metadata } from './metadata'
+
 export default DefaultLayout
