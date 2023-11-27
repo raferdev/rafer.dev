@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { __site } from '@/config/site'
 import { Link } from '@/components/Link'
 import { Section } from '@/components/Section'

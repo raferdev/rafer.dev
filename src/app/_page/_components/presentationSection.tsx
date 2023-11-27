@@ -1,4 +1,4 @@
-import { PresentationSectionProps } from '@/@types/elements'
+import { OptChildClassNameProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 
 import { __site } from '@/config/site'
@@ -9,13 +9,13 @@ const { Container, Header, Title, Description, Content } = Section
 const PresentationSection = ({
   children,
   className,
-}: PresentationSectionProps) => (
+}: OptChildClassNameProps) => (
   <Container
     className={cn('w-full border-0 bg-inherit shadow-none', className)}
   >
     <Header>
-      <Title className="z-10">Software Engineer</Title>
-      <Description className="z-10">
+      <Title className="z-10 ">Software Engineer</Title>
+      <Description className="z-10 ">
         Pragmatism and creativity to create new things
       </Description>
     </Header>

@@ -13,7 +13,7 @@ const LinksSection = () => (
         <h5>See more</h5>
       </Title>
       <Description>
-        You can see more about me at the following links:
+        You can see more about me at the following links
       </Description>
     </Header>
     <Content className="min-h-40 grid w-full grid-cols-1 justify-items-center gap-x-8 gap-y-4 p-8 md:grid-cols-2 md:gap-y-4 lg:grid-cols-3 lg:grid-rows-2 lg:gap-y-0">
