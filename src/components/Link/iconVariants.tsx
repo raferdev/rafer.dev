@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority'
 
-const iconVariants = cva('group-hover:fill-accent', {
+const iconVariants = cva('group-hover:fill-white', {
   variants: {
     color: {
       default: 'fill-none',

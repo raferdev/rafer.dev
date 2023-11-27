@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { SectionProps } from '@/@types/components'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -15,12 +14,12 @@ const Container = ({
   className,
   asChild = false,
   ...props
-}: SectionProps) => {
+}: OptReactCompProps<HTMLDivElement>) => {
   const Comp = asChild ? Slot : 'section'
   return (
     <Comp
       className={cn(
-        'flex  w-full max-w-[90rem] flex-wrap items-center gap-8 rounded-xl px-0 sm:px-14 md:min-h-[17rem] md:gap-y-10',
+        'flex  w-full max-w-[90rem] flex-wrap items-center gap-8 rounded-xl px-0 text-white sm:px-14 md:min-h-[17rem] md:gap-y-10',
         className
       )}
       {...props}

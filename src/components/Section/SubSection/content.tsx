@@ -1,8 +1,8 @@
-import { IllustrationProps, ReactChildrenProps } from '@/@types/components'
+import { Children, IllustrationProps } from '@/@types/components'
 
 import { AnimationBacklight } from './animations'
 
-const Container = ({ children }: ReactChildrenProps) => (
+const Container = ({ children }: Children) => (
   <div className="flex flex-col items-center gap-16 md:grid md:grid-cols-section-1 md:gap-0">
     {children}
   </div>
@@ -19,7 +19,7 @@ const Illustration = ({
   </div>
 )
 
-const Description = ({ children }: ReactChildrenProps) => (
+const Description = ({ children }: Children) => (
   <div className="md:pl-4 md:pr-24">{children}</div>
 )
 

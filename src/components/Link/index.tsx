@@ -21,11 +21,11 @@ const Link = ({
   return (
     <>
       <a className={cn(linkVariants({ variant, size, className }))} {...props}>
-        <span className="group-hover:text-accent">
+        <span className="group-hover:text-white">
           {Icon && (
             <Icon
               size={22}
-              strokeWidth={1.6}
+              strokeWidth={2.5}
               color="#0e0c0c"
               className={cn(iconVariants({ color: iconFillColor }))}
             />
@@ -36,7 +36,7 @@ const Link = ({
           <LinkPointer
             size={22}
             strokeWidth={2}
-            color="#67e8f9"
+            color="#fff"
             className="absolute right-4 space-x-2 opacity-0 group-hover:opacity-100"
           />
         )}
