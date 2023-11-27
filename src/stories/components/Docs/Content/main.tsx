@@ -1,8 +1,12 @@
-import { MainCntentProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
-const MainContent = ({ className, asChild, ...props }: MainCntentProps) => {
+const MainContent = ({
+  className,
+  asChild,
+  ...props
+}: OptReactCompProps<HTMLSpanElement>) => {
   const Comp = asChild ? Slot : 'span'
 
   return (

@@ -1,8 +1,12 @@
-import { SpanProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
-const Span = ({ className, asChild, ...props }: SpanProps) => {
+const Span = ({
+  className,
+  asChild,
+  ...props
+}: OptReactCompProps<HTMLSpanElement>) => {
   const Comp = asChild ? Slot : 'span'
 
   return (

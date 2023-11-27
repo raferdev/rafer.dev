@@ -1,8 +1,12 @@
-import { SubTopicProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
-const SubTopic = ({ className, asChild, ...props }: SubTopicProps) => {
+const SubTopic = ({
+  className,
+  asChild,
+  ...props
+}: OptReactCompProps<HTMLHeadingElement>) => {
   const Comp = asChild ? Slot : 'h4'
 
   return (

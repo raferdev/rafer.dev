@@ -1,8 +1,12 @@
-import { TopicProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
-const Topic = ({ className, asChild, ...props }: TopicProps) => {
+const Topic = ({
+  className,
+  asChild,
+  ...props
+}: OptReactCompProps<HTMLHeadingElement>) => {
   const Comp = asChild ? Slot : 'h3'
 
   return (

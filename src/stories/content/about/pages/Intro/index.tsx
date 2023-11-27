@@ -1,6 +1,3 @@
-import * as React from 'react'
-import Image from 'next/image'
-import HandWaving from '@/stories/assets/handWaving.svg'
 import { Docs } from '@/stories/components/Docs'
 
 import { __site } from '@/config/site'

@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import { OptClassName } from '@/@types/components'
 import LogoDraft from '@/stories/assets/logo-drafts.jpg'
 import { cn } from '@/utils/cn'
 
-const IllustrationImg = ({ className }: { className: string }) => {
+const IllustrationImg = ({ className }: OptClassName) => {
   return (
     <div
       className={cn(
