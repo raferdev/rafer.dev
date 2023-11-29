@@ -9,39 +9,46 @@ import { linkVariants } from './linkVariants'
 const Link = ({
   className,
   iconFillColor,
-  variant = 'default',
+  variant = 'decorated',
   iconName,
+  hover,
+  color,
+  text,
+  background,
   size,
   children,
   ...props
 }: LinkProps) => {
   const Icon = iconName ? icons[iconName] : null
-  const LinkPointer = icons['MousePointerClick']
+  const LinkPointer = icons['ArrowUpRight']
 
   return (
-    <>
-      <a className={cn(linkVariants({ variant, size, className }))} {...props}>
-        <span className="group-hover:text-white">
-          {Icon && (
-            <Icon
-              size={22}
-              strokeWidth={2.5}
-              color="#0e0c0c"
-              className={cn(iconVariants({ color: iconFillColor }))}
-            />
-          )}
-          {children}
-        </span>
-        {variant === 'default' && (
-          <LinkPointer
+    <a
+      className={cn(
+        linkVariants({ variant, text, size, className, background, hover })
+      )}
+      {...props}
+    >
+      <span>
+        {Icon && (
+          <Icon
             size={22}
-            strokeWidth={2}
-            color="#fff"
-            className="absolute right-4 space-x-2 opacity-0 group-hover:opacity-100"
+            strokeWidth={1.8}
+            color={color || '#171717'}
+            className={cn(iconVariants({ color: iconFillColor }))}
           />
         )}
-      </a>
-    </>
+        {children}
+      </span>
+      {variant === 'decorated' && (
+        <LinkPointer
+          size={22}
+          strokeWidth={2}
+          color="#fff"
+          className="absolute right-4 space-x-2 opacity-0 group-hover:opacity-100"
+        />
+      )}
+    </a>
   )
 }
 
