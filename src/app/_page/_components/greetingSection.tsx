@@ -9,7 +9,7 @@ const GreetingSection = () => (
   <Section.Container className="relative flex h-screen flex-col flex-wrap content-center items-center justify-center">
     <Aws className="left-[calc(100vw/8)] top-[calc((100vh/8)-20px)] lg:left-[calc(100vw/8)] lg:top-[calc(100vw/8)]" />
     <Docker className="right-[calc(100vw/8-40px)] top-[calc((100vh/5)-40px)] sm:right-[calc(100vw/8-40px)] sm:top-14" />
-    <Jest className="left-8 top-[calc((100vw/2)-100px)]" />
+    <Jest className="left-8 top-[calc((100vh/2)+100px)]" />
     <NextJs className="right-4 top-auto" />
     <Node className="left-auto top-[calc((100vh/5)-50px)]" />
     <Decorative className="right-40 top-40 h-[6px] w-[6px] animate-pulse bg-cyan-300 blur-sm lg:left-40 lg:top-80" />
@@ -21,11 +21,11 @@ const GreetingSection = () => (
 
       <article className="items-baseline text-slate-100">
         <div className="w-full justify-center">
-          <p className="text-2xl font-normal leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
+          <p className="bg-clip-text text-2xl font-normal leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
             Hi! My name's <span className="font-bold">Rafael</span>
           </p>
         </div>
-        <p className="block text-2xl font-normal leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
+        <p className="block bg-clip-text  text-2xl font-normal leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
           I like to <span className="font-bold">solve problems</span>
         </p>
         <p className="block text-2xl font-normal leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">

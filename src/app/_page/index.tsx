@@ -8,7 +8,7 @@ import { StorybookSection } from './_components/storybookSection'
 
 const HomePage = () => (
   <>
-    <main className="relative flex w-screen flex-col items-center gap-4 overflow-x-hidden">
+    <main className="relative flex w-screen flex-col items-center gap-4 overflow-hidden">
       <GreetingSection />
       <PresentationSection />
       <MyworldxSection />
