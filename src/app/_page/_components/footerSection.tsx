@@ -12,6 +12,7 @@ const FooterSection = () => (
     asChild
   >
     <footer>
+      <div className="absolute bottom-0 h-3 w-screen bg-white blur"></div>
       <Section.Content className="flex flex-col justify-start py-0 md:items-start md:justify-end md:gap-0 lg:flex  lg:flex-col lg:items-end lg:justify-end">
         <img
           className="absolute -bottom-10 right-0 h-64 w-auto object-contain opacity-80"
