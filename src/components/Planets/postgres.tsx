@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 const Postgres = ({ className }: OptClassName) => (
   <div
     className={cn(
-      'flex h-[100px] w-[100px] justify-center rounded-full bg-slate-50 p-2',
+      'absolute -z-10 flex h-[90px] w-[90px] rotate-12 justify-center rounded-full bg-gradient-to-tr from-sky-400 to-blue-800 p-[12px] blur-sm',
       className
     )}
   >

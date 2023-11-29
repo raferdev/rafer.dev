@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 const Playwright = ({ className }: OptClassName) => (
   <div
     className={cn(
-      'flex h-[100px] w-[100px] justify-center rounded-full bg-slate-50 p-2',
+      'absolute flex h-[90px] w-[90px] rotate-12 justify-center rounded-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-indigo-200 via-red-200 to-green-400 p-1 blur-sm lg:h-[100px] lg:w-[100px]',
       className
     )}
   >

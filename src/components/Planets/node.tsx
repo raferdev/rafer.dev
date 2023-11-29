@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 const Node = ({ className }: OptClassName) => (
   <div
     className={cn(
-      'absolute hidden h-[100px] w-[100px] justify-center rounded-full bg-green-100 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-emerald-500 to-lime-600 p-1 blur-sm md:flex',
+      'absolute hidden h-[100px] w-[100px] justify-center rounded-full bg-green-100 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-emerald-500 to-lime-600 p-2 blur-sm md:flex',
       className
     )}
   >
