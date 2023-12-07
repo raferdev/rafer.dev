@@ -36,6 +36,7 @@ const config: StorybookConfig = {
         ],
       },
     },
+    '@storybook/addon-mdx-gfm',
   ],
 
   previewHead: (head) => `
