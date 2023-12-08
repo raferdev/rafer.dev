@@ -12,7 +12,7 @@ const SubTopic = ({
   return (
     <Comp
       className={cn(
-        '!m-0 !ml-2 !font-sans !text-lg !font-bold !text-secondary',
+        '!m-0 !ml-2 !font-sans !text-lg !font-normal !text-neutral-800',
         className
       )}
       {...props}

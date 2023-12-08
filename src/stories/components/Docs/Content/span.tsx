@@ -12,7 +12,7 @@ const Span = ({
   return (
     <Comp
       className={cn(
-        '!font-sans !text-lg  !font-bold !text-stone-900',
+        '!font-sans !text-lg  !font-bold !text-neutral-800',
         className
       )}
       {...props}

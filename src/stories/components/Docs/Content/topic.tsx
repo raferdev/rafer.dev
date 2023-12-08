@@ -12,7 +12,7 @@ const Topic = ({
   return (
     <Comp
       className={cn(
-        '!m-0 !font-sans !text-lg !font-bold !text-foreground md:!text-xl',
+        '!m-0 !font-sans !text-lg !font-normal !text-neutral-800 md:!text-xl',
         className
       )}
       {...props}

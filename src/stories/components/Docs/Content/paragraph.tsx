@@ -12,7 +12,7 @@ const Paragraph = ({
   return (
     <Comp
       className={cn(
-        '!ml-2 !text-justify !font-sans !text-base !font-normal  !text-muted-foreground md:!text-lg',
+        '!ml-2 !text-justify !font-sans !text-base !font-thin  !text-neutral-800 md:!text-lg',
         className
       )}
       {...props}

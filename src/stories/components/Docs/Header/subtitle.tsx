@@ -12,7 +12,7 @@ const SubTitle = ({
   return (
     <Comp
       className={cn(
-        '!border-0 !font-sans !text-lg !font-bold !text-secondary md:!text-xl',
+        '!border-0 !font-sans !text-lg !font-normal !text-neutral-700 drop-shadow-lg md:!text-xl',
         className
       )}
       {...props}

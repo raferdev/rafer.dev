@@ -12,7 +12,7 @@ const Title = ({
   return (
     <Comp
       className={cn(
-        '!font-sans !text-xl !font-bold !leading-tight !tracking-tighter !text-foreground md:!text-2xl md:!leading-[1.1]',
+        '!font-sans !text-xl  !font-thin !italic !leading-tight !tracking-tighter !text-neutral-800 md:!text-2xl md:!leading-[1.1]',
         className
       )}
       {...props}

@@ -17,7 +17,7 @@ const Container = ({
   return (
     <Comp
       className={cn(
-        'custom-scroll box-border flex h-full w-full flex-col gap-8 overflow-y-scroll text-clip !text-base md:!text-lg',
+        'custom-scroll box-border flex h-full w-full flex-col gap-8 overflow-y-scroll text-clip !text-base !drop-shadow-md md:!text-lg',
         className
       )}
       {...props}
