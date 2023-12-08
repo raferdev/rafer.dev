@@ -16,25 +16,26 @@ const linkVariants = cva(
         black3: 'bg-black/30',
         none: '',
       },
-      text: {
+      textColor: {
         black: '[&>span]:text-neutral-800 [&>span]:hover:text-white',
         gray: '[&>span]:text-neutral-300 ',
         white: '[&>span]:text-white ',
       },
       hover: {
-        green: 'hover:bg-lime-300/30',
-        cyan: 'hover:bg-cyan-300/30',
-        textGreen: 'hover:text-lime-300',
+        bgGreen: 'hover:bg-lime-300/30',
+        bgCyan: 'hover:bg-cyan-300/30',
+        textYellow: 'hover:text-yellow-500',
       },
       size: {
-        normal: 'h-12 w-full',
+        normal: 'h-12 w-full  min-w-[200px]',
         none: '',
+        sm: 'm-0 inline-block w-0 min-w-min p-0 text-base sm:text-lg md:min-w-min',
       },
     },
     defaultVariants: {
       variant: 'decorated',
       size: 'normal',
-      hover: 'green',
+      hover: 'bgGreen',
       background: 'white',
     },
   }

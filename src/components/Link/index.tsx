@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { LinkProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 
@@ -12,8 +11,8 @@ const Link = ({
   variant = 'decorated',
   iconName,
   hover,
-  color,
-  text,
+  iconColor,
+  textColor,
   background,
   size,
   children,
@@ -25,7 +24,7 @@ const Link = ({
   return (
     <a
       className={cn(
-        linkVariants({ variant, text, size, className, background, hover })
+        linkVariants({ variant, textColor, size, className, background, hover })
       )}
       {...props}
     >
@@ -33,8 +32,8 @@ const Link = ({
         {Icon && (
           <Icon
             size={22}
-            strokeWidth={1.8}
-            color={color || '#171717'}
+            strokeWidth={1.4}
+            color={iconColor || '#171717'}
             className={cn(iconVariants({ color: iconFillColor }))}
           />
         )}
