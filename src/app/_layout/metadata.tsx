@@ -4,7 +4,7 @@ import { __site } from '@/config/site'
 
 const { metadata: meta } = __site
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: {
     default: meta.name,
 
@@ -57,3 +57,5 @@ export const metadata: Metadata = {
   },
   manifest: `${meta.url}/site.webmanifest`,
 }
+
+export { metadata }

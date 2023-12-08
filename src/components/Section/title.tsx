@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { SectionTitleProps } from '@/@types/components'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -8,7 +7,7 @@ const SectionTitle = ({
   asChild,
   className,
   ...props
-}: SectionTitleProps) => {
+}: OptReactCompProps<HTMLHeadingElement>) => {
   const Comp = asChild ? Slot : 'h1'
 
   return (

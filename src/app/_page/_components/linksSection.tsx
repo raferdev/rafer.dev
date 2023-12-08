@@ -7,67 +7,79 @@ const { links } = __site
 const { Container, Header, Title, Description, Content } = Section
 
 const LinksSection = () => (
-  <Container>
-    <Header className="space-y-1">
-      <Title className="text-2xl" asChild>
+  <Container className="mb-28 md:mb-32">
+    <Header>
+      <Title className="text-2xl text-neutral-300" asChild>
         <h5>See more</h5>
       </Title>
-      <Description>
-        You can see more about me at the following links:
+      <Description className="text-neutral-300">
+        You can see more about me at the following links
       </Description>
     </Header>
     <Content className="min-h-40 grid w-full grid-cols-1 justify-items-center gap-x-8 gap-y-4 p-8 md:grid-cols-2 md:gap-y-4 lg:grid-cols-3 lg:grid-rows-2 lg:gap-y-0">
       <Link
-        iconFillColor="github"
+        textColor="black"
+        target="_blank"
+        hover="bgCyan"
         iconName="Github"
+        iconFillColor="github"
         href={links.profile.github}
         aria-label='Github "raferdev" profile'
-        target="_blank"
       >
         Github
       </Link>
       <Link
-        iconFillColor="youtube"
+        textColor="black"
+        target="_blank"
+        hover="bgCyan"
         iconName="Youtube"
+        iconFillColor="youtube"
         href={links.profile.youtube}
         aria-label='Youtube "raferdev" channel'
-        target="_blank"
       >
         Youtube
       </Link>
       <Link
-        iconFillColor="linkedin"
+        textColor="black"
+        target="_blank"
+        hover="bgCyan"
         iconName="Linkedin"
+        iconFillColor="linkedin"
         href={links.profile.linkedin}
         aria-label='Linkedin "raferdev" profile'
-        target="_blank"
       >
         Linkedin
       </Link>
       <Link
-        iconFillColor="white"
-        iconName="Mail"
-        href={links.profile.email.raferdev}
-        aria-label="Email"
+        textColor="black"
         target="_blank"
+        hover="bgCyan"
+        iconName="Mail"
+        aria-label="Email"
+        iconFillColor="white"
+        href={links.profile.email.raferdev}
       >
         Email
       </Link>
       <Link
-        iconFillColor="twitter"
+        textColor="black"
+        target="_blank"
+        hover="bgCyan"
         iconName="Twitter"
+        iconFillColor="twitter"
         href={links.profile.twitter}
         aria-label='Twitter "raferdev" profile'
-        target="_blank"
       >
         Twitter / X
       </Link>
       <Link
-        iconFillColor="instagram"
+        textColor="black"
+        target="_blank"
+        hover="bgCyan"
         iconName="Instagram"
+        iconFillColor="instagram"
         href={links.profile.instagram}
         aria-label='Instagram "raferdev" profile'
-        target="_blank"
       >
         Instagram
       </Link>

@@ -1,11 +1,15 @@
-import { ContainerProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
 import { SubTitle } from './subtitle'
 import { Title } from './title'
 
-const Container = ({ className, asChild, ...props }: ContainerProps) => {
+const Container = ({
+  className,
+  asChild,
+  ...props
+}: OptReactCompProps<HTMLDivElement>) => {
   const Comp = asChild ? Slot : 'div'
 
   return (

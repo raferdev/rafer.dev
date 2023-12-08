@@ -1,4 +1,4 @@
-import { IllustrationContentProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -6,7 +6,7 @@ const IllustrationContent = ({
   className,
   asChild,
   ...props
-}: IllustrationContentProps) => {
+}: OptReactCompProps<HTMLSpanElement>) => {
   const Comp = asChild ? Slot : 'span'
 
   return (

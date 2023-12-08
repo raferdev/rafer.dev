@@ -8,12 +8,25 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs', 'Link', 'Component'],
+  tags: ['autodocs', 'link', 'component'],
   argTypes: {
     variant: {
       name: 'Link Variant',
-      options: ['default', 'raw'],
+      options: ['decorated', 'raw'],
       description: 'The link styles.',
+    },
+    hover: {
+      name: 'Hover Style',
+      description: 'The hover style and color.',
+    },
+    textColor: {
+      name: 'Text Color',
+      description: 'The link text.',
+    },
+    iconColor: {
+      name: 'Icon Color',
+      description: 'The svg icon color.',
+      type: 'string',
     },
     iconName: {
       name: 'Icon Name',
@@ -36,16 +49,25 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    variant: 'default',
+    variant: 'decorated',
     children: 'Github',
     iconName: 'Github',
-    iconFillColor: 'github',
+    hover: 'bgCyan',
+    iconColor: '#60bf6e',
+    textColor: 'gray',
+    background: 'black1',
+    iconFillColor: 'none',
+    size: 'normal',
   },
 }
 
 export const Raw: Story = {
   args: {
+    target: '_blank',
     variant: 'raw',
     children: 'Github',
+    hover: 'textYellow',
+    background: 'none',
+    size: 'sm',
   },
 }

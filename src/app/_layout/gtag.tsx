@@ -2,7 +2,7 @@ import Script from 'next/script'
 
 import { __env } from '@/config/env'
 
-export const GoogleAnalytics = () => (
+const GoogleAnalytics = () => (
   <>
     <Script async src={__env.NEXT_PUBLIC_GA_SRC} />
     <Script id="google-analytics">
@@ -16,3 +16,5 @@ export const GoogleAnalytics = () => (
     </Script>
   </>
 )
+
+export { GoogleAnalytics }

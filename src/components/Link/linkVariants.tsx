@@ -1,22 +1,42 @@
 import { cva } from 'class-variance-authority'
 
 const linkVariants = cva(
-  'inline-flex items-end justify-center rounded-full font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        default:
-          'group relative w-full border-2 border-muted-foreground bg-neutral-600 text-base font-bold text-white shadow-md hover:border-accent hover:opacity-70 [&>span]:flex [&>span]:min-w-[122px] [&>span]:gap-4',
-        raw: 'text-accent-foreground underline-offset-4 hover:underline',
+        decorated:
+          'border-gradient-to-r group relative flex w-full items-center justify-center rounded-full px-8 text-base font-medium shadow-sm shadow-white lg:text-lg [&>span]:flex [&>span]:min-w-full [&>span]:gap-4',
+        raw: 'inline-block',
+      },
+      background: {
+        white: 'bg-white/20',
+        black1: 'bg-black/10',
+        black2: 'bg-black/20',
+        black3: 'bg-black/30',
+        none: '',
+      },
+      textColor: {
+        black: '[&>span]:text-neutral-800 [&>span]:hover:text-white',
+        gray: '[&>span]:text-neutral-300 ',
+        white: '[&>span]:text-white ',
+      },
+      hover: {
+        bgGreen: 'hover:bg-lime-300/30',
+        bgCyan: 'hover:bg-cyan-300/30',
+        textYellow: 'hover:text-yellow-500',
       },
       size: {
-        default: 'h-10 w-full max-w-lg p-2 px-6 md:min-w-[277px]',
+        normal: 'h-12 w-full  min-w-[200px]',
         none: '',
+        sm: 'm-0 inline-block w-0 min-w-min p-0 text-base sm:text-lg md:min-w-min',
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'default',
+      variant: 'decorated',
+      size: 'normal',
+      hover: 'bgGreen',
+      background: 'white',
     },
   }
 )

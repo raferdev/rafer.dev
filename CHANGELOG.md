@@ -1,5 +1,18 @@
 # landing-page
 
+## 2.0.0
+
+### Major Changes
+
+- 99872b1: Tests, Nginx, CI/CD
+- Space Theme
+
+  - Add Planets components
+  - Add Space theme
+  - Change Storybook theme
+  - Add Storybook all components used
+  - Add server documentation
+
 ## 1.8.0 2023-11-12
 
 ### Minor Changes

@@ -1,8 +1,8 @@
 'use client'
 
-import { GlobalErrorProps } from '@/@types/elements'
+import { NextErrorProps } from '@/@types/components'
 
-const GlobalError = ({ error, reset }: GlobalErrorProps) => {
+const GlobalError = ({ error, reset }: NextErrorProps) => {
   console.error(error)
   return (
     <html>

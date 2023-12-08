@@ -29,6 +29,7 @@ const __eslintCofig = [
       'testing-library/prefer-screen-queries': 'off',
       '@next/next/no-html-link-for-pages': 'off',
       '@typescript-eslint/no-var-requires': 'off',
+      '@next/next/no-img-element': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {

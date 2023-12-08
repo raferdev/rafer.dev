@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ContainerProps } from '@/@types/stories'
+import { OptReactCompProps } from '@/@types/components'
 import { cn } from '@/utils/cn'
 import { Slot } from '@radix-ui/react-slot'
 
@@ -10,7 +10,7 @@ const Container = ({
   className,
   asChild = false,
   ...props
-}: ContainerProps) => {
+}: OptReactCompProps<HTMLDivElement>) => {
   const Comp = asChild ? Slot : 'div'
   return (
     <Comp
