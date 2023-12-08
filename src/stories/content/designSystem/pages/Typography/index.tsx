@@ -9,20 +9,26 @@ const SampleText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
 
 const TypographyPage = () => (
   <>
-    <Header.Title asChild>
-      <h1>Typography</h1>
-    </Header.Title>
+    <Header.Title>Typography</Header.Title>
 
-    <Header.SubTitle asChild>
-      <h2>Font: Ubuntu</h2>
-    </Header.SubTitle>
+    <Header.SubTitle>Font Ubuntu</Header.SubTitle>
 
     <div className="pl-2">
-      <Content.Topic asChild>
-        <h3>Weights:</h3>
-      </Content.Topic>
-      <Content.SubTopic asChild>
-        <h4>Thin - 300, Regular - 400, Semibold - 500, Bold - 700</h4>
+      <Content.SubTopic className="flex gap-4" asChild>
+        <div>
+          <p className="!text-xl !font-thin !text-neutral-800 md:!text-lg">
+            Thin - 300,
+          </p>{' '}
+          <p className="!text-xl !font-normal !text-neutral-800 md:!text-lg">
+            Regular - 400,
+          </p>{' '}
+          <p className="!text-xl !font-semibold !text-neutral-800 md:!text-lg">
+            Semibold - 500,
+          </p>
+          <p className="!text-xl !font-bold !text-neutral-800 md:!text-lg">
+            Bold - 700
+          </p>
+        </div>
       </Content.SubTopic>
 
       <Typeset

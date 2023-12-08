@@ -13,7 +13,7 @@ module.exports = {
       gridTemplateColumns: {
         default: 'minmax(200px, 300px) 1fr minmax(200px, 300px)',
         'section-1': '200px 1fr',
-        'section-content': '1fr 300px',
+        'section-content': '1fr 275px',
       },
       gridTemplateRows: {
         'stories-docs': '5.5rem 1fr',
@@ -25,9 +25,6 @@ module.exports = {
         'scroll-left': 'scroll 10s linear infinite',
       },
       colors: {
-        yellow: {
-          200: 'hsl(var(--yellow-200))',
-        },
         celestial: {
           500: 'hsl(var(--celestial-500))',
         },
