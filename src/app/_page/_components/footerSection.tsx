@@ -12,19 +12,20 @@ const FooterSection = () => (
     asChild
   >
     <footer>
-      <div className="absolute bottom-0 h-3 w-screen bg-white blur"></div>
       <Section.Content className="flex flex-col justify-start py-0 md:items-start md:justify-end md:gap-0 lg:flex  lg:flex-col lg:items-end lg:justify-end">
-        <img
-          className="absolute -bottom-10 right-0 h-64 w-auto object-contain opacity-80"
-          height="256px"
-          width="256px"
-          loading="lazy"
-          decoding="async"
-          src="./idea-launch.png"
-        />
+        <div className="flex w-full items-center justify-center">
+          <img
+            className=" h-64 w-auto object-contain"
+            height="256px"
+            width="256px"
+            loading="lazy"
+            decoding="async"
+            src="./idea-launch.png"
+          />
+        </div>
 
         <Balancer
-          className="max-h-50px flex w-full flex-row justify-start text-center text-neutral-800 drop-shadow-md md:max-w-sm lg:max-w-none lg:text-start"
+          className="max-h-50px flex w-full flex-row justify-start text-center text-neutral-800"
           as={'p'}
         >
           This landing page is open source, and you can find it here,
@@ -32,18 +33,32 @@ const FooterSection = () => (
             href={links.self.repository}
             target="_blank"
             variant="raw"
-            hover="textGreen"
+            hover="textYellow"
             background="none"
-            size="none"
+            size="sm"
             aria-label="Github Repository"
-            className="m-0 inline-block w-0 min-w-min p-0 text-base sm:text-lg md:min-w-min"
           >
             github.com
           </Link>
           . See you soon!
         </Balancer>
       </Section.Content>
-      <Section.Footer className="flex w-full items-center justify-center text-sm text-neutral-700">
+      <Section.Footer className="flex w-full flex-col items-center justify-center text-sm text-neutral-800">
+        <span>
+          Illustration source:{' '}
+          <Link
+            href="https://popsy.co/"
+            target="_blank"
+            variant="raw"
+            hover="textYellow"
+            background="none"
+            size="none"
+            aria-label="Github Repository"
+            className="m-0 inline-block w-0 min-w-min p-0 md:min-w-min"
+          >
+            popsy
+          </Link>
+        </span>
         raferdev@2023
       </Section.Footer>
     </footer>

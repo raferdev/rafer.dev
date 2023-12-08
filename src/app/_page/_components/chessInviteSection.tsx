@@ -6,10 +6,12 @@ import { Section } from '@/components/Section'
 const { links } = __site
 
 const { Container, Header, Title, Description, Content, SubSection } = Section
-const { Playwright } = Planets
+const { Playwright, Decorative } = Planets
 
 const ChessInviteSection = () => (
-  <Container className="lg:mb-44">
+  <Container className="relative mb-32 md:mb-40 lg:mb-52">
+    <Decorative className="left-32 top-0 h-1 w-1 bg-yellow-100 blur-sm" />
+
     <Header className="bg-gradient-to-r from-white from-10% via-red-200 to-green-400 bg-clip-text text-transparent">
       <Playwright className="right-0 top-0 -z-10 sm:-right-12 sm:bottom-0 lg:-right-20 lg:bottom-0" />
       <Title asChild>
@@ -17,15 +19,12 @@ const ChessInviteSection = () => (
       </Title>
       <Description>Invite me to play a chess game on chess.com</Description>
     </Header>
-    <Content className="px-8 text-neutral-300">
+    <Content className="text-neutral-300">
       <SubSection.Content.Container>
-        <SubSection.Content.Illustration
-          color_big="green_300"
-          color_small="green_200"
-        >
+        <SubSection.Content.Illustration>
           <div className="relative rounded-full">
-            <div className="absolute left-0 top-0 -z-20 h-24 w-24 rounded-full bg-white blur-sm"></div>
-            <div className=" absolute left-0 top-0 -z-10 h-24 w-24 rounded-full bg-gradient-to-br from-green-200 via-green-500 to-green-900"></div>
+            <Decorative className="absolute left-0 top-0 -z-20 h-24 w-24 rounded-full bg-white blur-sm" />
+            <Decorative className=" absolute left-0 top-0 -z-10 h-24 w-24 rounded-full bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-white from-40% via-green-500 to-green-900" />
 
             <img
               width="auto"
@@ -34,7 +33,7 @@ const ChessInviteSection = () => (
               decoding="async"
               alt="chess.com logo"
               src="./logos/chess-icon.png"
-              className="h-24 w-auto shadow-black drop-shadow-lg"
+              className="h-24 w-auto opacity-80 shadow-black drop-shadow-lg"
             />
           </div>
         </SubSection.Content.Illustration>
@@ -46,12 +45,12 @@ const ChessInviteSection = () => (
         </SubSection.Content.Description>
       </SubSection.Content.Container>
 
-      <SubSection.Links.Container>
+      <SubSection.Links.Container className="flex items-center justify-center">
         <Link
-          text="gray"
-          hover="cyan"
+          hover="bgCyan"
           target="_blank"
-          color="#d4d4d4"
+          iconColor="#60bf6e"
+          textColor="gray"
           iconName="BellPlus"
           background="black1"
           iconFillColor="none"
