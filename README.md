@@ -1,6 +1,7 @@
 <p align="center">
   <a href="https://rafer.dev/">
- <img width="auto" height="150px" src="./public/logo-250x250.png" alt="Project logo"></a>
+  <img width="auto" height="220px" src="./public/logo-250x250.png" alt="Project logo"/>
+  </a>
 </p>
 
 <h3 align="center">Raferdev Landing Page</h3>
@@ -18,6 +19,7 @@
 
 - [About](#about)
 - [Built Using](#built_using)
+- [Contribute](#contribute)
 - [Authors](#authors)
 
 ## 🧐 About <a name = "about"></a>
@@ -34,6 +36,10 @@ docs: [storybook.rafer.dev](https://storybook.rafer.dev)
 - [Storybook](https://storybook.js.org/) - Build UIs without the grunt work
 - [Github Actions](https://github.com/features/actions) - Automate your workflow from idea to production
 - [Playwright](https://storybook.js.org/) - Reliable end-to-end testing for modern web apps
+
+## 💙 Contribute <a name = "contribute"></a>
+
+- I would love to hear some tips, issues, ideas that you see. You can open an issue or report a security break, and if applicable fork from development branch to do a pr to main branch.
 
 ## ✍️ Authors <a name = "authors"></a>
 
