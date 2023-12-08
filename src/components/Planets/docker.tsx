@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn'
 const Docker = ({ className }: OptClassName) => (
   <div
     className={cn(
-      'absolute flex h-[75px] w-[75px] rotate-6 justify-center rounded-full bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-gray-400 via-gray-600 to-blue-800 p-1 blur-sm sm:h-[80px] sm:w-[80px] lg:h-[100px] lg:w-[100px]',
+      'absolute flex h-[75px] w-[75px] rotate-6 justify-center rounded-full bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-white from-70% via-gray-600 to-blue-800 p-1 opacity-50 blur-sm sm:h-[80px] sm:w-[80px] lg:h-[200px] lg:w-[200px]',
       className
     )}
   >
@@ -15,7 +15,7 @@ const Docker = ({ className }: OptClassName) => (
       className="object-contain"
       decoding="async"
       src="./logos/docker.png"
-      alt="Docker"
+      alt=""
     />
   </div>
 )

@@ -4,18 +4,18 @@ import { cn } from '@/utils/cn'
 const Node = ({ className }: OptClassName) => (
   <div
     className={cn(
-      'absolute hidden h-[100px] w-[100px] justify-center rounded-full bg-green-100 bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-emerald-500 to-lime-600 p-2 blur-sm md:flex',
+      'absolute hidden h-[150px] w-[150px] items-center justify-center rounded-full bg-green-300 bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-white from-50% via-emerald-600 to-lime-800 p-2 pt-4 opacity-50 blur-sm md:flex',
       className
     )}
   >
     <img
-      height="50px"
-      width="auto"
+      height="auto"
+      width="130px"
       loading="lazy"
       decoding="async"
-      className="m-2 object-contain"
+      className="rotate-6 object-contain"
       src="./logos/nodejs.png"
-      alt="Nodejs"
+      alt=""
     />
   </div>
 )
