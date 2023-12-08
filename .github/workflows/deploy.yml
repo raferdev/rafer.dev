@@ -4,8 +4,9 @@ concurrency:
   cancel-in-progress: true
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 jobs:
   build:
     name: Build
