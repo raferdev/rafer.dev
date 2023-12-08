@@ -19,7 +19,7 @@ const Container = ({
   return (
     <Comp
       className={cn(
-        'flex  w-full max-w-[90rem] flex-wrap items-center gap-8 rounded-xl px-0 text-white sm:px-14 md:min-h-[17rem] md:gap-y-10',
+        'flex w-full max-w-[90rem] flex-wrap items-center gap-8 rounded-xl px-0 text-white sm:px-14 md:min-h-[17rem] md:gap-y-10',
         className
       )}
       {...props}
