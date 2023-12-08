@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import FigmaIcon from '@/stories/assets/figma-icon.png'
+import homeOffice from '@/stories/assets/home-office.png'
+import LogoDraft from '@/stories/assets/logo-drafts.png'
 import LogoExplainBottom from '@/stories/assets/logo-explain-bottom.png'
 import LogoExplainTop from '@/stories/assets/logo-explain-top.png'
 import { Docs } from '@/stories/components/Docs'
-import Balancer from 'react-wrap-balancer'
-
-import { IllustrationImg } from './illustrationImg'
+import { IllustrationImg } from '@/stories/components/illustrationImage'
 
 const { Container, Content, Header } = Docs
 
@@ -14,27 +14,37 @@ const LogoPage = () => (
     <Header.Container className="overflow-visible">
       <div className="flex flex-col items-baseline gap-4">
         <Header.Title>Logo</Header.Title>
-        <Header.SubTitle>I tried to be a designer by a day.</Header.SubTitle>
+        <Header.SubTitle>Designer by a day (just tried it).</Header.SubTitle>
       </div>
-      <IllustrationImg className="flex overflow-visible" />
     </Header.Container>
 
-    <div className="flex flex-col gap-8 pl-4 pr-6 pt-6">
-      <div className="flex flex-col">
+    <div className="flex flex-col gap-8 px-6">
+      <div className="flex flex-col py-6">
         <Content.Topic>Overview</Content.Topic>
-        <Content.Paragraph className="bg-white bg-opacity-80">
+        <Content.Paragraph>
           This logo was created to be simple but informative, minimalist and
           dark but with some color. Trying to pass on the identity of pragmatism
           and mathematical and logical thinking but with creativity and
           people-oriented thinking.
         </Content.Paragraph>
+        <IllustrationImg
+          src={LogoDraft}
+          width={400}
+          height={280}
+          className="align-center !my-16 flex w-full justify-center"
+        />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col !pb-14">
         <Content.Topic>Structure Analisys</Content.Topic>
-        <Content.SubTopic>Top</Content.SubTopic>
-        <div className="align-center !my-8 flex w-full justify-center">
-          <Image src={LogoExplainTop} width={200} height={280} alt="" />
-        </div>
+        <Content.SubTopic className="!mt-6">Top</Content.SubTopic>
+
+        <IllustrationImg
+          src={LogoExplainTop}
+          width={200}
+          height={280}
+          className="align-center !my-16 flex w-full justify-center"
+        />
+
         <Content.Paragraph>
           The top part of this logo was designed to be the expression of the
           criativity and oriented on user, to deliver things thinking on people.
@@ -43,10 +53,14 @@ const LogoPage = () => (
           this language is well-known for transform the same content on
           something enjoyable and understandable.
         </Content.Paragraph>
-        <Content.SubTopic>Bottom</Content.SubTopic>
-        <div className="align-center !my-4 flex w-full justify-center">
-          <Image src={LogoExplainBottom} width={200} height={280} alt="" />
-        </div>
+        <Content.SubTopic className="!mt-16 !pb-14">Bottom</Content.SubTopic>
+        <IllustrationImg
+          src={LogoExplainBottom}
+          width={200}
+          height={280}
+          className="align-center !my-16 flex w-full justify-center"
+        />
+
         <Content.Paragraph>
           On the other hand, this part takes a logical basis, as do the
           mathematics and physics aspects of knowledge and interest. Using the
@@ -58,38 +72,60 @@ const LogoPage = () => (
         </Content.Paragraph>
       </div>
 
-      <div className="flex flex-col">
+      <div className="relative flex flex-col  !pb-14">
         <Content.Topic>Details</Content.Topic>
-        <div className="!my-8 flex w-full justify-center">
-          <a href="https://figma.com" target="_blank">
-            <Image src={FigmaIcon} width={27} height={30} alt="" />
+        <div className="!my-8 flex w-full justify-start opacity-90 drop-shadow-md">
+          <a
+            aria-label="Figma website"
+            href="https://figma.com"
+            target="_blank"
+          >
+            <Image
+              src={FigmaIcon}
+              loading="lazy"
+              width={27}
+              height={30}
+              alt=""
+            />
           </a>
-          <Balancer as={'div'}>
-            <Content.Paragraph>
-              This logo was designed on{' '}
-              <a href="https://figma.com" target="_blank">
-                figma
-              </a>
-              .
-            </Content.Paragraph>
-          </Balancer>
+          <Content.Paragraph className="!mb-14 !font-thin">
+            This logo was designed on{' '}
+            <a
+              className="!text-lg  !font-normal !text-neutral-700 drop-shadow-md hover:opacity-75 md:!text-xl"
+              aria-label="Figma website"
+              href="https://figma.com"
+              target="_blank"
+            >
+              figma
+            </a>
+            .
+          </Content.Paragraph>
         </div>
-        <div>
-          <Content.SubTopic>Font</Content.SubTopic>
-          <Balancer className="!ml-2" as={'div'}>
-            <Content.Paragraph>
-              <Content.Span>Family: </Content.Span>
+        <div className="relative flex">
+          <div className="w-40 text-start">
+            <Content.SubTopic className="!text-xl !font-normal">
+              Font
+            </Content.SubTopic>
+            <Content.Paragraph className="!text-base !font-thin">
+              <Content.Span className="!font-normal">Family: </Content.Span>
               Mplus1 1p
             </Content.Paragraph>
-            <Content.Paragraph>
-              <Content.Span>Weight: </Content.Span>
+            <Content.Paragraph className="!text-base !font-thin">
+              <Content.Span className="!font-normal">Weight: </Content.Span>
               Extrabold
             </Content.Paragraph>
-            <Content.Paragraph>
-              <Content.Span>Letter Spacing: </Content.Span>
+            <Content.Paragraph className="!flex !items-center !text-base !font-thin">
+              <Content.Span className="!font-normal">
+                Letter Spacing:
+              </Content.Span>{' '}
               -10%
             </Content.Paragraph>
-          </Balancer>
+          </div>
+
+          <IllustrationImg
+            src={homeOffice}
+            className="absolute bottom-0 right-0 justify-center"
+          />
         </div>
       </div>
     </div>
