@@ -1,3 +1,4 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import { type VariantProps } from 'class-variance-authority'
 import { icons } from 'lucide-react'
 
@@ -39,11 +40,19 @@ type NextErrorProps = {
   reset: () => void
 }
 
+interface IllustrationImageProps extends OptClassName {
+  src: StaticImport
+  width?: number
+  height?: number
+  alt?: string
+}
+
 interface LinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     VariantProps<typeof linkVariants> {
   iconName?: keyof typeof icons
   iconFillColor?: iconColorProps['color']
+  iconColor?: `#${string}`
 }
 
 interface AnimationBacklightProps
@@ -55,7 +64,3 @@ interface OptReactCompProps<T>
     OptChildren,
     OptAsChild,
     OptProps<T> {}
-
-interface IllustrationProps extends AnimationBacklightProps {
-  children: React.ReactNode
-}

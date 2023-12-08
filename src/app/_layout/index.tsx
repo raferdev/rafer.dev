@@ -19,7 +19,7 @@ const DefaultLayout = ({ children }: Children) => (
       <RumAnalytics />
       <body
         className={cn(
-          'flex min-h-screen items-center justify-center bg-background bg-gradient-to-b from-gray-950 from-50% via-gray-800 to-sky-500 font-sans antialiased',
+          ' flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-900 from-40% via-gray-600 via-70% to-sky-300 font-sans antialiased',
           fontSans.variable
         )}
       >
