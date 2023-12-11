@@ -1,5 +1,11 @@
 # landing-page
 
+## 2.0.1
+
+### Patch Changes
+
+- fix accessibility issues, tests complements and image bugs
+
 ## 2.0.0
 
 ### Major Changes
