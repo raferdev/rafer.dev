@@ -11,9 +11,9 @@ const Aws = ({ className }: OptClassName) => (
     <img
       loading="lazy"
       decoding="async"
-      height="50px"
-      className="object-contain"
-      width="auto"
+      height="50"
+      className="h-auto w-full object-contain"
+      width="84"
       src="./logos/aws.png"
       alt=""
     />

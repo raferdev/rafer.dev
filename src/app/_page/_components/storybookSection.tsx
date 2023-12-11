@@ -26,17 +26,17 @@ const StorybookSection = () => (
 
       <SubSection.Content.Container>
         <SubSection.Content.Illustration>
-          <div className="relative rounded-full">
+          <div className="relative h-[96px] w-[96px] rounded-full">
             <Decorative className="absolute left-0 top-0 -z-20 h-[96px] w-[96px] rounded-full bg-white blur-sm" />
             <Decorative className=" absolute left-0 top-0 -z-10 h-[96px] w-[96px] rounded-full bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-red-400 via-gray-300 to-blue-500" />
             <img
-              height="96px"
-              width="108px"
+              height="96"
+              width="96"
               loading="lazy"
               decoding="async"
-              className="h-24 w-auto opacity-80 shadow-black drop-shadow-lg"
+              className="relative z-10 opacity-80 shadow-black drop-shadow-lg"
               src="./logos/storybook.png"
-              alt="storybook logo"
+              alt=""
             />
           </div>
         </SubSection.Content.Illustration>

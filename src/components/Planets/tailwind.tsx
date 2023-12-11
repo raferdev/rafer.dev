@@ -9,10 +9,10 @@ const Tailwind = ({ className }: OptClassName) => (
     )}
   >
     <img
-      height="50px"
-      width="auto"
+      height="50"
+      width="83"
       loading="lazy"
-      className="object-contain"
+      className="h-auto w-full object-contain"
       decoding="async"
       src="./logos/tailwind.png"
       alt=""

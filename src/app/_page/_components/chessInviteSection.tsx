@@ -22,18 +22,16 @@ const ChessInviteSection = () => (
     <Content className="text-neutral-300">
       <SubSection.Content.Container>
         <SubSection.Content.Illustration>
-          <div className="relative rounded-full">
-            <Decorative className="absolute left-0 top-0 -z-20 h-24 w-24 rounded-full bg-white blur-sm" />
-            <Decorative className=" absolute left-0 top-0 -z-10 h-24 w-24 rounded-full bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-white from-40% via-green-500 to-green-900" />
+          <div className="relative h-[96px] w-[96px] rounded-full">
+            <Decorative className="absolute left-0 top-0 -z-20 h-[96px] w-[96px] rounded-full bg-white blur-sm" />
+            <Decorative className=" absolute left-0 top-0 -z-10 h-[96px] w-[96px] rounded-full bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-white from-40% via-green-500 to-green-900" />
 
             <img
-              width="auto"
-              loading="lazy"
-              height="24rem"
-              decoding="async"
-              alt="chess.com logo"
+              height="96"
+              width="96"
+              alt=""
               src="./logos/chess-icon.png"
-              className="h-24 w-auto opacity-80 shadow-black drop-shadow-lg"
+              className="relative z-10 opacity-80 shadow-black drop-shadow-lg"
             />
           </div>
         </SubSection.Content.Illustration>

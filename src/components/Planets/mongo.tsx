@@ -9,11 +9,11 @@ const MongoDB = ({ className }: OptClassName) => (
     )}
   >
     <img
-      height="50px"
-      width="auto"
+      height="50"
+      width="24"
       loading="lazy"
       decoding="async"
-      className="object-contain"
+      className="h-auto w-full object-contain"
       src="./logos/mongo.png"
       alt=""
     />

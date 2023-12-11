@@ -9,11 +9,11 @@ const NextJs = ({ className }: OptClassName) => (
     )}
   >
     <img
-      height="60px"
-      width="auto"
+      height="96"
+      width="96"
       loading="lazy"
       decoding="async"
-      className="object-contain"
+      className="h-auto w-full object-contain"
       src="./logos/nextjs.png"
       alt=""
     />

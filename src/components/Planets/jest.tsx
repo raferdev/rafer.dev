@@ -11,9 +11,9 @@ const Jest = ({ className }: OptClassName) => (
     <img
       loading="lazy"
       decoding="async"
-      height="50px"
-      width="auto"
-      className=" m-[10px] object-contain"
+      height="50"
+      width="45"
+      className="m-[10px] h-auto w-full object-contain"
       src="./logos/jest.png"
       alt=""
     />
