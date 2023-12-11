@@ -11,67 +11,56 @@ test.describe('Section - Greetings', () => {
   const SECTION_P_FOUR = 'Code is just a consequence'
 
   test.beforeEach(async ({ page }) => {
-    try {
-      await page.waitForLoadState()
-    } catch (error) {
-      console.error(error)
-    }
+    await page.waitForLoadState()
   })
 
   test('Expected - Logo image to be visible', async ({ page }) => {
-    try {
-      await page.goto(HOME)
+    await page.goto(HOME)
 
-      const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
+    const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
 
-      const logo = PAGE_LOCATOR.locator('img')
-      const logoName = await PAGE_LOCATOR.locator('img').getAttribute('src')
+    const logo = PAGE_LOCATOR.locator('div')
+      .filter({
+        hasText: SECTION_P_ONE,
+      })
+      .locator('img')
 
-      expect(logoName).toContain(LOGO_SRC)
-      await expect(logo).toBeVisible()
-    } catch (error) {
-      console.error(error)
-    }
+    const logoName = await logo.getAttribute('src')
+
+    expect(logoName).toContain(LOGO_SRC)
+    await expect(logo).toBeVisible()
   })
 
   test('Expected - Greetings text to be visible', async ({ page }) => {
-    try {
-      await page.goto(HOME)
+    await page.goto(HOME)
 
-      const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
+    const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
 
-      const pOne = PAGE_LOCATOR.getByText(SECTION_P_ONE)
-      const pTwo = PAGE_LOCATOR.getByText(SECTION_P_TWO)
-      const pThree = PAGE_LOCATOR.getByText(SECTION_P_THREE)
-      const pFour = PAGE_LOCATOR.getByText(SECTION_P_FOUR)
+    const pOne = PAGE_LOCATOR.getByText(SECTION_P_ONE)
+    const pTwo = PAGE_LOCATOR.getByText(SECTION_P_TWO)
+    const pThree = PAGE_LOCATOR.getByText(SECTION_P_THREE)
+    const pFour = PAGE_LOCATOR.getByText(SECTION_P_FOUR)
 
-      await expect(pOne).toBeVisible()
-      await expect(pTwo).toBeVisible()
-      await expect(pThree).toBeVisible()
-      await expect(pFour).toBeVisible()
-    } catch (error) {
-      console.error(error)
-    }
+    await expect(pOne).toBeVisible()
+    await expect(pTwo).toBeVisible()
+    await expect(pThree).toBeVisible()
+    await expect(pFour).toBeVisible()
   })
   test('Expected - Correct height and width, full viewport', async ({
     page,
   }) => {
-    try {
-      await page.goto(HOME)
+    await page.goto(HOME)
 
-      const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
+    const PAGE_LOCATOR = page.locator('section').nth(SECTION_POSITION)
 
-      const firstSectiongBox = await PAGE_LOCATOR.boundingBox()
-      const viewPort = page.viewportSize()
+    const firstSectiongBox = await PAGE_LOCATOR.boundingBox()
+    const viewPort = page.viewportSize()
 
-      if (viewPort === null) throw new Error('Viewport is null')
+    if (viewPort === null) throw new Error('Viewport is null')
 
-      const { width, height } = viewPort
+    const { width, height } = viewPort
 
-      expect(firstSectiongBox?.height).toBe(height)
-      expect(firstSectiongBox?.width).toBe(width)
-    } catch (error) {
-      console.error(error)
-    }
+    expect(firstSectiongBox?.height).toBe(height)
+    expect(firstSectiongBox?.width).toBe(width)
   })
 })

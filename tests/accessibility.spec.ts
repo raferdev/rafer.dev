@@ -5,23 +5,15 @@ const HOME = '/'
 
 test.describe('Accessibility', () => {
   test.beforeEach(async ({ page }) => {
-    try {
-      await page.waitForLoadState()
-    } catch (error) {
-      console.error(error)
-    }
+    await page.waitForLoadState()
   })
   test('Should not have any automatically detectable accessibility issues', async ({
     page,
   }) => {
-    try {
-      await page.goto(HOME)
+    await page.goto(HOME)
 
-      const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
+    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
-      expect(accessibilityScanResults.violations).toEqual([])
-    } catch (error) {
-      console.error(error)
-    }
+    expect(accessibilityScanResults.violations).toEqual([])
   })
 })

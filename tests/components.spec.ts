@@ -4,25 +4,15 @@ const HOME = '/'
 
 test.describe('Component - Dev tools', () => {
   test.beforeEach(async ({ page }) => {
-    try {
-      await page.waitForLoadState()
-    } catch (error) {
-      console.error(error)
-    }
+    await page.waitForLoadState()
   })
-  try {
-    const DEV_TOOLS = 'tailwind-indicator'
+  const DEV_TOOLS = 'tailwind-indicator'
 
-    test('Expected - Tailwind indicator to not be rendered', async ({
-      page,
-    }) => {
-      await page.goto(HOME)
+  test('Expected - Tailwind indicator to not be rendered', async ({ page }) => {
+    await page.goto(HOME)
 
-      const twIndicator = await page.getByTestId(DEV_TOOLS).count()
+    const twIndicator = await page.getByTestId(DEV_TOOLS).count()
 
-      expect(twIndicator).toBe(0)
-    })
-  } catch (error) {
-    console.error(error)
-  }
+    expect(twIndicator).toBe(0)
+  })
 })
