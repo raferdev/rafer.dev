@@ -9,10 +9,10 @@ const Docker = ({ className }: OptClassName) => (
     )}
   >
     <img
-      width="auto"
-      height="50px"
+      width="88"
+      height="50"
       loading="lazy"
-      className="object-contain"
+      className="h-auto w-full object-contain"
       decoding="async"
       src="./logos/docker.png"
       alt=""

@@ -9,11 +9,11 @@ const Node = ({ className }: OptClassName) => (
     )}
   >
     <img
-      height="auto"
-      width="130px"
+      height="50"
+      width="82"
       loading="lazy"
       decoding="async"
-      className="rotate-6 object-contain"
+      className="h-auto w-full rotate-6 object-contain"
       src="./logos/nodejs.png"
       alt=""
     />
