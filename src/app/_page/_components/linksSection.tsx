@@ -24,7 +24,6 @@ const LinksSection = () => (
         iconName="Github"
         iconFillColor="github"
         href={links.profile.github}
-        aria-label='Github "raferdev" profile'
       >
         Github
       </Link>
@@ -35,7 +34,6 @@ const LinksSection = () => (
         iconName="Youtube"
         iconFillColor="youtube"
         href={links.profile.youtube}
-        aria-label='Youtube "raferdev" channel'
       >
         Youtube
       </Link>
@@ -46,7 +44,6 @@ const LinksSection = () => (
         iconName="Linkedin"
         iconFillColor="linkedin"
         href={links.profile.linkedin}
-        aria-label='Linkedin "raferdev" profile'
       >
         Linkedin
       </Link>
@@ -55,7 +52,6 @@ const LinksSection = () => (
         target="_blank"
         hover="bgCyan"
         iconName="Mail"
-        aria-label="Email"
         iconFillColor="white"
         href={links.profile.email.raferdev}
       >
@@ -68,7 +64,6 @@ const LinksSection = () => (
         iconName="Twitter"
         iconFillColor="twitter"
         href={links.profile.twitter}
-        aria-label='Twitter "raferdev" profile'
       >
         Twitter / X
       </Link>
@@ -79,7 +74,6 @@ const LinksSection = () => (
         iconName="Instagram"
         iconFillColor="instagram"
         href={links.profile.instagram}
-        aria-label='Instagram "raferdev" profile'
       >
         Instagram
       </Link>

@@ -34,15 +34,15 @@ const MyworldxSection = () => (
       <SubSection.Content.Container>
         <SubSection.Content.Illustration>
           <AnimationPlanetSpotMyworlx />
-          <div className="relative rounded-full">
-            <Decorative className="absolute left-0 top-0 -z-20 h-24 w-24 rounded-full bg-white blur-sm" />
-            <Decorative className=" absolute left-0 top-0 -z-10 h-24 w-24 rounded-full bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200" />
+          <div className="relative flex h-[96px] w-[108px] items-center justify-center rounded-full">
+            <Decorative className="absolute left-0 top-0 -z-20 h-[96px] w-[96px] rounded-full bg-white blur-sm" />
+            <Decorative className=" absolute left-0 top-0 -z-10 h-[96px] w-[96px] rounded-full bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-indigo-200 via-slate-600 to-indigo-200" />
             <img
               loading="lazy"
               decoding="async"
-              height="24rem"
-              width="auto"
-              className="h-24 w-auto"
+              height="96"
+              width="108"
+              className="relative z-10"
               src="./logos/myworldx-logo.png"
               alt=""
             />

@@ -20,6 +20,7 @@ const FooterSection = () => (
             width="256px"
             loading="lazy"
             decoding="async"
+            alt=""
             src="./idea-launch.png"
           />
         </div>
@@ -53,7 +54,7 @@ const FooterSection = () => (
             hover="textYellow"
             background="none"
             size="none"
-            aria-label="Github Repository"
+            aria-label="Popsy Home"
             className="m-0 inline-block w-0 min-w-min p-0 md:min-w-min"
           >
             popsy
