@@ -30,7 +30,7 @@ const __site = {
         'https://www.chess.com/play/online/new?isInvited=1&opponent=raferdev',
     },
     self: {
-      repository: 'https://github.com/raferdev/landing-page',
+      repository: 'https://github.com/raferdev/rafer.dev',
     },
     profile: {
       github: 'https://github.com/raferdev',
