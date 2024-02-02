@@ -70,10 +70,10 @@
       "next@latest": "13.0.6"
     }
   },
-  "packageManager": "pnpm@8.9.2",
+  "packageManager": "pnpm@8.14.1",
   "engines": {
-    "node": "18.x",
-    "pnpm": "8.9.2"
+    "node": "20.x",
+    "pnpm": "8.14.1"
   },
   "config": {
     "commitizen": {
