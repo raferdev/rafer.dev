@@ -1,7 +1,7 @@
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 
 RUN apk add --no-cache libc6-compat
-RUN npm i -g pnpm@8.9.2
+RUN npm i -g pnpm@8.14.1
 
 FROM base AS deps
 
