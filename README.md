@@ -30,7 +30,7 @@ In a moment, this is a simple static landing page, but the main idea of this pro
 - CI/CD: Github Actions: Run tests respecting the push branch rules, deploy the pipeline that runs the build, save the build artifacts, and deploy these artifacts on the server, starting the nginx container.
 - Frontent: Nextjs plus Tailwind, and Storybook with Nextjs and Tailwind plugins.
 
-docs: [storybook.rafer.dev](https://storybook.rafer.dev)
+Docs: [storybook.rafer.dev](https://storybook.rafer.dev)
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
