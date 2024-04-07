@@ -24,7 +24,11 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Hello, here you can see the personal landing page of user @raferdev. I overengineered some aspects to build content that used a little of all, and I would like to see in the past to understand better the web functionality, like server, http config, tests, and the frontend aspects themselves. I think seeing something end-to-end can clarify how thoughts connect and how they can be more complex with time, features, and security aspects. See this as an example.
+In a moment, this is a simple static landing page, but the main idea of this project is to create all the web flow agents present in a good server-hosted web app, like a cloud provider, remote access, a containarized environment, automated CI/CD, a reverve proxy with nginx, UI tests, UI documentation, the frontend development itself, and design notions.
+
+- Server: AWS: EC2 (t4g-small instance), Elastic Load Balancer, Route 53, and Certificate Manager to create the domain, track, and access the server. The server itself, the RHEL-9.2.0 system, uses Nginx as a reverse proxy to deliver a static domain or storybook.domain and configure all HTTP rules and headers.
+- CI/CD: Github Actions: Run tests respecting the push branch rules, deploy the pipeline that runs the build, save the build artifacts, and deploy these artifacts on the server, starting the nginx container.
+- Frontent: Nextjs plus Tailwind, and Storybook with Nextjs and Tailwind plugins.
 
 docs: [storybook.rafer.dev](https://storybook.rafer.dev)
 
