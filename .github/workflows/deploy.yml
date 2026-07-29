@@ -54,14 +54,15 @@ jobs:
 
   deploy:
     name: Deploy
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: build
+    permissions:
+      id-token: write
+      contents: read
     environment:
       name: production
       url: https://rafer.dev
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
       - name: Download Storybook
         uses: actions/download-artifact@v3
         with:
@@ -72,21 +73,22 @@ jobs:
         with:
           name: landing-page
           path: out
-      - name: Filter
-        uses: dorny/paths-filter@v2.2.1
-        id: filter
-        with:
-          filters: |
-            ngnix:
-              - '**/*'
-      - name: Deploy Nginx
-        if: ${{ steps.filter.outputs.ngnix }} == 'true'
-        run: |
-          sudo docker compose -f docker-compose.yaml build --no-cache
-          sudo docker compose down
-          sudo docker compose up -d
 
-      - name: Update content
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-east-1
+
+      - name: Sync landing page to S3
         run: |
-          sudo docker cp ./out server:/www/data/
-          sudo docker cp ./storybook-static server:/www/data/
+          aws s3 sync ./out "s3://${{ vars.LANDING_BUCKET }}" --delete
+
+      - name: Sync storybook to S3
+        run: |
+          aws s3 sync ./storybook-static "s3://${{ vars.STORYBOOK_BUCKET }}" --delete
+
+      - name: Invalidate CloudFront caches
+        run: |
+          aws cloudfront create-invalidation --distribution-id "${{ vars.LANDING_DISTRIBUTION_ID }}" --paths "/*"
+          aws cloudfront create-invalidation --distribution-id "${{ vars.STORYBOOK_DISTRIBUTION_ID }}" --paths "/*"
