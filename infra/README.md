@@ -36,9 +36,29 @@ Terraform outputs:
 - `LANDING_DISTRIBUTION_ID` ← `landing_distribution_id`
 - `STORYBOOK_BUCKET` ← `storybook_bucket_name`
 - `STORYBOOK_DISTRIBUTION_ID` ← `storybook_distribution_id`
+- `AWS_TERRAFORM_CI_ROLE_ARN` ← `terraform_ci_role_arn`
 
 None of these are secret (they're resource identifiers, not credentials) — repo
 variables are the right place for them, not secrets.
+
+## CI-driven Terraform (`live/` only)
+
+`.github/workflows/terraform.yml` runs `terraform plan` + `apply` on every push
+to `main` that touches `infra/live/**` (or via manual `workflow_dispatch`), using
+the `terraform_ci` OIDC role (`infra/live/terraform-ci.tf`) - separate from, and
+more privileged than, the app-deploy role.
+
+**This role can modify its own trust policy and permissions** (it manages the
+very IAM role it runs as, plus the GitHub OIDC provider). IAM scoping limits it
+to touching only its own role, the app-deploy role, and that one OIDC provider -
+it can't create unrelated IAM principals - but it can still grant *those two
+roles* more power on a bad `apply`. The only real mitigation is **process, not
+IAM**: turn on branch protection on `main` requiring PR review before merge, so
+no infra change reaches `terraform apply` unreviewed.
+
+`infra/bootstrap/` is deliberately **not** wired into CI - it's a one-time,
+low-frequency, chicken-and-egg config (it creates the state backend `live/`
+depends on), so it stays a manual, local `terraform apply` only.
 
 ## Notes / things intentionally out of scope
 

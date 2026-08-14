@@ -17,3 +17,7 @@ output "storybook_distribution_id" {
 output "github_actions_deploy_role_arn" {
   value = aws_iam_role.github_actions_deploy.arn
 }
+
+output "terraform_ci_role_arn" {
+  value = aws_iam_role.terraform_ci.arn
+}
