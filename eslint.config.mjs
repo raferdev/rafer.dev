@@ -20,6 +20,7 @@ const __eslintCofig = [
       'plugin:tailwindcss/recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:@next/next/recommended',
+      'plugin:react-hooks/recommended',
     ],
     parserOptions: {
       ecmaVersion: 'latest',

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["out/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "types.check": {
+      "dependsOn": ["^types.check"],
+      "outputs": []
+    },
+    "test.playwright": {
+      "dependsOn": ["build"],
+      "outputs": ["playwright-report/**"]
+    },
+    "build.storybook": {
+      "outputs": ["storybook-static/**"]
+    }
+  }
+}

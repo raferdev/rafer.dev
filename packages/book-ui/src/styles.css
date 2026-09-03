@@ -1,0 +1,86 @@
+/**
+ * book-ui design tokens + utility classes. Imported once by the consuming
+ * app's global stylesheet — see apps/web/src/app/_layout/global.css.
+ *
+ * Deliberately plain CSS, no @layer: this file is pulled in via @import
+ * from a package boundary, and Tailwind's @layer only resolves against a
+ * @tailwind directive in the *same* PostCSS processing pass — across an
+ * @import from another package, that pass doesn't see it.
+ */
+
+:root {
+  --backdrop: 60 4% 68%;
+  --paper: 48 20% 95%;
+  --paper-2: 48 16% 93%;
+  --ink: 220 15% 13%;
+  --book-slate: 220 19% 26%;
+  --book-muted: 223 6% 63%;
+  --book-muted-ink: 225 9% 47%;
+  --pen: 217 51% 42%;
+  --pen-soft: #345bb01f;
+  --cover: 221 41% 28%;
+  --cover-2: 220 41% 22%;
+  --edge: 48 15% 87%;
+}
+
+.book-turn {
+  animation: book-turn 0.65s cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+
+.book-turn .book-page-card {
+  animation: book-page-lift 0.65s cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-turn,
+  .book-turn .book-page-card {
+    animation: none;
+  }
+}
+
+.book-dotted-leader {
+  border-bottom: 1.5px dotted hsl(var(--edge));
+}
+
+.book-dropcap::first-letter {
+  float: left;
+  padding: 6px 12px 0 0;
+  font-family: var(--font-serif);
+  font-size: 62px;
+  font-weight: 600;
+  line-height: 0.82;
+  color: hsl(var(--pen));
+}
+
+.book-rule {
+  width: 120px;
+  height: 0;
+  margin: 16px 0 22px;
+  border-radius: 2px;
+  border-bottom: 2.5px solid hsl(var(--pen));
+  transform: rotate(-0.4deg);
+}
+
+@keyframes book-turn {
+  from {
+    opacity: 0;
+    transform: rotateY(-10deg) translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes book-page-lift {
+  0% {
+    box-shadow:
+      0 40px 80px rgba(28, 31, 38, 0.28),
+      0 10px 24px rgba(28, 31, 38, 0.16);
+  }
+  100% {
+    box-shadow:
+      0 24px 60px rgba(28, 31, 38, 0.2),
+      0 3px 10px rgba(28, 31, 38, 0.1);
+  }
+}

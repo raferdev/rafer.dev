@@ -1,20 +1,20 @@
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
-/coverage
-/test-results/
-/playwright-report/
-/playwright/.cache/
+coverage/
+test-results/
+playwright-report/
+playwright/.cache/
 
 # next.js
 .next/
 out/
 
 # production
-/build
+build/
 storybook-static
 
 # misc

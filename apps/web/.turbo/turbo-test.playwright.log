@@ -1,0 +1,24 @@
+
+> web@2.0.1 test.playwright /home/rafael/Documents/raferdev/rafer.dev/apps/web
+> pnpm playwright test
+
+[1A[2K[WebServer] npm notice run web@2.0.1 test
+
+
+[1A[2K[WebServer] npm notice run docker-compose -f docker-compose.test.yaml up
+[1A[2K[WebServer] sh: 1: docker-compose: not found
+
+[1A[2KError: Process from config.webServer was not able to start. Exit code: 127
+
+
+
+
+
+
+
+[1A[2K
+To open last HTML report run:
+
+  pnpm exec playwright show-report
+
+ ELIFECYCLE  Command failed with exit code 1.

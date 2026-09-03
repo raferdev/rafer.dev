@@ -27,8 +27,8 @@ jobs:
 
       - name: Create env file
         run: |
-          echo "${{ secrets.ENV_FILE }}" > .env
-          echo "${{ secrets.ENV_LOCAL_FILE }}" > .env.local
+          echo "${{ secrets.ENV_FILE }}" > apps/web/.env
+          echo "${{ secrets.ENV_LOCAL_FILE }}" > apps/web/.env.local
 
       - name: Install Deps
         run: pnpm i
@@ -43,13 +43,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: landing-page
-          path: out
+          path: apps/web/out
           retention-days: 1
       - name: Upload Storybook Files
         uses: actions/upload-artifact@v3
         with:
           name: storybook
-          path: storybook-static
+          path: packages/book-ui/storybook-static
           retention-days: 1
 
   deploy:
