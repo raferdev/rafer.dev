@@ -23,7 +23,7 @@
 
   "files.autoSave": "off",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.experimental.useFlatConfig": true,
   "eslint.options": {
