@@ -13,6 +13,9 @@ playwright/.cache/
 .next/
 out/
 
+# turborepo
+.turbo/
+
 # production
 build/
 storybook-static
