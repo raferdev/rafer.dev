@@ -22,11 +22,7 @@
     "prepare": "husky && git config commit.template .gitmessage"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --no-warn-ignored",
-      "prettier --write"
-    ],
-    "*.{md,mdx,mjs,cjs,json,yml,yaml,css}": [
+    "*.{js,jsx,ts,tsx,md,mdx,mjs,cjs,json,yml,yaml,css}": [
       "prettier --write"
     ]
   },

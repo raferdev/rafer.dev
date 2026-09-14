@@ -1,13 +1,13 @@
-import './global.css'
+import "./global.css"
 
-import { Children } from '@/@types/components'
-import { cn } from '@/utils/cn'
-import { fontSans, fontScript, fontSerif } from '@raferdev/book-ui'
+import { Children } from "@/@types/components"
+import { cn } from "@/utils/cn"
+import { fontSans, fontScript, fontSerif } from "@raferdev/book-ui"
 
-import { DevTools } from '@/components/DevTools'
+import { DevTools } from "@/components/DevTools"
 
-import { GoogleAnalytics } from './gtag'
-import { RumAnalytics } from './rum'
+import { GoogleAnalytics } from "./gtag"
+import { RumAnalytics } from "./rum"
 
 const DefaultLayout = ({ children }: Children) => (
   <>
@@ -17,7 +17,7 @@ const DefaultLayout = ({ children }: Children) => (
       <RumAnalytics />
       <body
         className={cn(
-          'bg-backdrop text-ink flex min-h-screen items-center justify-center overflow-hidden p-3 font-sans antialiased',
+          "bg-backdrop text-ink flex min-h-screen items-center justify-center overflow-hidden p-3 font-sans antialiased",
           fontSans.variable,
           fontSerif.variable,
           fontScript.variable
@@ -31,6 +31,6 @@ const DefaultLayout = ({ children }: Children) => (
   </>
 )
 
-export { metadata } from './metadata'
+export { metadata } from "./metadata"
 
 export default DefaultLayout

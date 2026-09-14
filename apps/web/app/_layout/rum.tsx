@@ -1,7 +1,7 @@
-import Script from 'next/script'
+import Script from "next/script"
 
-import { __env } from '@/config/env'
-import { __site } from '@/config/site'
+import { __env } from "@/config/env"
+import { __site } from "@/config/site"
 
 const RumAnalytics = () => (
   <Script id="rum-analytics">

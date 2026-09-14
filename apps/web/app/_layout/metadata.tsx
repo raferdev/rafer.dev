@@ -1,6 +1,6 @@
-import { Metadata } from 'next'
+import { Metadata } from "next"
 
-import { __site } from '@/config/site'
+import { __site } from "@/config/site"
 
 const { metadata: meta } = __site
 
@@ -11,13 +11,13 @@ const metadata: Metadata = {
     template: `%s | ${meta.name}`,
   },
   description: meta.description,
-  referrer: 'origin-when-cross-origin',
+  referrer: "origin-when-cross-origin",
 
-  keywords: ['Nextjs', 'Software Engineer', 'Open Source', 'Raferdev'],
+  keywords: ["Nextjs", "Software Engineer", "Open Source", "Raferdev"],
   authors: [
     {
-      name: 'raferdev',
-      url: 'https://rafer.dev',
+      name: "raferdev",
+      url: "https://rafer.dev",
     },
   ],
   formatDetection: {
@@ -25,11 +25,11 @@ const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  creator: '@raferdev',
-  themeColor: [{ media: '(prefers-color-scheme: light)', color: 'white' }],
+  creator: "@raferdev",
+  themeColor: [{ media: "(prefers-color-scheme: light)", color: "white" }],
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
+    type: "website",
+    locale: "en_US",
     images: [`${meta.url}/opengraph-image.png`],
     url: meta.url,
     title: meta.name,
@@ -40,16 +40,16 @@ const metadata: Metadata = {
     canonical: meta.url,
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: meta.name,
     description: meta.description,
     images: [`${meta.url}/opengraph-image.png`],
-    creator: '@raferdev',
+    creator: "@raferdev",
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
