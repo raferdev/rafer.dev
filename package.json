@@ -19,7 +19,7 @@
     "cz": "cz",
     "release": "changeset",
     "version": "changeset version",
-    "prepare": "husky"
+    "prepare": "husky && git config commit.template .gitmessage"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
