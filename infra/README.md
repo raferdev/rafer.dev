@@ -51,8 +51,8 @@ more privileged than, the app-deploy role.
 **This role can modify its own trust policy and permissions** (it manages the
 very IAM role it runs as, plus the GitHub OIDC provider). IAM scoping limits it
 to touching only its own role, the app-deploy role, and that one OIDC provider -
-it can't create unrelated IAM principals - but it can still grant *those two
-roles* more power on a bad `apply`. The only real mitigation is **process, not
+it can't create unrelated IAM principals - but it can still grant _those two
+roles_ more power on a bad `apply`. The only real mitigation is **process, not
 IAM**: turn on branch protection on `main` requiring PR review before merge, so
 no infra change reaches `terraform apply` unreviewed.
 
@@ -64,7 +64,7 @@ depends on), so it stays a manual, local `terraform apply` only.
 
 - `raferdev.com` → `rafer.dev` redirect (currently handled by nginx) isn't covered
   here — that's a separate domain registration. Add it later as its own hosted zone
-  + a redirect-only CloudFront distribution if needed.
+  - a redirect-only CloudFront distribution if needed.
 - Cache-Control isn't force-set to `max-age=31536000, immutable` for every response
   (nginx currently does this for all files including HTML). CloudFront's
   `Managed-CachingOptimized` policy is used instead, since blanket immutable caching

@@ -1,4 +1,27 @@
 {
+  "eslint.workingDirectories": [
+    {
+      "pattern": "apps/*/"
+    },
+    {
+      "pattern": "packages/*/"
+    }
+  ],
+  "tailwindCSS.classFunctions": ["cva", "cn"],
+  "vitest.debugExclude": [
+    "<node_internals>/**",
+    "**/node_modules/**",
+    "**/fixtures/**"
+  ],
+  "files.exclude": {
+    "deprecated": true
+  },
+  "search.exclude": {
+    "apps/web/registry/radix-*": true,
+    "apps/web/public/r/*": true,
+    "packages/ui/test/fixtures/*": true,
+    "apps/web/styles/*": true
+  },
   "editor.inlineSuggest.enabled": true,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -13,17 +36,15 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "files.autoSave": "off",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "eslint.experimental.useFlatConfig": true,
   "eslint.options": {
@@ -39,7 +60,7 @@
     "typescriptreact"
   ],
   "editor.formatOnSave": true,
-  "typescript.preferences.importModuleSpecifierEnding": "minimal",
+  "js/ts.preferences.importModuleSpecifierEnding": "minimal",
   "css.lint.unknownAtRules": "ignore",
   "tailwindCSS.experimental.classRegex": [
     [

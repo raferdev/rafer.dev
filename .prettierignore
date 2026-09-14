@@ -1,0 +1,11 @@
+dist/
+node_modules/
+.next/
+.turbo/
+coverage/
+pnpm-lock.yaml
+.pnpm-store/
+
+# Vendored agent skills, kept byte-identical to upstream so they can be
+# re-synced without a formatting diff.
+skills/
