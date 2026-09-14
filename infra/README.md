@@ -44,7 +44,7 @@ variables are the right place for them, not secrets.
 
 - `raferdev.com` → `rafer.dev` redirect (currently handled by nginx) isn't covered
   here — that's a separate domain registration. Add it later as its own hosted zone
-  + a redirect-only CloudFront distribution if needed.
+  - a redirect-only CloudFront distribution if needed.
 - Cache-Control isn't force-set to `max-age=31536000, immutable` for every response
   (nginx currently does this for all files including HTML). CloudFront's
   `Managed-CachingOptimized` policy is used instead, since blanket immutable caching
