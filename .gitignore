@@ -81,7 +81,9 @@ __screenshots__
 CONTEXT.md
 docs/adr
 
-.claude/agents
-.claude/commands
-.claude/skills
+# .claude/agents, commands and skills are versioned on purpose: they encode
+# this repo's workflow (commit convention, review and issue flows) and are
+# useless to a fresh clone or a teammate if they stay local-only.
+# Only per-machine state is ignored here.
 .claude/settings.json
+.claude/settings.local.json
