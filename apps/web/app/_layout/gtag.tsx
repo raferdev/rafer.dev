@@ -1,6 +1,6 @@
-import Script from 'next/script'
+import Script from "next/script"
 
-import { __env } from '@/config/env'
+import { __env } from "@/config/env"
 
 const GoogleAnalytics = () => (
   <>
