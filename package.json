@@ -22,7 +22,11 @@
     "prepare": "husky && git config commit.template .gitmessage"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,mjs,cjs,json,yml,yaml,css}": [
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --no-warn-ignored",
+      "prettier --write"
+    ],
+    "*.{md,mdx,mjs,cjs,json,yml,yaml,css}": [
       "prettier --write"
     ]
   },
@@ -61,7 +65,7 @@
     "concurrently": "^10.0.5",
     "cross-env": "^10.1.0",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "10.10.0",
+    "eslint": "^9",
     "eslint-config-next": "16.3.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-config-turbo": "^2.10.12",
