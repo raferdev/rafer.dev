@@ -1,24 +1,38 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "ui": "tui",
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["out/**", ".next/**", "!.next/cache/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env*"
+      ],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    },
+    "format": {
+      "dependsOn": [
+        "^format"
+      ]
+    },
+    "typecheck": {
+      "dependsOn": [
+        "^typecheck"
+      ]
     },
     "dev": {
       "cache": false,
       "persistent": true
-    },
-    "types.check": {
-      "dependsOn": ["^types.check"],
-      "outputs": []
-    },
-    "test.playwright": {
-      "dependsOn": ["build"],
-      "outputs": ["playwright-report/**"]
-    },
-    "build.storybook": {
-      "outputs": ["storybook-static/**"]
     }
   }
 }
