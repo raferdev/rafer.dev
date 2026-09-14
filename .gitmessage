@@ -1,0 +1,48 @@
+# <type>(<scope>): <subject>
+#
+# <body>
+#
+# <footer>
+#
+# ---------------------------------------------------------------------------
+# Conventional Commits — enforced by .commitlintrc.json
+# (@commitlint/config-conventional) via the commit-msg hook.
+#
+# type      required, lowercase, one of:
+#             feat      a new user-facing capability
+#             fix       a bug fix
+#             docs      documentation only
+#             style     formatting only, no behaviour change
+#             refactor  neither fixes a bug nor adds a feature
+#             perf      improves performance
+#             test      adds or corrects tests
+#             build     build system or dependencies
+#             ci        CI configuration and workflows
+#             chore     maintenance that does not touch src or tests
+#             revert    reverts a previous commit
+#
+# scope     optional, lowercase, the area touched: (web), (ui), (infra),
+#             (workflow), (deps). Omit rather than inventing one.
+#
+# subject   required, imperative mood ("add", not "added" or "adds"),
+#             no trailing period, whole header <= 100 characters.
+#
+# body      optional, blank line before it. Explain WHY, not WHAT — the diff
+#             already shows what changed. Wrap at 72 characters.
+#
+# footer    optional. Use for issue links and breaking changes:
+#             Closes #123
+#             BREAKING CHANGE: <what broke and what to do about it>
+#           A breaking change may also be flagged with ! after the scope:
+#             refactor(ui)!: drop the legacy Button variant prop
+#
+# ---------------------------------------------------------------------------
+# Rules that matter beyond the format:
+#
+#   * Keep commits atomic — one logical concern each. Split unrelated
+#     changes rather than bundling them.
+#   * Never add trailers such as "Generated with Claude Code", author, or
+#     co-author lines. The commit author is whoever ran git commit.
+#
+# See .github/COMMIT_CONVENTION.md for splitting guidance.
+# ---------------------------------------------------------------------------
