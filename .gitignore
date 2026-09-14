@@ -2,6 +2,13 @@
 node_modules
 .pnp
 .pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+.pnpm
+.pnpm-store
 
 # testing
 coverage/
@@ -18,21 +25,23 @@ out/
 
 # production
 build/
+dist
 storybook-static
 
 # misc
 .DS_Store
-*.pem
+.pem
+.eslintcache
+
 
 # debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.pnpm-debug.log*
 
 # local env files
-.env
-.env*.local
-.env.prod 
+.env*
 
 # vercel
 .vercel
@@ -49,3 +58,30 @@ next-env.d.ts
 !*.tfvars.example
 crash.log
 crash.*.log
+
+.contentlayer
+tsconfig.tsbuildinfo
+
+# ide
+.idea
+.fleet
+
+.notes
+.playwright-mcp
+.playwright-cli
+plans
+
+# vitest browser mode writes these only on test failure.
+__screenshots__
+.codex-artifacts
+.registry-health
+.vercel
+.tmp*
+
+CONTEXT.md
+docs/adr
+
+.claude/agents
+.claude/commands
+.claude/skills
+.claude/settings.json
