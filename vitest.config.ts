@@ -8,11 +8,6 @@ export default defineConfig({
       "**/node_modules/**",
       "**/fixtures/**",
       "**/templates/**",
-      "**/packages/tests/**",
-    ],
-    projects: [
-      './vitest.config.ts',
-      './packages/tests/vitest.config.ts'
     ],
   },
   plugins: [
@@ -20,5 +15,4 @@ export default defineConfig({
       ignoreConfigErrors: true,
     }),
   ],
-  
 })
