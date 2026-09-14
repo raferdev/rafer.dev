@@ -1,28 +1,26 @@
 ## Summary
 
-- Bullet point describing key implementation details
-- Bullet point describing architectural changes
-- Bullet point describing new features or improvements
+- What changed, and why it was worth changing
+- Any architectural or dependency decisions a reviewer should weigh in on
+- Anything deliberately left out of scope
 
 ## Test plan
 
-- [ ] All tests pass (specify count: X/X tests passing)
-- [ ] Specific functionality verification
-- [ ] Build verification
-- [ ] Integration test verification
-- [ ] Any other relevant verification steps
-
-**Key Changes:**
-
-- Highlight of major implementation details
-- Important architectural decisions
-- New patterns or approaches introduced
+- [ ] `pnpm lint`
+- [ ] `pnpm typecheck`
+- [ ] `pnpm test`
+- [ ] `pnpm format:check`
+- [ ] `pnpm build`
+- [ ] Verified in the browser (state which routes, or why not applicable)
 
 **Verification:**
 
 ```bash
-dotnet build    # ✅ Expected status
-dotnet test     # ✅ Expected status
+pnpm lint         # ✅
+pnpm typecheck    # ✅
+pnpm test         # ✅
+pnpm format:check # ✅
+pnpm build        # ✅
 ```
 
 Closes #[issue-number]
@@ -31,10 +29,13 @@ Closes #[issue-number]
 
 ### PR Requirements
 
-- Use bullet points in Summary section for key changes
-- Include comprehensive Test plan with checkboxes (use [x] for completed items)
-- Highlight Key Changes that reviewers should focus on
-- Include Verification section with build/test commands and status
-- Always link to the original issue with "Closes #[issue-number]"
-- Follow the exact markdown structure shown above
-- NEVER add any extra content such as "Generated with Claude Code", author information, or any other additions beyond the specified format
+- Summarise with bullet points; say why, not just what.
+- Tick only the checks you actually ran, and paste real output if a check
+  fails or is skipped — an unticked box with an explanation beats a ticked
+  box that is not true.
+- Call out anything a reviewer should look at closely: schema changes, IAM or
+  permission changes, dependency bumps, deletions.
+- Link the issue with "Closes #[issue-number]" when one exists.
+- Keep unrelated changes out — open a second PR instead.
+- NEVER add trailers such as "Generated with Claude Code", author, or
+  co-author lines.
