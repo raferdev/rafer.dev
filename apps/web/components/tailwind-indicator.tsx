@@ -1,7 +1,3 @@
-/**
- * Shows the active Tailwind breakpoint in the corner while developing.
- * Returns null in production, so it costs nothing in the shipped bundle.
- */
 export function TailwindIndicator() {
   if (process.env.NODE_ENV === "production") {
     return null
