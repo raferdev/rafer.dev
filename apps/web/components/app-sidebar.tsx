@@ -12,14 +12,46 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@workspace/ui/components/sidebar"
-import { mainNav } from "@/lib/nav"
+import type { ContentNode } from "@/lib/content"
 import { siteConfig } from "@/lib/config"
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+function NodeLink({ node, active }: { node: ContentNode; active: string }) {
+  return (
+    <SidebarMenuItem>
+      <SidebarMenuButton
+        isActive={active === node.href}
+        render={<Link href={node.href} />}
+      >
+        {node.title}
+      </SidebarMenuButton>
+      {node.children.length > 0 ? (
+        <SidebarMenuSub>
+          {node.children.map((child) => (
+            <SidebarMenuSubItem key={child.href}>
+              <SidebarMenuSubButton
+                isActive={active === child.href}
+                render={<Link href={child.href} />}
+              >
+                {child.title}
+              </SidebarMenuSubButton>
+            </SidebarMenuSubItem>
+          ))}
+        </SidebarMenuSub>
+      ) : null}
+    </SidebarMenuItem>
+  )
+}
+
+export function AppSidebar({
+  tree,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & { tree: ContentNode[] }) {
   const pathname = usePathname()
 
   return (
@@ -33,9 +65,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </div>
               <div className="flex flex-col gap-0.5 leading-none">
                 <span className="font-medium">{siteConfig.name}</span>
-                <span className="text-xs text-muted-foreground">
-                  Design system
-                </span>
+                <span className="text-xs text-muted-foreground">origin</span>
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -43,28 +73,30 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
 
       <SidebarContent>
-        {mainNav.map((section) => (
-          <SidebarGroup key={section.title}>
-            <SidebarGroupLabel>{section.title}</SidebarGroupLabel>
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {section.items.map((item) => (
-                  <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton
-                      isActive={pathname === item.href}
-                      render={<Link href={item.href} />}
-                    >
-                      {item.title}
-                    </SidebarMenuButton>
-                    {item.label ? (
-                      <SidebarMenuBadge>{item.label}</SidebarMenuBadge>
-                    ) : null}
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
+        {tree.map((node) =>
+          node.isFolder ? (
+            <SidebarGroup key={node.href}>
+              <SidebarGroupLabel>
+                <Link href={node.href}>{node.title}</Link>
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  {node.children.map((child) => (
+                    <NodeLink key={child.href} node={child} active={pathname} />
+                  ))}
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          ) : (
+            <SidebarGroup key={node.href}>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <NodeLink node={node} active={pathname} />
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          )
+        )}
       </SidebarContent>
 
       <SidebarFooter>
