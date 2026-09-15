@@ -1,22 +1,24 @@
 import { cn } from "@workspace/ui/lib/utils"
-import { sampleToc } from "@/lib/nav"
+import type { Heading } from "@/lib/content"
 
-export function Toc() {
+export function Toc({ headings }: { headings: Heading[] }) {
+  if (headings.length === 0) return null
+
   return (
-    <aside className="sticky top-14 hidden h-[calc(100svh-3.5rem)] shrink-0 overflow-y-auto py-8 pe-6 xl:block">
+    <aside className="sticky top-14 hidden h-[calc(100svh-3.5rem)] w-56 shrink-0 overflow-y-auto py-8 pe-6 xl:block">
       <p className="mb-3 text-sm font-medium text-foreground">On this page</p>
       <nav aria-label="On this page">
         <ul className="border-s text-sm">
-          {sampleToc.map((item) => (
-            <li key={item.href}>
+          {headings.map((heading) => (
+            <li key={heading.id}>
               <a
-                href={item.href}
+                href={`#${heading.id}`}
                 className={cn(
                   "-ms-px block border-s border-transparent py-1 text-muted-foreground transition-colors hover:text-foreground",
-                  item.depth === 2 ? "ps-4" : "ps-7"
+                  heading.depth === 2 ? "ps-4" : "ps-7"
                 )}
               >
-                {item.title}
+                {heading.title}
               </a>
             </li>
           ))}

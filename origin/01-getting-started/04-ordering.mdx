@@ -1,0 +1,53 @@
+---
+title: Ordering
+description: Each folder picks how its own children are sorted.
+---
+
+Folder structure gives hierarchy but not sequence. A `config.yml` beside the
+pages supplies the sequence, and each folder chooses independently.
+
+## config.yml
+
+```yaml
+title: Getting started
+ordering: prefix
+direction: asc
+```
+
+| Field       | Values                                | Default                                            |
+| ----------- | ------------------------------------- | -------------------------------------------------- |
+| `title`     | any string                            | derived from the folder name                       |
+| `ordering`  | `prefix`, `alphabetical`, `timestamp` | inherited from the parent folder                   |
+| `direction` | `asc`, `desc`                         | `asc`, except `timestamp` which defaults to `desc` |
+| `hidden`    | `true`                                | folder is excluded from routes and sidebar         |
+
+## prefix
+
+Sorts by a leading number: `01-introduction.mdx` before `02-install.mdx`. The
+prefix orders the file and is stripped from the URL, so that file serves at
+`/getting-started/introduction`.
+
+Only a **numeric** prefix is stripped. A file named `visuals.mdx` keeps its
+name in the URL regardless of how it is titled.
+
+## alphabetical
+
+Sorts by title, not filename. This section's Design system folder titles a file
+`visuals.mdx` as Appearance, and it sorts first.
+
+## timestamp
+
+Sorts by the `date` in each page's frontmatter.
+
+```yaml
+---
+title: Hello world
+date: 2026-08-02
+---
+```
+
+It reads the declared date rather than the file's modification time, because
+git does not preserve mtimes — a fresh clone rewrites them all to checkout
+time, which would reorder the list differently for every person who cloned it.
+
+Pages with no `date` sort after those that have one.
