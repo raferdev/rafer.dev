@@ -1,11 +1,6 @@
-/**
- * Navigation shown in the left sidebar. Kept as data rather than markup so the
- * sidebar stays a rendering concern and routes live in one place.
- */
 export type NavItem = {
   title: string
   href: string
-  /** Rendered as a muted pill next to the label. */
   label?: string
 }
 
@@ -40,7 +35,6 @@ export const mainNav: NavSection[] = [
   },
 ]
 
-/** Placeholder anchors for the right-hand rail. */
 export type TocItem = {
   title: string
   href: string

@@ -50,8 +50,6 @@ export default function RootLayout({
       className={cn(fontVariables, "antialiased")}
     >
       <head>
-        {/* Runs before first paint so the browser chrome matches the resolved
-            theme instead of flashing the light colour on a dark device. */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

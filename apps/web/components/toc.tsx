@@ -1,10 +1,6 @@
 import { cn } from "@workspace/ui/lib/utils"
 import { sampleToc } from "@/lib/nav"
 
-/**
- * Right-hand rail. Sticks below the header and hides under xl, where the
- * content column takes the full width instead of being squeezed.
- */
 export function Toc() {
   return (
     <aside className="sticky top-14 hidden h-[calc(100svh-3.5rem)] shrink-0 overflow-y-auto py-8 pe-6 xl:block">

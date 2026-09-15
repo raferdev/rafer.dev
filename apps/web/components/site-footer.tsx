@@ -1,9 +1,5 @@
 import { siteConfig } from "@/lib/config"
 
-/**
- * Closes the content surface. Sits inside SidebarInset so it ends with the
- * same rounded bottom corners the inset gives the panel.
- */
 export function SiteFooter() {
   return (
     <footer className="mt-auto rounded-b-xl border-t px-6 py-6">
