@@ -1,0 +1,42 @@
+---
+title: Deep nesting
+description: How the sidebar stays readable past three levels.
+---
+
+Folders nest as deep as you like. Routing has no depth limit, but a sidebar
+that renders every level of a deep tree stops being readable, so it shows a
+window onto the tree rather than the whole thing.
+
+## The window
+
+Three levels are on screen at once. The window slides as you descend, so the
+page you are on is always the deepest entry visible — you never lose your
+place, however deep you go.
+
+Set the size in the root `config.yml`:
+
+```yaml
+title: Origin
+ordering: prefix
+depth: 3
+```
+
+## Siblings stay
+
+Drilling into a folder does not hide its neighbours. Every level in the window
+lists all of its entries and expands only the branch you are inside, so you can
+move sideways between topics without going back first.
+
+## Back
+
+Once the window slides past the top, a back row appears above the tree naming
+the folder the window is anchored to. It takes you up and out one window.
+
+## It comes from the URL
+
+The window position is derived from the address, not held in memory. A link to
+a page seven levels down opens with the sidebar already in the right place, and
+reloading keeps it there.
+
+Try it: [Greece](/blog/physics/geometry/euclidean/history/antiquity/greece) sits
+six levels inside the blog.

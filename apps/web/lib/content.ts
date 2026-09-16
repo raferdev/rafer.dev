@@ -3,7 +3,22 @@ import path from "node:path"
 import matter from "gray-matter"
 import { parse as parseYaml } from "yaml"
 
-export const CONTENT_ROOT = path.join(process.cwd(), "..", "..", "origin")
+function locateContentRoot(): string {
+  let dir = process.cwd()
+
+  for (let depth = 0; depth < 8; depth += 1) {
+    const candidate = path.join(dir, "origin")
+    if (fs.existsSync(candidate)) return candidate
+
+    const parent = path.dirname(dir)
+    if (parent === dir) break
+    dir = parent
+  }
+
+  return path.join(process.cwd(), "origin")
+}
+
+export const CONTENT_ROOT = locateContentRoot()
 
 export const ORDERING_STRATEGIES = [
   "prefix",
@@ -15,6 +30,7 @@ export type Direction = "asc" | "desc"
 
 export type FolderConfig = {
   title?: string
+  depth?: number
   ordering?: Ordering
   direction?: Direction
   hidden?: boolean
@@ -192,6 +208,11 @@ function buildTree(
   }
 
   return sortNodes(nodes, ordering, direction)
+}
+
+export function getVisibleDepth(): number {
+  const configured = readFolderConfig(CONTENT_ROOT).depth
+  return typeof configured === "number" && configured > 0 ? configured : 3
 }
 
 export function getContentTree(): ContentNode[] {
