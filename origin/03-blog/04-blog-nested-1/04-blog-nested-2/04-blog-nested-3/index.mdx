@@ -1,0 +1,13 @@
+---
+title: Blog
+description: Posts, newest first.
+---
+
+This folder sets `ordering: timestamp`, which sorts by the `date` in each
+post's frontmatter rather than by filename.
+
+## Why frontmatter and not the file's mtime
+
+Git does not preserve modification times. A fresh clone rewrites every mtime to
+checkout time, so filesystem timestamps would reorder the blog for each person
+who cloned it. The declared `date` is stable.

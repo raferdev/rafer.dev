@@ -15,6 +15,7 @@ export type Direction = "asc" | "desc"
 
 export type FolderConfig = {
   title?: string
+  depth?: number
   ordering?: Ordering
   direction?: Direction
   hidden?: boolean
@@ -192,6 +193,11 @@ function buildTree(
   }
 
   return sortNodes(nodes, ordering, direction)
+}
+
+export function getVisibleDepth(): number {
+  const configured = readFolderConfig(CONTENT_ROOT).depth
+  return typeof configured === "number" && configured > 0 ? configured : 3
 }
 
 export function getContentTree(): ContentNode[] {

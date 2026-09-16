@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { ChevronLeftIcon } from "lucide-react"
 
 import {
   Sidebar,
@@ -9,7 +10,6 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -19,40 +19,39 @@ import {
   SidebarMenuSubItem,
 } from "@workspace/ui/components/sidebar"
 import type { ContentNode } from "@/lib/content"
+import { buildSidebarView, type SidebarEntry } from "@/lib/sidebar"
 import { siteConfig } from "@/lib/config"
 
-function NodeLink({ node, active }: { node: ContentNode; active: string }) {
+function SubTree({ entries }: { entries: SidebarEntry[] }) {
+  if (entries.length === 0) return null
+
   return (
-    <SidebarMenuItem>
-      <SidebarMenuButton
-        isActive={active === node.href}
-        render={<Link href={node.href} />}
-      >
-        {node.title}
-      </SidebarMenuButton>
-      {node.children.length > 0 ? (
-        <SidebarMenuSub>
-          {node.children.map((child) => (
-            <SidebarMenuSubItem key={child.href}>
-              <SidebarMenuSubButton
-                isActive={active === child.href}
-                render={<Link href={child.href} />}
-              >
-                {child.title}
-              </SidebarMenuSubButton>
-            </SidebarMenuSubItem>
-          ))}
-        </SidebarMenuSub>
-      ) : null}
-    </SidebarMenuItem>
+    <SidebarMenuSub>
+      {entries.map((entry) => (
+        <SidebarMenuSubItem key={entry.href}>
+          <SidebarMenuSubButton
+            isActive={entry.isActive}
+            render={<Link href={entry.href} />}
+          >
+            {entry.title}
+          </SidebarMenuSubButton>
+          <SubTree entries={entry.children} />
+        </SidebarMenuSubItem>
+      ))}
+    </SidebarMenuSub>
   )
 }
 
 export function AppSidebar({
   tree,
+  visibleDepth,
   ...props
-}: React.ComponentProps<typeof Sidebar> & { tree: ContentNode[] }) {
+}: React.ComponentProps<typeof Sidebar> & {
+  tree: ContentNode[]
+  visibleDepth: number
+}) {
   const pathname = usePathname()
+  const view = buildSidebarView(tree, pathname, visibleDepth)
 
   return (
     <Sidebar {...props}>
@@ -73,30 +72,41 @@ export function AppSidebar({
       </SidebarHeader>
 
       <SidebarContent>
-        {tree.map((node) =>
-          node.isFolder ? (
-            <SidebarGroup key={node.href}>
-              <SidebarGroupLabel>
-                <Link href={node.href}>{node.title}</Link>
-              </SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {node.children.map((child) => (
-                    <NodeLink key={child.href} node={child} active={pathname} />
-                  ))}
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          ) : (
-            <SidebarGroup key={node.href}>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  <NodeLink node={node} active={pathname} />
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-          )
-        )}
+        {view.back ? (
+          <SidebarGroup className="pb-0">
+            <SidebarGroupContent>
+              <SidebarMenu>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    className="text-muted-foreground"
+                    render={<Link href={view.back.href} />}
+                  >
+                    <ChevronLeftIcon />
+                    <span className="truncate">{view.back.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ) : null}
+
+        <SidebarGroup>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {view.items.map((entry) => (
+                <SidebarMenuItem key={entry.href}>
+                  <SidebarMenuButton
+                    isActive={entry.isActive}
+                    render={<Link href={entry.href} />}
+                  >
+                    {entry.title}
+                  </SidebarMenuButton>
+                  <SubTree entries={entry.children} />
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
 
       <SidebarFooter>
