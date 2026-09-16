@@ -103,26 +103,44 @@ describe("buildSidebarView", () => {
     expect(all).toContain(deep)
   })
 
-  it("slides the window so the current page is the deepest entry", () => {
+  it("slides the window so the current page sits one level from the bottom", () => {
     const view = buildSidebarView(tree, "/blog/physics/geometry/euclidean", 3)
-    expect(view.back).toEqual({ href: "/blog", title: "blog" })
+    expect(view.back).toEqual({ href: "/blog/physics", title: "physics" })
     expect(hrefsAtEachLevel(view)).toEqual([
-      ["/blog/hello", "/blog/physics", "/blog/chemistry"],
       ["/blog/physics/leaf", "/blog/physics/geometry"],
       ["/blog/physics/geometry/euclidean"],
+      ["/blog/physics/geometry/euclidean/history"],
     ])
+  })
+
+  it("shows the children of the folder you are standing on", () => {
+    for (const [path, child] of [
+      ["/blog", "/blog/physics"],
+      ["/blog/physics", "/blog/physics/geometry"],
+      ["/blog/physics/geometry", "/blog/physics/geometry/euclidean"],
+      [
+        "/blog/physics/geometry/euclidean",
+        "/blog/physics/geometry/euclidean/history",
+      ],
+      [
+        "/blog/physics/geometry/euclidean/history",
+        "/blog/physics/geometry/euclidean/history/antiquity",
+      ],
+    ] as const) {
+      const rendered = hrefsAtEachLevel(buildSidebarView(tree, path, 3)).flat()
+      expect(rendered, `standing on ${path}`).toContain(child)
+    }
   })
 
   it("keeps siblings visible and expands only the active branch", () => {
     const view = buildSidebarView(tree, "/blog/physics/geometry", 3)
-    const blog = view.items.find((i) => i.href === "/blog")
-    const children = blog?.children.map((c) => c.href) ?? []
+    const hrefs = view.items.map((i) => i.href)
 
-    expect(children).toContain("/blog/chemistry")
-    expect(children).toContain("/blog/physics")
+    expect(hrefs).toContain("/blog/chemistry")
+    expect(hrefs).toContain("/blog/physics")
 
-    const chemistry = blog?.children.find((c) => c.href === "/blog/chemistry")
-    const physics = blog?.children.find((c) => c.href === "/blog/physics")
+    const chemistry = view.items.find((i) => i.href === "/blog/chemistry")
+    const physics = view.items.find((i) => i.href === "/blog/physics")
     expect(chemistry?.children).toEqual([])
     expect(physics?.children.map((c) => c.href)).toContain(
       "/blog/physics/geometry"
@@ -131,23 +149,28 @@ describe("buildSidebarView", () => {
 
   it("marks the current page active and its ancestors as ancestors", () => {
     const view = buildSidebarView(tree, "/blog/physics/geometry", 3)
-    const blog = view.items.find((i) => i.href === "/blog")
-    const physics = blog?.children.find((c) => c.href === "/blog/physics")
+    const physics = view.items.find((i) => i.href === "/blog/physics")
     const geometry = physics?.children.find(
       (c) => c.href === "/blog/physics/geometry"
     )
 
-    expect(blog?.isAncestor).toBe(true)
-    expect(blog?.isActive).toBe(false)
+    expect(physics?.isAncestor).toBe(true)
+    expect(physics?.isActive).toBe(false)
     expect(geometry?.isActive).toBe(true)
     expect(geometry?.isAncestor).toBe(false)
   })
 
   it("offers a back target once the window has slid past the root", () => {
+    expect(buildSidebarView(tree, "/", 3).back).toBeNull()
+    expect(buildSidebarView(tree, "/blog", 3).back).toBeNull()
     expect(buildSidebarView(tree, "/blog/physics", 3).back).toBeNull()
+    expect(buildSidebarView(tree, "/blog/physics/geometry", 3).back).toEqual({
+      href: "/blog",
+      title: "blog",
+    })
     expect(
       buildSidebarView(tree, "/blog/physics/geometry/euclidean", 3).back
-    ).toEqual({ href: "/blog", title: "blog" })
+    ).toEqual({ href: "/blog/physics", title: "physics" })
   })
 
   it("falls back to the nearest resolvable folder for an unknown path", () => {
@@ -157,6 +180,12 @@ describe("buildSidebarView", () => {
       "/blog/physics/leaf",
       "/blog/physics/geometry",
     ])
+  })
+
+  it("keeps the whole tree reachable at twenty levels", () => {
+    const deep = "/blog/physics/geometry/euclidean/history/antiquity/greece"
+    const view = buildSidebarView(tree, deep, 3)
+    expect(hrefsAtEachLevel(view).flat()).toContain(deep)
   })
 
   it("falls back to the top level when no ancestor resolves", () => {

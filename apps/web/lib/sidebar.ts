@@ -31,7 +31,7 @@ function findBySegments(
     const match: ContentNode | undefined = level.find(
       (node) => node.slug.at(-1) === segment
     )
-    if (!match) return null
+    if (!match) break
     current = match
     level = match.children
   }
@@ -73,7 +73,7 @@ export function buildSidebarView(
 ): SidebarView {
   const depth = Math.max(1, visibleDepth)
   const activeSegments = segmentsOf(pathname)
-  const focusDepth = Math.max(0, activeSegments.length - depth)
+  const focusDepth = Math.max(0, activeSegments.length - depth + 1)
 
   const focus =
     focusDepth > 0

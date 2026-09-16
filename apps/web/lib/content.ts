@@ -3,7 +3,22 @@ import path from "node:path"
 import matter from "gray-matter"
 import { parse as parseYaml } from "yaml"
 
-export const CONTENT_ROOT = path.join(process.cwd(), "..", "..", "origin")
+function locateContentRoot(): string {
+  let dir = process.cwd()
+
+  for (let depth = 0; depth < 8; depth += 1) {
+    const candidate = path.join(dir, "origin")
+    if (fs.existsSync(candidate)) return candidate
+
+    const parent = path.dirname(dir)
+    if (parent === dir) break
+    dir = parent
+  }
+
+  return path.join(process.cwd(), "origin")
+}
+
+export const CONTENT_ROOT = locateContentRoot()
 
 export const ORDERING_STRATEGIES = [
   "prefix",
