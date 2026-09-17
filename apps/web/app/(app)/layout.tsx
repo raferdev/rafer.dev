@@ -13,12 +13,12 @@ export default function AppLayout({
   return (
     <SidebarProvider>
       <AppSidebar tree={tree} visibleDepth={visibleDepth} variant="inset" />
-      <SidebarInset>
-        <SiteHeader />
-        <div className="mx-auto flex w-full max-w-6xl flex-1 gap-8 px-6">
-          {children}
+      <SidebarInset className="md:h-[calc(100svh-0.5rem)] md:[scrollbar-gutter:stable] md:overflow-y-auto md:border-s md:border-t md:peer-data-[variant=inset]:m-0 md:peer-data-[variant=inset]:mt-2 md:peer-data-[variant=inset]:rounded-none md:peer-data-[variant=inset]:rounded-tl-xl md:peer-data-[variant=inset]:shadow-none">
+        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6">
+          <SiteHeader />
+          <div className="flex flex-1 gap-8">{children}</div>
+          <SiteFooter />
         </div>
-        <SiteFooter />
       </SidebarInset>
     </SidebarProvider>
   )

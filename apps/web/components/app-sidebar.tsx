@@ -28,6 +28,7 @@ import type { ContentNode } from "@/lib/content"
 import { buildSidebarView, type SidebarEntry } from "@/lib/sidebar"
 import { siteConfig } from "@/lib/config"
 import { SiteLogo } from "@/components/site-logo"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 function NodeIcon({
   isFolder,
@@ -113,13 +114,16 @@ export function AppSidebar({
   return (
     <Sidebar {...props}>
       <SidebarHeader className="p-2">
-        <Link
-          href="/"
-          aria-label={siteConfig.name}
-          className="rounded-md px-2 py-1.5 group-data-[collapsible=icon]:hidden"
-        >
-          <SiteLogo className="block w-full max-w-[9.5rem]" />
-        </Link>
+        <div className="flex items-center justify-between gap-2 group-data-[collapsible=icon]:hidden">
+          <Link
+            href="/"
+            aria-label={siteConfig.name}
+            className="rounded-md px-2 py-1.5"
+          >
+            <SiteLogo className="block w-full max-w-[6.5rem]" />
+          </Link>
+          <ThemeToggle />
+        </div>
       </SidebarHeader>
 
       <SidebarContent>

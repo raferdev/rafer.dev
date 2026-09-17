@@ -5,7 +5,7 @@ export function Toc({ headings }: { headings: Heading[] }) {
   if (headings.length === 0) return null
 
   return (
-    <aside className="sticky top-14 hidden h-[calc(100svh-3.5rem)] w-56 shrink-0 overflow-y-auto py-8 pe-6 xl:block">
+    <aside className="sticky top-0 hidden h-[calc(100svh-1rem)] w-56 shrink-0 overflow-y-auto py-8 pe-6 xl:block">
       <p className="mb-3 text-sm font-medium text-foreground">On this page</p>
       <nav aria-label="On this page">
         <ul className="border-s text-sm">
