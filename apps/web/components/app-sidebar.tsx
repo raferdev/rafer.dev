@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
@@ -27,6 +27,7 @@ import {
 import type { ContentNode } from "@/lib/content"
 import { buildSidebarView, type SidebarEntry } from "@/lib/sidebar"
 import { siteConfig } from "@/lib/config"
+import { SiteLogo } from "@/components/site-logo"
 
 function NodeIcon({
   isFolder,
@@ -40,17 +41,17 @@ function NodeIcon({
 }
 
 function useCollapsed(pathname: string) {
-  const [collapsed, setCollapsed] = useState<string[]>([])
+  const [state, setState] = useState({ pathname, hrefs: [] as string[] })
+  const hrefs = state.pathname === pathname ? state.hrefs : []
 
-  useEffect(() => setCollapsed([]), [pathname])
-
-  const isCollapsed = (href: string) => collapsed.includes(href)
+  const isCollapsed = (href: string) => hrefs.includes(href)
   const toggle = (href: string) =>
-    setCollapsed((current) =>
-      current.includes(href)
-        ? current.filter((item) => item !== href)
-        : [...current, href]
-    )
+    setState({
+      pathname,
+      hrefs: hrefs.includes(href)
+        ? hrefs.filter((item) => item !== href)
+        : [...hrefs, href],
+    })
 
   return { isCollapsed, toggle }
 }
@@ -111,20 +112,14 @@ export function AppSidebar({
 
   return (
     <Sidebar {...props}>
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" render={<Link href="/" />}>
-              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary font-mono text-xs text-sidebar-primary-foreground">
-                rd
-              </div>
-              <div className="flex flex-col gap-0.5 leading-none">
-                <span className="font-medium">{siteConfig.name}</span>
-                <span className="text-xs text-muted-foreground">origin</span>
-              </div>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
+      <SidebarHeader className="p-2">
+        <Link
+          href="/"
+          aria-label={siteConfig.name}
+          className="rounded-md px-2 py-1.5 group-data-[collapsible=icon]:hidden"
+        >
+          <SiteLogo className="block w-full max-w-[9.5rem]" />
+        </Link>
       </SidebarHeader>
 
       <SidebarContent>
