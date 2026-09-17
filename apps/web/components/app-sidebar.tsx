@@ -1,8 +1,14 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ChevronLeftIcon } from "lucide-react"
+import {
+  ChevronLeftIcon,
+  FileTextIcon,
+  FolderIcon,
+  FolderOpenIcon,
+} from "lucide-react"
 
 import {
   Sidebar,
@@ -22,22 +28,71 @@ import type { ContentNode } from "@/lib/content"
 import { buildSidebarView, type SidebarEntry } from "@/lib/sidebar"
 import { siteConfig } from "@/lib/config"
 
-function SubTree({ entries }: { entries: SidebarEntry[] }) {
+function NodeIcon({
+  isFolder,
+  isOpen,
+}: {
+  isFolder: boolean
+  isOpen: boolean
+}) {
+  if (!isFolder) return <FileTextIcon className="text-muted-foreground" />
+  return isOpen ? <FolderOpenIcon /> : <FolderIcon />
+}
+
+function useCollapsed(pathname: string) {
+  const [collapsed, setCollapsed] = useState<string[]>([])
+
+  useEffect(() => setCollapsed([]), [pathname])
+
+  const isCollapsed = (href: string) => collapsed.includes(href)
+  const toggle = (href: string) =>
+    setCollapsed((current) =>
+      current.includes(href)
+        ? current.filter((item) => item !== href)
+        : [...current, href]
+    )
+
+  return { isCollapsed, toggle }
+}
+
+type BranchProps = {
+  entries: SidebarEntry[]
+  isCollapsed: (href: string) => boolean
+  toggle: (href: string) => void
+}
+
+function Branch({ entries, isCollapsed, toggle }: BranchProps) {
   if (entries.length === 0) return null
 
   return (
     <SidebarMenuSub>
-      {entries.map((entry) => (
-        <SidebarMenuSubItem key={entry.href}>
-          <SidebarMenuSubButton
-            isActive={entry.isActive}
-            render={<Link href={entry.href} />}
-          >
-            {entry.title}
-          </SidebarMenuSubButton>
-          <SubTree entries={entry.children} />
-        </SidebarMenuSubItem>
-      ))}
+      {entries.map((entry) => {
+        const open = entry.children.length > 0 && !isCollapsed(entry.href)
+
+        return (
+          <SidebarMenuSubItem key={entry.href}>
+            <SidebarMenuSubButton
+              isActive={entry.isActive}
+              onClick={(event) => {
+                if (!entry.isActive || entry.children.length === 0) return
+                event.preventDefault()
+                toggle(entry.href)
+              }}
+              render={<Link href={entry.href} />}
+            >
+              <NodeIcon isFolder={entry.isFolder} isOpen={open} />
+              <span className="truncate">{entry.title}</span>
+            </SidebarMenuSubButton>
+            {open ? (
+              <Branch
+                entries={entry.children}
+                isCollapsed={isCollapsed}
+                toggle={toggle}
+              />
+            ) : null}
+          </SidebarMenuSubItem>
+        )
+      })}
     </SidebarMenuSub>
   )
 }
@@ -51,6 +106,7 @@ export function AppSidebar({
   visibleDepth: number
 }) {
   const pathname = usePathname()
+  const { isCollapsed, toggle } = useCollapsed(pathname)
   const view = buildSidebarView(tree, pathname, visibleDepth)
 
   return (
@@ -72,38 +128,53 @@ export function AppSidebar({
       </SidebarHeader>
 
       <SidebarContent>
-        {view.back ? (
-          <SidebarGroup className="pb-0">
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
-                  <SidebarMenuButton
-                    className="text-muted-foreground"
-                    render={<Link href={view.back.href} />}
-                  >
-                    <ChevronLeftIcon />
-                    <span className="truncate">{view.back.title}</span>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ) : null}
-
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {view.items.map((entry) => (
-                <SidebarMenuItem key={entry.href}>
-                  <SidebarMenuButton
-                    isActive={entry.isActive}
-                    render={<Link href={entry.href} />}
-                  >
-                    {entry.title}
-                  </SidebarMenuButton>
-                  <SubTree entries={entry.children} />
-                </SidebarMenuItem>
-              ))}
+              {view.sections.map((section) => {
+                const expanded = section.isOpen && !isCollapsed(section.href)
+
+                return (
+                  <SidebarMenuItem key={section.href}>
+                    <SidebarMenuButton
+                      isActive={section.isActive}
+                      onClick={(event) => {
+                        if (!section.isActive || !section.isOpen) return
+                        event.preventDefault()
+                        toggle(section.href)
+                      }}
+                      render={<Link href={section.href} />}
+                    >
+                      <NodeIcon isFolder={section.isFolder} isOpen={expanded} />
+                      <span className="truncate">{section.title}</span>
+                    </SidebarMenuButton>
+
+                    {expanded && section.back ? (
+                      <SidebarMenuSub>
+                        <SidebarMenuSubItem>
+                          <SidebarMenuSubButton
+                            className="text-muted-foreground"
+                            render={<Link href={section.back.href} />}
+                          >
+                            <ChevronLeftIcon />
+                            <span className="truncate">
+                              {section.back.title}
+                            </span>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      </SidebarMenuSub>
+                    ) : null}
+
+                    {expanded ? (
+                      <Branch
+                        entries={section.items}
+                        isCollapsed={isCollapsed}
+                        toggle={toggle}
+                      />
+                    ) : null}
+                  </SidebarMenuItem>
+                )
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

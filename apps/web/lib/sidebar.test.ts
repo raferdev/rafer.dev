@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest"
 
 import type { ContentNode } from "@/lib/content"
-import { buildSidebarView } from "@/lib/sidebar"
+import { buildSidebarView, type SidebarEntry } from "@/lib/sidebar"
 
 function folder(slug: string[], children: ContentNode[] = []): ContentNode {
   return {
@@ -70,47 +70,65 @@ const tree: ContentNode[] = [
     ]
   ),
   folder(["guides"], [page(["guides", "install"])]),
+  page(["about"]),
 ]
 
-function hrefsAtEachLevel(view: ReturnType<typeof buildSidebarView>) {
-  const levels: string[][] = []
-  const walk = (entries: typeof view.items, depth: number) => {
-    if (entries.length === 0) return
-    levels[depth] = [...(levels[depth] ?? []), ...entries.map((e) => e.href)]
-    entries.forEach((e) => walk(e.children, depth + 1))
+function openSection(pathname: string, depth = 3) {
+  const view = buildSidebarView(tree, pathname, depth)
+  return view.sections.find((s) => s.isOpen) ?? null
+}
+
+function levels(entries: SidebarEntry[]): string[][] {
+  const out: string[][] = []
+  const walk = (list: SidebarEntry[], d: number) => {
+    if (list.length === 0) return
+    out[d] = [...(out[d] ?? []), ...list.map((e) => e.href)]
+    list.forEach((e) => walk(e.children, d + 1))
   }
-  walk(view.items, 0)
-  return levels
+  walk(entries, 0)
+  return out
 }
 
 describe("buildSidebarView", () => {
-  it("shows top-level sections at the root with no back link", () => {
-    const view = buildSidebarView(tree, "/", 3)
-    expect(view.back).toBeNull()
-    expect(view.items.map((i) => i.href)).toEqual(["/blog", "/guides"])
+  it("always lists every top-level section", () => {
+    for (const path of [
+      "/",
+      "/blog",
+      "/blog/physics",
+      "/blog/physics/geometry/euclidean/history/antiquity/greece",
+      "/guides/install",
+    ]) {
+      const view = buildSidebarView(tree, path, 3)
+      expect(
+        view.sections.map((s) => s.href),
+        `at ${path}`
+      ).toEqual(["/blog", "/guides", "/about"])
+    }
   })
 
-  it("renders nothing deeper than the window allows", () => {
-    const view = buildSidebarView(tree, "/blog", 3)
-    const levels = hrefsAtEachLevel(view)
-    expect(levels.length).toBeLessThanOrEqual(3)
-  })
-
-  it("keeps the current page visible however deep it is", () => {
-    const deep = "/blog/physics/geometry/euclidean/history/antiquity/greece"
-    const view = buildSidebarView(tree, deep, 3)
-    const all = hrefsAtEachLevel(view).flat()
-    expect(all).toContain(deep)
-  })
-
-  it("slides the window so the current page sits one level from the bottom", () => {
-    const view = buildSidebarView(tree, "/blog/physics/geometry/euclidean", 3)
-    expect(view.back).toEqual({ href: "/blog/physics", title: "physics" })
-    expect(hrefsAtEachLevel(view)).toEqual([
-      ["/blog/physics/leaf", "/blog/physics/geometry"],
-      ["/blog/physics/geometry/euclidean"],
-      ["/blog/physics/geometry/euclidean/history"],
+  it("opens only the section you are inside", () => {
+    const view = buildSidebarView(tree, "/blog/physics", 3)
+    expect(view.sections.filter((s) => s.isOpen).map((s) => s.href)).toEqual([
+      "/blog",
     ])
+    expect(view.sections.find((s) => s.href === "/guides")?.items).toEqual([])
+  })
+
+  it("opens no section at the root", () => {
+    const view = buildSidebarView(tree, "/", 3)
+    expect(view.sections.every((s) => !s.isOpen)).toBe(true)
+  })
+
+  it("distinguishes folders from pages", () => {
+    const view = buildSidebarView(tree, "/blog", 3)
+    expect(view.sections.find((s) => s.href === "/about")?.isFolder).toBe(false)
+    expect(view.sections.find((s) => s.href === "/blog")?.isFolder).toBe(true)
+
+    const open = openSection("/blog")
+    const hello = open?.items.find((i) => i.href === "/blog/hello")
+    const physics = open?.items.find((i) => i.href === "/blog/physics")
+    expect(hello?.isFolder).toBe(false)
+    expect(physics?.isFolder).toBe(true)
   })
 
   it("shows the children of the folder you are standing on", () => {
@@ -127,20 +145,62 @@ describe("buildSidebarView", () => {
         "/blog/physics/geometry/euclidean/history/antiquity",
       ],
     ] as const) {
-      const rendered = hrefsAtEachLevel(buildSidebarView(tree, path, 3)).flat()
-      expect(rendered, `standing on ${path}`).toContain(child)
+      const open = openSection(path)
+      expect(levels(open?.items ?? []).flat(), `standing on ${path}`).toContain(
+        child
+      )
     }
   })
 
-  it("keeps siblings visible and expands only the active branch", () => {
-    const view = buildSidebarView(tree, "/blog/physics/geometry", 3)
-    const hrefs = view.items.map((i) => i.href)
+  it("keeps the current page visible however deep it is", () => {
+    const deep = "/blog/physics/geometry/euclidean/history/antiquity/greece"
+    const open = openSection(deep)
+    expect(levels(open?.items ?? []).flat()).toContain(deep)
+  })
 
+  it("never renders more levels than the window allows", () => {
+    for (const path of [
+      "/blog",
+      "/blog/physics",
+      "/blog/physics/geometry/euclidean",
+      "/blog/physics/geometry/euclidean/history/antiquity/greece",
+    ]) {
+      const open = openSection(path)
+      expect(
+        levels(open?.items ?? []).length,
+        `at ${path}`
+      ).toBeLessThanOrEqual(3)
+    }
+  })
+
+  it("windows relative to the section, not absolute depth", () => {
+    const open = openSection("/blog/physics/geometry/euclidean")
+    expect(open?.back).toEqual({ href: "/blog/physics", title: "physics" })
+    expect(levels(open?.items ?? [])).toEqual([
+      ["/blog/physics/leaf", "/blog/physics/geometry"],
+      ["/blog/physics/geometry/euclidean"],
+      ["/blog/physics/geometry/euclidean/history"],
+    ])
+  })
+
+  it("needs no back row until the window slides inside the section", () => {
+    expect(openSection("/blog")?.back).toBeNull()
+    expect(openSection("/blog/physics")?.back).toBeNull()
+    expect(openSection("/blog/physics/geometry")?.back).toBeNull()
+    expect(openSection("/blog/physics/geometry/euclidean")?.back).toEqual({
+      href: "/blog/physics",
+      title: "physics",
+    })
+  })
+
+  it("keeps siblings visible and expands only the active branch", () => {
+    const open = openSection("/blog/physics/geometry")
+    const hrefs = open?.items.map((i) => i.href) ?? []
     expect(hrefs).toContain("/blog/chemistry")
     expect(hrefs).toContain("/blog/physics")
 
-    const chemistry = view.items.find((i) => i.href === "/blog/chemistry")
-    const physics = view.items.find((i) => i.href === "/blog/physics")
+    const chemistry = open?.items.find((i) => i.href === "/blog/chemistry")
+    const physics = open?.items.find((i) => i.href === "/blog/physics")
     expect(chemistry?.children).toEqual([])
     expect(physics?.children.map((c) => c.href)).toContain(
       "/blog/physics/geometry"
@@ -148,8 +208,8 @@ describe("buildSidebarView", () => {
   })
 
   it("marks the current page active and its ancestors as ancestors", () => {
-    const view = buildSidebarView(tree, "/blog/physics/geometry", 3)
-    const physics = view.items.find((i) => i.href === "/blog/physics")
+    const open = openSection("/blog/physics/geometry")
+    const physics = open?.items.find((i) => i.href === "/blog/physics")
     const geometry = physics?.children.find(
       (c) => c.href === "/blog/physics/geometry"
     )
@@ -160,51 +220,27 @@ describe("buildSidebarView", () => {
     expect(geometry?.isAncestor).toBe(false)
   })
 
-  it("offers a back target once the window has slid past the root", () => {
-    expect(buildSidebarView(tree, "/", 3).back).toBeNull()
-    expect(buildSidebarView(tree, "/blog", 3).back).toBeNull()
-    expect(buildSidebarView(tree, "/blog/physics", 3).back).toBeNull()
-    expect(buildSidebarView(tree, "/blog/physics/geometry", 3).back).toEqual({
-      href: "/blog",
-      title: "blog",
-    })
+  it("marks a section active only when it is the current page", () => {
     expect(
-      buildSidebarView(tree, "/blog/physics/geometry/euclidean", 3).back
-    ).toEqual({ href: "/blog/physics", title: "physics" })
+      buildSidebarView(tree, "/blog", 3).sections.find(
+        (s) => s.href === "/blog"
+      )?.isActive
+    ).toBe(true)
+    expect(
+      buildSidebarView(tree, "/blog/physics", 3).sections.find(
+        (s) => s.href === "/blog"
+      )?.isActive
+    ).toBe(false)
   })
 
-  it("falls back to the nearest resolvable folder for an unknown path", () => {
-    const view = buildSidebarView(tree, "/blog/physics/nope/deeper/still", 3)
-    expect(view.back).toEqual({ href: "/blog/physics", title: "physics" })
-    expect(view.items.map((i) => i.href)).toEqual([
-      "/blog/physics/leaf",
-      "/blog/physics/geometry",
-    ])
-  })
-
-  it("keeps the whole tree reachable at twenty levels", () => {
-    const deep = "/blog/physics/geometry/euclidean/history/antiquity/greece"
-    const view = buildSidebarView(tree, deep, 3)
-    expect(hrefsAtEachLevel(view).flat()).toContain(deep)
-  })
-
-  it("falls back to the top level when no ancestor resolves", () => {
-    const view = buildSidebarView(tree, "/nope/deeper/still/further", 3)
-    expect(view.back).toBeNull()
-    expect(view.items.map((i) => i.href)).toEqual(["/blog", "/guides"])
+  it("falls back to the deepest resolvable folder for an unknown path", () => {
+    const open = openSection("/blog/physics/nope/deeper/still")
+    expect(open?.back).toEqual({ href: "/blog/physics", title: "physics" })
   })
 
   it("honours a different window size", () => {
     const deep = "/blog/physics/geometry/euclidean/history"
-    expect(hrefsAtEachLevel(buildSidebarView(tree, deep, 2)).length).toBe(2)
-    expect(hrefsAtEachLevel(buildSidebarView(tree, deep, 5)).length).toBe(5)
-  })
-
-  it("supports depth far beyond three levels", () => {
-    const deep = "/blog/physics/geometry/euclidean/history/antiquity/greece"
-    const view = buildSidebarView(tree, deep, 20)
-    const all = hrefsAtEachLevel(view).flat()
-    expect(all).toContain(deep)
-    expect(view.back).toBeNull()
+    expect(levels(openSection(deep, 2)?.items ?? []).length).toBe(2)
+    expect(levels(openSection(deep, 5)?.items ?? []).length).toBe(5)
   })
 })
