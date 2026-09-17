@@ -12,13 +12,13 @@ export default function AppLayout({
 
   return (
     <SidebarProvider>
-      <AppSidebar tree={tree} visibleDepth={visibleDepth} variant="inset" />
+      <AppSidebar tree={tree} visibleDepth={visibleDepth} />
       <SidebarInset>
-        <SiteHeader />
-        <div className="mx-auto flex w-full max-w-6xl flex-1 gap-8 px-6">
-          {children}
+        <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6">
+          <SiteHeader />
+          <div className="flex flex-1 gap-8">{children}</div>
+          <SiteFooter />
         </div>
-        <SiteFooter />
       </SidebarInset>
     </SidebarProvider>
   )
