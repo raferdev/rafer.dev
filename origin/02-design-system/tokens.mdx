@@ -29,13 +29,22 @@ so both themes resolve without a `dark:` override.
 
 Two decisions worth knowing:
 
-- **The neutrals are not grey.** They carry a trace of chroma at the brand hue,
-  so backgrounds and borders sit in the same family as the blue instead of
-  fighting it. The default shadcn neutrals lean violet, which pulled against
-  the brand.
-- **`--primary` flips across themes.** Light mode uses brand-700 on white.
+- **The neutrals are not grey, and they are not blue either.** They carry a
+  trace of chroma at hue 75, which is warm. The brand sits at 263.5, which is
+  cool. Setting cool ink on warm paper is the oldest trick in print, and it is
+  most of what separates a page you want to read from product chrome. The
+  numbers say it plainly: the background measures `b* +1.5` and the brand
+  `b* -50`.
+- **The warmth is held back in dark mode.** Light mode carries chroma 0.004 on
+  the background, dark mode only 0.008 against a much lower lightness. Push it
+  further and a warm dark stops reading as charcoal and starts reading as
+  brown.
+- **`--primary` flips across themes.** Light mode uses brand-700 on the paper.
   Dark mode uses brand-400, because a deep blue on a dark background has
   nowhere near enough contrast.
+- **Accents stay cool on purpose.** The hover and active washes keep the brand
+  hue rather than following the neutrals, so the row you are standing on reads
+  as branded rather than merely shaded.
 
 Every pair is checked: body text reaches AAA in both themes, and no
 foreground-on-background combination falls below the AA floor of 4.5:1.

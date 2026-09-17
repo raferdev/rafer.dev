@@ -17,14 +17,14 @@ and the two copies drift apart the moment a token changes.
 
 ## What flips and what does not
 
-Hue stays fixed across themes. What changes is lightness, and which end of the
-ramp a role points at:
+Hue stays fixed across themes — warm for neutrals, cool for the brand. What
+changes is lightness, and which end of the ramp a role points at:
 
-| Role           | Light      | Dark                    |
-| -------------- | ---------- | ----------------------- |
-| `--primary`    | brand-700  | brand-400               |
-| `--background` | white      | brand-tinted near-black |
-| `--border`     | solid tint | white at 12%            |
+| Role           | Light      | Dark            |
+| -------------- | ---------- | --------------- |
+| `--primary`    | brand-700  | brand-400       |
+| `--background` | warm white | warm near-black |
+| `--border`     | warm tint  | white at 12%    |
 
 Borders in dark mode are a translucent white rather than a fixed colour, so
 they hold up over both the background and the raised card surface without a
