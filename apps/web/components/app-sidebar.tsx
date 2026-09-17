@@ -3,12 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import {
-  ChevronLeftIcon,
-  FileTextIcon,
-  FolderIcon,
-  FolderOpenIcon,
-} from "lucide-react"
+import { ArrowLeftIcon, ChevronLeftIcon } from "lucide-react"
 
 import {
   Sidebar,
@@ -24,21 +19,33 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from "@workspace/ui/components/sidebar"
+import { cn } from "@workspace/ui/lib/utils"
 import type { ContentNode } from "@/lib/content"
 import { buildSidebarView, type SidebarEntry } from "@/lib/sidebar"
 import { siteConfig } from "@/lib/config"
 import { SiteLogo } from "@/components/site-logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-function NodeIcon({
-  isFolder,
-  isOpen,
-}: {
-  isFolder: boolean
-  isOpen: boolean
-}) {
-  if (!isFolder) return <FileTextIcon className="text-muted-foreground" />
-  return isOpen ? <FolderOpenIcon /> : <FolderIcon />
+const ROW = "text-sm data-[size=md]:text-sm"
+
+function Marker({ isFolder, isOpen }: { isFolder: boolean; isOpen: boolean }) {
+  if (!isFolder) {
+    return (
+      <span className="ms-auto flex size-4 shrink-0 items-center justify-center">
+        <span className="size-1 rounded-full bg-current opacity-40" />
+      </span>
+    )
+  }
+
+  return (
+    <ChevronLeftIcon
+      aria-hidden
+      className={cn(
+        "ms-auto shrink-0 opacity-40 transition-transform duration-300 ease-out motion-reduce:transition-none",
+        isOpen && "-rotate-90"
+      )}
+    />
+  )
 }
 
 function useCollapsed(pathname: string) {
@@ -55,6 +62,26 @@ function useCollapsed(pathname: string) {
     })
 
   return { isCollapsed, toggle }
+}
+
+function Collapse({
+  open,
+  children,
+}: {
+  open: boolean
+  children: React.ReactNode
+}) {
+  return (
+    <div
+      inert={!open}
+      className={cn(
+        "grid transition-[grid-template-rows,opacity] duration-300 ease-out motion-reduce:transition-none",
+        open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+      )}
+    >
+      <div className="overflow-hidden">{children}</div>
+    </div>
+  )
 }
 
 type BranchProps = {
@@ -74,6 +101,7 @@ function Branch({ entries, isCollapsed, toggle }: BranchProps) {
         return (
           <SidebarMenuSubItem key={entry.href}>
             <SidebarMenuSubButton
+              className={cn(ROW, "[&>svg]:text-sidebar-foreground")}
               isActive={entry.isActive}
               onClick={(event) => {
                 if (!entry.isActive || entry.children.length === 0) return
@@ -82,16 +110,16 @@ function Branch({ entries, isCollapsed, toggle }: BranchProps) {
               }}
               render={<Link href={entry.href} />}
             >
-              <NodeIcon isFolder={entry.isFolder} isOpen={open} />
-              <span className="truncate">{entry.title}</span>
+              <span className="min-w-0 flex-1 truncate">{entry.title}</span>
+              <Marker isFolder={entry.isFolder} isOpen={open} />
             </SidebarMenuSubButton>
-            {open ? (
+            <Collapse open={open}>
               <Branch
                 entries={entry.children}
                 isCollapsed={isCollapsed}
                 toggle={toggle}
               />
-            ) : null}
+            </Collapse>
           </SidebarMenuSubItem>
         )
       })}
@@ -136,6 +164,7 @@ export function AppSidebar({
                 return (
                   <SidebarMenuItem key={section.href}>
                     <SidebarMenuButton
+                      className={ROW}
                       isActive={section.isActive}
                       onClick={(event) => {
                         if (!section.isActive || !section.isOpen) return
@@ -144,33 +173,35 @@ export function AppSidebar({
                       }}
                       render={<Link href={section.href} />}
                     >
-                      <NodeIcon isFolder={section.isFolder} isOpen={expanded} />
-                      <span className="truncate">{section.title}</span>
+                      <span className="min-w-0 flex-1 truncate">
+                        {section.title}
+                      </span>
+                      <Marker isFolder={section.isFolder} isOpen={expanded} />
                     </SidebarMenuButton>
 
-                    {expanded && section.back ? (
-                      <SidebarMenuSub>
-                        <SidebarMenuSubItem>
-                          <SidebarMenuSubButton
-                            className="text-muted-foreground"
-                            render={<Link href={section.back.href} />}
-                          >
-                            <ChevronLeftIcon />
-                            <span className="truncate">
-                              {section.back.title}
-                            </span>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      </SidebarMenuSub>
-                    ) : null}
+                    <Collapse open={expanded}>
+                      {section.back ? (
+                        <SidebarMenuSub>
+                          <SidebarMenuSubItem>
+                            <SidebarMenuSubButton
+                              className={cn(ROW, "text-muted-foreground")}
+                              render={<Link href={section.back.href} />}
+                            >
+                              <ArrowLeftIcon />
+                              <span className="truncate">
+                                {section.back.title}
+                              </span>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        </SidebarMenuSub>
+                      ) : null}
 
-                    {expanded ? (
                       <Branch
                         entries={section.items}
                         isCollapsed={isCollapsed}
                         toggle={toggle}
                       />
-                    ) : null}
+                    </Collapse>
                   </SidebarMenuItem>
                 )
               })}
