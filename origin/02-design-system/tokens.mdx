@@ -1,12 +1,78 @@
 ---
 title: Tokens
-description: Colour, radius and typography variables.
+description: One brand colour, resolved into a full system.
 ---
 
-Tokens live in `packages/ui/src/styles/globals.css` and are consumed through
-semantic class names.
+Everything visual on this site derives from a single hex value — `#345bb0`,
+the blue in the wordmark. Tokens live in `packages/ui/src/styles/globals.css`
+and are consumed through semantic class names, never raw values.
+
+## The brand ramp
+
+Converted to OKLCH, `#345bb0` is `oklch(0.4894 0.1426 263.5)`. That lightness
+lands almost exactly on Tailwind's `blue-700`, which is the useful part: the
+brand is a **700-weight** blue, deep rather than bright. It is anchored at 700
+and the rest of the ramp is built around it at a fixed hue, with chroma peaking
+mid-scale and tapering at both ends so the light tints stay clean and the dark
+shades stay from going muddy.
+
+<ColorScale />
+
+Step 700 reproduces `#345bb0` exactly, and no step needed gamut clamping.
 
 ## Semantic colours
 
 Use `bg-background`, `text-muted-foreground` and friends rather than raw values,
 so both themes resolve without a `dark:` override.
+
+<SemanticSwatches />
+
+Two decisions worth knowing:
+
+- **The neutrals are not grey.** They carry a trace of chroma at the brand hue,
+  so backgrounds and borders sit in the same family as the blue instead of
+  fighting it. The default shadcn neutrals lean violet, which pulled against
+  the brand.
+- **`--primary` flips across themes.** Light mode uses brand-700 on white.
+  Dark mode uses brand-400, because a deep blue on a dark background has
+  nowhere near enough contrast.
+
+Every pair is checked: body text reaches AAA in both themes, and no
+foreground-on-background combination falls below the AA floor of 4.5:1.
+
+## Type scale
+
+The body size is 16px. From there the display sizes are exact powers of
+**1.25** — a major third — so `text-xl` through `text-5xl` are `1.25¹` to
+`1.25⁵`.
+
+<TypeScale />
+
+Below the base size the steps are linear rather than geometric, because a ratio
+that small produces fractional pixels and takes away the fine control that
+labels and captions need. So the scale is tight where you read and open where
+you scan.
+
+Two things ride along with each size:
+
+- **Line height falls as size rises**, from 1.75 at body down to 1.1 at
+  display. Long lines of small text need the leading; a headline does not.
+- **Letter spacing goes negative as size rises**, down to `-0.03em`. DM Sans is
+  geometric and set fairly wide, so large text needs tightening to avoid
+  looking loose.
+
+Because both are bound to the size token, `text-2xl` carries its own leading
+and tracking — there is no second class to remember.
+
+## Radius
+
+The base is `0.625rem` (10px), and the scale is derived from it by multiplier.
+That number is chosen so every derived step lands on a whole pixel.
+
+<RadiusScale />
+
+## Measure
+
+Prose is capped at `68ch`. Anything much wider costs the reader the return
+sweep to the next line; much narrower and the text starts to feel like a column
+of fragments.

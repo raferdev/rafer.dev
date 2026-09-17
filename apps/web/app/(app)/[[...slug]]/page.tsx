@@ -35,9 +35,9 @@ export default async function ContentPage({
   return (
     <>
       <div className="min-w-0 flex-1 py-8">
-        <article className="max-w-2xl">
+        <article className="max-w-[68ch]">
           <header className="flex flex-col gap-3">
-            <h1 className="scroll-m-20 text-3xl font-semibold tracking-tight text-balance">
+            <h1 className="scroll-m-20 text-3xl font-semibold text-balance sm:text-4xl">
               {doc.title}
             </h1>
             {doc.description ? (
