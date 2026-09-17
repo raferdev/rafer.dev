@@ -11,11 +11,6 @@ const fontSans = FontSans({
   variable: "--font-sans",
 })
 
-const fontHeading = FontSans({
-  subsets: ["latin"],
-  variable: "--font-heading",
-})
-
 const fontMono = FontMono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -34,7 +29,6 @@ const fontNotoSansHebrew = FontNotoSansHebrew({
 
 export const fontVariables = cn(
   fontSans.variable,
-  fontHeading.variable,
   fontMono.variable,
   fontNotoSansArabic.variable,
   fontNotoSansHebrew.variable

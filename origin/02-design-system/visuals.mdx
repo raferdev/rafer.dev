@@ -10,3 +10,29 @@ first.
 ## Themes
 
 Both themes resolve from one token set. Never reach for a `dark:` override.
+
+A component that uses `bg-card text-card-foreground` is already correct in both
+themes. Writing `bg-white dark:bg-zinc-900` is the same idea expressed twice,
+and the two copies drift apart the moment a token changes.
+
+## What flips and what does not
+
+Hue stays fixed across themes. What changes is lightness, and which end of the
+ramp a role points at:
+
+| Role           | Light      | Dark                    |
+| -------------- | ---------- | ----------------------- |
+| `--primary`    | brand-700  | brand-400               |
+| `--background` | white      | brand-tinted near-black |
+| `--border`     | solid tint | white at 12%            |
+
+Borders in dark mode are a translucent white rather than a fixed colour, so
+they hold up over both the background and the raised card surface without a
+second token.
+
+## The wordmark
+
+The logo follows the same rule. Its letterforms are `currentColor`, so they
+take the foreground of whatever sits behind them, and its accent marks read
+`var(--brand-700)`. One set of paths, no light and dark variants, and the blue
+cannot drift away from the palette because it _is_ the palette.
