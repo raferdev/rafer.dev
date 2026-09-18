@@ -14,15 +14,15 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node & Pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v6
         with:
           version: 8.14.1
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v7
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'pnpm'
 
       - name: Create env file
@@ -40,13 +40,14 @@ jobs:
         run: pnpm run build.storybook
 
       - name: Upload Landing Page Files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: landing-page
           path: out
           retention-days: 1
+
       - name: Upload Storybook Files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: storybook
           path: storybook-static
@@ -61,24 +62,28 @@ jobs:
       url: https://rafer.dev
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+
       - name: Download Storybook
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: storybook
           path: storybook-static
+
       - name: Download Landing Page
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: landing-page
           path: out
+
       - name: Filter
-        uses: dorny/paths-filter@v2.2.1
+        uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
             ngnix:
               - '**/*'
+
       - name: Deploy Nginx
         if: ${{ steps.filter.outputs.ngnix == 'true' }}
         run: |
