@@ -7,14 +7,44 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      rebuild_nginx:
+        description: 'Rebuild the nginx image even if nothing under nginx/ changed'
+        type: boolean
+        default: false
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    outputs:
+      nginx: ${{ steps.decide.outputs.nginx }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+
+      - name: Detect nginx changes
+        uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            nginx:
+              - 'nginx/**'
+              - 'docker-compose.yaml'
+
+      - name: Decide whether nginx needs rebuilding
+        id: decide
+        env:
+          FORCED: "${{ github.event_name == 'workflow_dispatch' && inputs.rebuild_nginx }}"
+          CHANGED: '${{ steps.filter.outputs.nginx }}'
+        run: |
+          if [ "$FORCED" = "true" ] || [ "$CHANGED" = "true" ]; then
+            echo "nginx=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "nginx=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Setup Node & Pnpm
         uses: pnpm/action-setup@v6
@@ -31,7 +61,7 @@ jobs:
           echo "${{ secrets.ENV_LOCAL_FILE }}" > .env.local
 
       - name: Install Deps
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Build
         run: pnpm run build
@@ -39,12 +69,21 @@ jobs:
       - name: Build Storybook
         run: pnpm run build.storybook
 
+      - name: Pre-compress assets
+        run: |
+          find out storybook-static -type f -size +256c \
+            -regextype posix-extended \
+            -iregex '.*\.(html|css|js|mjs|json|webmanifest|svg|xml|txt|map)$' \
+            -print0 | xargs -0 -r -P"$(nproc)" -n32 gzip -9 -k -f
+          echo "compressed $(find out storybook-static -name '*.gz' | wc -l) files"
+
       - name: Upload Landing Page Files
         uses: actions/upload-artifact@v7
         with:
           name: landing-page
           path: out
           retention-days: 1
+          compression-level: 1
 
       - name: Upload Storybook Files
         uses: actions/upload-artifact@v7
@@ -52,6 +91,7 @@ jobs:
           name: storybook
           path: storybook-static
           retention-days: 1
+          compression-level: 1
 
   deploy:
     name: Deploy
@@ -63,12 +103,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-
-      - name: Download Storybook
-        uses: actions/download-artifact@v8
         with:
-          name: storybook
-          path: storybook-static
+          fetch-depth: 1
+          sparse-checkout: |
+            nginx
+            scripts
+
+      - name: Clear previous build
+        run: rm -rf out storybook-static
 
       - name: Download Landing Page
         uses: actions/download-artifact@v8
@@ -76,22 +118,17 @@ jobs:
           name: landing-page
           path: out
 
-      - name: Filter
-        uses: dorny/paths-filter@v4
-        id: filter
+      - name: Download Storybook
+        uses: actions/download-artifact@v8
         with:
-          filters: |
-            ngnix:
-              - '**/*'
+          name: storybook
+          path: storybook-static
 
-      - name: Deploy Nginx
-        if: ${{ steps.filter.outputs.ngnix == 'true' }}
-        run: |
-          sudo docker compose -f docker-compose.yaml build --no-cache
-          sudo docker compose down
-          sudo docker compose up -d
+      - name: Deploy
+        env:
+          SITE_ROOT: /srv/rafer.dev
+          NGINX_CHANGED: ${{ needs.build.outputs.nginx }}
+        run: ./scripts/deploy.sh
 
-      - name: Update content
-        run: |
-          sudo docker cp ./out server:/www/data/
-          sudo docker cp ./storybook-static server:/www/data/
+      - name: Free the workspace
+        run: rm -rf out storybook-static

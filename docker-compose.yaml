@@ -1,17 +1,17 @@
-version: '3'
-
 services:
   ngnix:
     container_name: server
     restart: always
     build: ./nginx
-    mem_limit: '2G'
+    volumes:
+      - ${SITE_ROOT:-/srv/rafer.dev}:/www/data:ro
+    mem_limit: '256m'
     tty: false
     stdin_open: false
-    volumes:
-      - builder_nginx_vol:/www/data
+    logging:
+      driver: json-file
+      options:
+        max-size: '5m'
+        max-file: '3'
     ports:
       - 80:80
-
-volumes:
-  builder_nginx_vol:
