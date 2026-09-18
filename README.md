@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h3 align="center">Raferdev Landing Page</h3>
+<h3 align="center">Rafer.dev Landing Page</h3>
 
 <div align="center">
 
