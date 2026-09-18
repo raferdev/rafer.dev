@@ -40,13 +40,13 @@ jobs:
         run: pnpm run build.storybook
 
       - name: Upload Landing Page Files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: landing-page
           path: out
           retention-days: 1
       - name: Upload Storybook Files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: storybook
           path: storybook-static
@@ -63,12 +63,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Download Storybook
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: storybook
           path: storybook-static
       - name: Download Landing Page
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: landing-page
           path: out
