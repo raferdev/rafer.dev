@@ -7,7 +7,7 @@ test.describe('Section - Greetings', () => {
   const LOGO_SRC = 'logo-250x250.png'
   const SECTION_P_ONE = " Hi! My name's Rafael"
   const SECTION_P_TWO = 'I like to solve problems'
-  const SECTION_P_THREE = 'And build solutions'
+  const SECTION_P_THREE = 'And build products end to end'
   const SECTION_P_FOUR = 'Code is just a consequence'
 
   test.beforeEach(async ({ page }) => {
