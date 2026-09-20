@@ -29,7 +29,7 @@ const GreetingSection = () => (
           I like to <span className="font-bold">solve problems</span>
         </p>
         <p className="block text-2xl font-normal leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
-          And <span className="font-bold">build solutions</span>
+          And <span className="font-bold">build products end to end</span>
         </p>
         <p className="block text-2xl font-bold leading-tight tracking-tighter sm:text-3xl md:text-[2.5rem]">
           Code is just a consequence

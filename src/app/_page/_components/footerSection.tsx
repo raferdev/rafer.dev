@@ -60,7 +60,7 @@ const FooterSection = () => (
             popsy
           </Link>
         </span>
-        raferdev@2023
+        raferdev@2026
       </Section.Footer>
     </footer>
   </Section.Container>
