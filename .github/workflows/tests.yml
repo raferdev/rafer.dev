@@ -4,10 +4,19 @@ on:
     branches: [main, development]
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      update_snapshots:
+        description: 'Regenerate screenshot baselines instead of asserting against them'
+        type: boolean
+        default: false
+
 jobs:
   test:
+    name: Test
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.update_snapshots) }}
+    runs-on: ubuntu-24.04
     timeout-minutes: 60
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -23,9 +32,9 @@ jobs:
         run: |
           echo "${{ secrets.ENV_TEST_FILE }}" > .env.local
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
       - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+        run: pnpm exec playwright install --with-deps
       - name: Build
         run: pnpm run build
       - name: Run Playwright tests
@@ -36,3 +45,55 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  update-snapshots:
+    name: Update screenshot baselines
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.update_snapshots }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node & Pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 8.14.1
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_TEST_FILE }}" > .env.local
+
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Record the environment the baselines were taken in
+        run: |
+          . /etc/os-release && echo "os: $PRETTY_NAME"
+          echo "playwright: $(pnpm exec playwright --version)"
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Regenerate baselines
+        run: pnpm exec playwright test --update-snapshots
+
+      - name: Show what changed
+        run: |
+          git status --short tests/
+          ls -la tests/*-snapshots/
+
+      - name: Upload regenerated baselines
+        uses: actions/upload-artifact@v7
+        with:
+          name: updated-snapshots
+          path: tests/
+          retention-days: 7
