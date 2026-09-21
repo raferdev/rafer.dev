@@ -13,7 +13,15 @@ const metadata: Metadata = {
   description: meta.description,
   referrer: 'origin-when-cross-origin',
 
-  keywords: ['Nextjs', 'Software Engineer', 'Open Source', 'Raferdev'],
+  keywords: [
+    'Product Engineer',
+    'Node.js',
+    'NestJS',
+    'Java',
+    'Nextjs',
+    'Open Source',
+    'Raferdev',
+  ],
   authors: [
     {
       name: 'raferdev',

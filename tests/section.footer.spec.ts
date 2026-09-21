@@ -5,7 +5,7 @@ const HOME = '/'
 test.describe('Section - Footer', () => {
   const FOOTER_TEXT =
     'This landing page is open source, and you can find it here'
-  const FOOTER_CORPORATE = 'raferdev@2023'
+  const FOOTER_CORPORATE = 'raferdev@2026'
   test.beforeEach(async ({ page }) => {
     await page.waitForLoadState()
   })

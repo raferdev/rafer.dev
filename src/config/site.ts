@@ -4,8 +4,8 @@ const { version } = packageJson
 
 const __site = {
   metadata: {
-    name: 'Software Engineer | Raferdev',
-    description: 'An open source landing page of Raferdev Software Engineer.',
+    name: 'Product Engineer | Raferdev',
+    description: 'Personal site of Raferdev, Product Engineer.',
     url: 'https://rafer.dev',
     ogImage: 'https://rafer.dev/og.jpg',
     links: {
