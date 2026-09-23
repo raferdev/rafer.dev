@@ -21,8 +21,9 @@
     "test.reset": "docker compose -f docker-compose.test.yaml up --build",
     "test.playwright": "pnpm playwright test",
     "test.playwright.debug": "pnpm playwright test --debug",
-    "types.check": "pnpm dlx tsc *.ts /*.tsx --noEmit",
-    "check.eslint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --quiet --fix"
+    "types.check": "tsc --noEmit -p tsconfig.json",
+    "check.eslint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --quiet --fix",
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint -c eslint.config.mjs --quiet src tests"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",

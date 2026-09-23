@@ -15,8 +15,14 @@ on:
         default: false
 
 jobs:
+  checks:
+    name: Checks
+    uses: ./.github/workflows/tests.yml
+    secrets: inherit
+
   build:
     name: Build
+    needs: checks
     runs-on: ubuntu-latest
     timeout-minutes: 20
     outputs:
