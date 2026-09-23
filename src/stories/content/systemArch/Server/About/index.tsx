@@ -36,10 +36,10 @@ const ServerPage = () => (
           <Content.Paragraph>
             <span className="font-bold">Content-Security-Policy:</span>{' '}
             worker-src blob:| script-src: 'self', 'unsafe-inline',
-            'unsafe-eval', *.googletagmanager.com, *.datadoghq-browser-agent.com
-            | frame-src: 'self', *.youtube.com, object-src, 'none'| base-uri:
-            'self'| form-action: 'none' | frame-ancestors: 'self'| img-src:
-            'self', data:| font-src: 'self' | manifest-src 'self'
+            'unsafe-eval', *.googletagmanager.com | frame-src: 'self',
+            *.youtube.com, object-src, 'none'| base-uri: 'self'| form-action:
+            'none' | frame-ancestors: 'self'| img-src: 'self', data:| font-src:
+            'self' | manifest-src 'self'
           </Content.Paragraph>
           <Content.Paragraph>
             <span className="font-bold">Strict-Transport-Security:</span> max

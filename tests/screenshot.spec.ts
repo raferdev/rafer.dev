@@ -4,6 +4,9 @@ const HOME = '/'
 
 test.describe('Screenshot', () => {
   test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() =>
+      localStorage.setItem('rafer.consent', 'denied')
+    )
     await page.goto(HOME)
     const sizes = await page.evaluate(() => {
       const browserHeight = window.innerHeight

@@ -1,36 +1,56 @@
 import './global.css'
 
-import { Children } from '@/@types/components'
 import { cn } from '@/utils/cn'
 
-import { fontSans } from '@/lib/fonts'
+import { getContent } from '@/config/content'
+import { htmlLang, languageRedirect, Locale, paths } from '@/config/i18n'
+import { fontHand, fontMono, fontSans } from '@/lib/fonts'
 import { DevTools } from '@/components/DevTools'
 
-import { GoogleAnalytics } from './gtag'
-import { RumAnalytics } from './rum'
+import { ConsentBanner } from './_components/consentBanner'
+import { SiteFooter } from './_components/siteFooter'
+import { SiteHeader } from './_components/siteHeader'
+import { Analytics } from './analytics'
 
-const DefaultLayout = ({ children }: Children) => (
-  <>
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preload" href="/logo-250x250.png" as="image" />
-      </head>
-      <GoogleAnalytics />
-      <RumAnalytics />
+type RootLayoutProps = {
+  locale: Locale
+  children: React.ReactNode
+}
+
+const RootLayout = ({ locale, children }: RootLayoutProps) => {
+  const { ui } = getContent(locale)
+
+  return (
+    <html lang={htmlLang[locale]} suppressHydrationWarning>
+      {locale === 'en' && (
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: languageRedirect }} />
+        </head>
+      )}
       <body
         className={cn(
-          ' flex min-h-screen items-center justify-center bg-gradient-to-b from-gray-900 from-40% via-gray-600 via-70% to-sky-300 font-sans antialiased',
-          fontSans.variable
+          'min-h-screen bg-paper font-sans text-ink antialiased',
+          fontSans.variable,
+          fontMono.variable,
+          fontHand.variable
         )}
       >
+        <SiteHeader locale={locale} />
         {children}
+        <SiteFooter locale={locale} />
 
+        <ConsentBanner
+          region={ui.privacyChoices}
+          policyHref={paths[locale].privacy}
+          {...ui.consent}
+        />
+        <Analytics />
         <DevTools />
       </body>
     </html>
-  </>
-)
+  )
+}
 
-export { metadata } from './metadata'
+export { buildMetadata } from './metadata'
 
-export default DefaultLayout
+export { RootLayout }

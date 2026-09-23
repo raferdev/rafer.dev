@@ -1,23 +1,23 @@
-import { ChessInviteSection } from './_components/chessInviteSection'
-import { FooterSection } from './_components/footerSection'
-import { GreetingSection } from './_components/greetingSection'
-import { LinksSection } from './_components/linksSection'
-import { MyworldxSection } from './_components/myworldxSection'
-import { PresentationSection } from './_components/presentationSection'
-import { StorybookSection } from './_components/storybookSection'
+import { Locale } from '@/config/i18n'
 
-const HomePage = () => (
-  <>
-    <main className="relative flex w-screen flex-col items-center gap-4 overflow-hidden">
-      <GreetingSection />
-      <PresentationSection />
-      <MyworldxSection />
-      <StorybookSection />
-      <ChessInviteSection />
-      <LinksSection />
-      <FooterSection />
-    </main>
-  </>
+import { EngineeringSection } from './_components/engineeringSection'
+import { HeroSection } from './_components/heroSection'
+import { InterestsSection } from './_components/interestsSection'
+import { JourneySection } from './_components/journeySection'
+import { OpenSourceSection } from './_components/openSourceSection'
+import { ProjectsSection } from './_components/projectsSection'
+import { WorkSection } from './_components/workSection'
+
+const HomePage = ({ locale }: { locale: Locale }) => (
+  <main id="main">
+    <HeroSection locale={locale} />
+    <WorkSection locale={locale} />
+    <OpenSourceSection locale={locale} />
+    <ProjectsSection locale={locale} />
+    <EngineeringSection locale={locale} />
+    <JourneySection locale={locale} />
+    <InterestsSection locale={locale} />
+  </main>
 )
 
 export default HomePage
