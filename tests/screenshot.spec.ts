@@ -8,18 +8,7 @@ test.describe('Screenshot', () => {
       localStorage.setItem('rafer.consent', 'denied')
     )
     await page.goto(HOME)
-    const sizes = await page.evaluate(() => {
-      const browserHeight = window.innerHeight
-      const pageHeight = document.body.scrollHeight
-
-      return { browserHeight, pageHeight }
-    })
-
-    for (let i = 0; i < sizes.pageHeight; i += sizes.browserHeight) {
-      await page.mouse.wheel(0, i)
-      console.log('scrolled to', i)
-      await page.waitForTimeout(1000)
-    }
+    await page.evaluate(() => document.fonts.ready)
   })
 
   test('Full page', async ({ page }) => {
