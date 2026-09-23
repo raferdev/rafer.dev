@@ -1,6 +1,6 @@
 import { Children } from '@/@types/components'
 
-import { buildMetadata, RootLayout } from '../_layout'
+import { buildMetadata, RootLayout, viewport } from '../_layout'
 
 const metadata = buildMetadata('en')
 
@@ -8,6 +8,6 @@ const Layout = ({ children }: Children) => (
   <RootLayout locale="en">{children}</RootLayout>
 )
 
-export { metadata }
+export { metadata, viewport }
 
 export default Layout

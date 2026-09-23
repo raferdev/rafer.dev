@@ -51,6 +51,6 @@ const RootLayout = ({ locale, children }: RootLayoutProps) => {
   )
 }
 
-export { buildMetadata } from './metadata'
+export { buildMetadata, viewport } from './metadata'
 
 export { RootLayout }

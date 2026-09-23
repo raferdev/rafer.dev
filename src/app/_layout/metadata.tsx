@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 
 import { Locale, ogLocale, paths } from '@/config/i18n'
 import { __site } from '@/config/site'
@@ -49,7 +49,6 @@ const buildMetadata = (locale: Locale): Metadata => ({
     telephone: false,
   },
   creator: '@raferdev',
-  themeColor: [{ media: '(prefers-color-scheme: light)', color: '#f7f6f2' }],
   openGraph: {
     type: 'website',
     locale: ogLocale[locale],
@@ -86,4 +85,8 @@ const buildMetadata = (locale: Locale): Metadata => ({
   manifest: `${meta.url}/site.webmanifest`,
 })
 
-export { buildMetadata }
+const viewport: Viewport = {
+  themeColor: [{ media: '(prefers-color-scheme: light)', color: '#f7f6f2' }],
+}
+
+export { buildMetadata, viewport }

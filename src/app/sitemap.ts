@@ -5,6 +5,8 @@ import { __site } from '@/config/site'
 
 const { url } = __site.metadata
 
+const dynamic = 'force-static'
+
 const priority = { home: 1, privacy: 0.3 }
 
 const sitemap = (): MetadataRoute.Sitemap =>
@@ -16,5 +18,7 @@ const sitemap = (): MetadataRoute.Sitemap =>
       priority: priority[page],
     }))
   )
+
+export { dynamic }
 
 export default sitemap

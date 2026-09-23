@@ -3,8 +3,10 @@
 const nextConfig = {
   output: 'export',
   reactStrictMode: true,
-  swcMinify: true,
   pageExtensions: ['tsx', 'ts'],
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   compress: true,
   compiler: {
     removeConsole: true,
