@@ -1,11 +1,8 @@
-import packageJson from '@/../package.json'
-
-const { version } = packageJson
-
 const __site = {
   metadata: {
     name: 'Product Engineer | Raferdev',
-    description: 'Personal site of Raferdev, Product Engineer.',
+    description:
+      'Rafael Fernandes (raferdev), product engineer building software end to end with Node.js, TypeScript, NestJS, Java and React.',
     url: 'https://rafer.dev',
     ogImage: 'https://rafer.dev/og.jpg',
     links: {
@@ -13,7 +10,6 @@ const __site = {
       github: 'https://github.com/raferdev/landing-page',
     },
   },
-  rum: { version },
   links: {
     wakatime: {
       profile: 'https://wakatime.com/@ac875cb4-d4ee-453f-b6fc-44cb2103c59d',
@@ -39,7 +35,16 @@ const __site = {
       email: {
         raferdev:
           'mailto:contact@rafer.dev?subject=Contact&body=Hello, i want to talk about...',
+        cv: "mailto:contact@rafer.dev?subject=CV%20request&body=Hi%20Rafael%2C%20I'd%20like%20your%20CV%20for%20a%20...%20role.",
+        pt: 'mailto:contact@rafer.dev?subject=Contato&body=Ol%C3%A1%2C%20gostaria%20de%20conversar%20sobre...',
+        cvPt: 'mailto:contact@rafer.dev?subject=Pedido%20de%20CV&body=Ol%C3%A1%20Rafael%2C%20gostaria%20do%20seu%20CV%20para%20uma%20vaga%20de%20...',
       },
+      whatsapp: 'https://wa.me/5548996546409',
+      stackoverflow:
+        'https://stackoverflow.com/users/20442134/rafael-fernandes',
+      wakatime: 'https://wakatime.com/@raferdev',
+      archive:
+        'https://github.com/raferdev?tab=repositories&q=&type=archived&sort=stargazers',
       twitter: 'https://twitter.com/raferdev',
 
       instagram: 'https://instagram.com/raferdev',

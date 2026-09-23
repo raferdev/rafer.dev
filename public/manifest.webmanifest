@@ -1,11 +1,11 @@
 {
-  "name": "Raferdev",
-  "short_name": "Raferdev",
-  "background_color": "#FFF",
+  "name": "Rafael Fernandes · rafer.dev",
+  "short_name": "rafer.dev",
+  "background_color": "#f7f6f2",
   "display": "minimal-ui",
   "start_url": "/",
   "scope": "/",
-  "theme_color": "#FFF",
+  "theme_color": "#f7f6f2",
   "lang": "en",
   "icons": [
     {

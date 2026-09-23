@@ -15,16 +15,36 @@ module.exports = {
         'section-1': '200px 1fr',
         'section-content': '1fr 275px',
       },
+      maxWidth: {
+        page: '76rem',
+      },
       gridTemplateRows: {
         'stories-docs': '5.5rem 1fr',
       },
       fontFamily: {
         sans: ['var(--font-sans)'],
+        mono: ['var(--font-mono)'],
+        hand: ['var(--font-hand)'],
       },
       animation: {
         'scroll-left': 'scroll 10s linear infinite',
       },
       colors: {
+        paper: {
+          DEFAULT: 'hsl(var(--paper) / <alpha-value>)',
+          card: 'hsl(var(--paper-card) / <alpha-value>)',
+        },
+        ink: {
+          DEFAULT: 'hsl(var(--ink) / <alpha-value>)',
+          soft: 'hsl(var(--ink-soft) / <alpha-value>)',
+          subtle: 'hsl(var(--ink-subtle) / <alpha-value>)',
+        },
+        line: 'hsl(var(--line) / <alpha-value>)',
+        pen: {
+          DEFAULT: 'hsl(var(--pen) / <alpha-value>)',
+          soft: 'hsl(var(--pen) / 0.12)',
+        },
+        signal: 'hsl(var(--signal) / <alpha-value>)',
         celestial: {
           500: 'hsl(var(--celestial-500))',
         },

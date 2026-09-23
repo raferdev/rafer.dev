@@ -1,19 +1,19 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 
-const HOME = '/'
+const PAGES = ['/', '/privacy', '/pt', '/pt/privacidade']
 
 test.describe('Accessibility', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.waitForLoadState()
-  })
-  test('Should not have any automatically detectable accessibility issues', async ({
-    page,
-  }) => {
-    await page.goto(HOME)
+  for (const path of PAGES) {
+    test(`Should not have any automatically detectable accessibility issues on ${path}`, async ({
+      page,
+    }) => {
+      await page.goto(path)
+      await page.waitForLoadState()
 
-    const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
+      const accessibilityScanResults = await new AxeBuilder({ page }).analyze()
 
-    expect(accessibilityScanResults.violations).toEqual([])
-  })
+      expect(accessibilityScanResults.violations).toEqual([])
+    })
+  }
 })

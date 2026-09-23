@@ -4,11 +4,8 @@ import { icons } from 'lucide-react'
 
 import { iconVariants } from '@/components/Link/iconVariants'
 import { linkVariants } from '@/components/Link/linkVariants'
-import { animationVariants } from '@/components/Section/SubSection/animations'
 
 type iconColorProps = VariantProps<typeof iconVariants>
-type AnimationVariantProps = VariantProps<typeof animationVariants>
-type AnimationColor = VariantProps<typeof animationVariants>
 
 type Children = {
   children: React.ReactNode
@@ -54,10 +51,6 @@ interface LinkProps
   iconFillColor?: iconColorProps['color']
   iconColor?: `#${string}`
 }
-
-interface AnimationBacklightProps
-  extends Required<Pick<AnimationVariantProps, 'color_big'>>,
-    Required<Pick<AnimationVariantProps, 'color_small'>> {}
 
 interface OptReactCompProps<T>
   extends OptClassName,

@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm lint-staged --shell /bin/bash
+ESLINT_USE_FLAT_CONFIG=true pnpm lint-staged

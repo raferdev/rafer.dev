@@ -1,12 +1,30 @@
-import { Ubuntu } from 'next/font/google'
+import { Caveat, Inter, JetBrains_Mono } from 'next/font/google'
 
-const fontSans = Ubuntu({
+const fontSans = Inter({
   subsets: ['latin'],
   display: 'swap',
   fallback: ['ui-sans-serif', 'system-ui', '-apple-system'],
   preload: true,
   variable: '--font-sans',
-  weight: ['300', '400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
 })
 
-export { fontSans }
+const fontMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+  preload: true,
+  variable: '--font-mono',
+  weight: ['400', '500', '700'],
+})
+
+const fontHand = Caveat({
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['cursive'],
+  preload: true,
+  variable: '--font-hand',
+  weight: ['400', '600', '700'],
+})
+
+export { fontHand, fontMono, fontSans }

@@ -1,9 +1,8 @@
-name: Playwright Tests
+name: Checks
 on:
   pull_request:
     branches: [main, development]
-  push:
-    branches: [main]
+  workflow_call:
   workflow_dispatch:
     inputs:
       update_snapshots:
@@ -11,7 +10,57 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
 jobs:
+  lint:
+    name: Lint
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.update_snapshots) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node & Pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 8.14.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+      - name: ESLint
+        run: pnpm run lint
+      - name: Type-check
+        run: pnpm run types.check
+
+  storybook:
+    name: Storybook
+    if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.update_snapshots) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node & Pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 8.14.1
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+      - name: Create env file
+        run: |
+          echo "${{ secrets.ENV_TEST_FILE }}" > .env.local
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
+      - name: Build Storybook
+        run: pnpm run build.storybook
+
   test:
     name: Test
     if: ${{ !(github.event_name == 'workflow_dispatch' && inputs.update_snapshots) }}
