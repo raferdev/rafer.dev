@@ -57,8 +57,14 @@ const Navigation = ({ items, label, home, className }: NavigationProps) => {
   const active = useActiveSection(items.map(({ id }) => id).join(','), home)
 
   return (
-    <nav aria-label={label} className={className}>
-      <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm sm:gap-x-8">
+    <nav
+      aria-label={label}
+      className={cn(
+        'overflow-x-auto [scrollbar-width:none] md:overflow-visible [&::-webkit-scrollbar]:hidden',
+        className
+      )}
+    >
+      <ul className="flex items-center gap-x-4 whitespace-nowrap font-mono text-xs min-[360px]:gap-x-5 min-[360px]:text-sm sm:gap-x-8 md:gap-x-5 lg:gap-x-8">
         {items.map(({ id, label, href }) => {
           const isActive = id === active
 
@@ -69,8 +75,8 @@ const Navigation = ({ items, label, home, className }: NavigationProps) => {
                 aria-current={isActive ? 'location' : undefined}
                 {...trackable('nav_click', { section: id })}
                 className={cn(
-                  'relative block py-1 text-ink-soft transition-colors hover:text-ink',
-                  'after:absolute after:-bottom-[1.1rem] after:left-0 after:h-0.5 after:w-full after:bg-pen after:opacity-0 after:transition-opacity',
+                  'relative block rounded-sm pb-3 pt-1 text-ink-soft transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-pen md:py-1',
+                  'after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-pen after:opacity-0 after:transition-opacity md:after:-bottom-[1.1rem]',
                   isActive && 'text-ink after:opacity-100'
                 )}
               >
