@@ -18,6 +18,7 @@ const en: SiteContent = {
       { id: 'contact', label: 'Contact', href: homeAnchor('en', 'contact') },
     ],
     language: 'Language',
+    theme: { label: 'Theme', system: 'System', light: 'Light', dark: 'Dark' },
     newTab: '(opens in a new tab)',
     stack: 'Stack',
     toolbox: 'Toolbox',

@@ -84,6 +84,7 @@ type Ui = {
   primaryNav: string
   nav: LinkItem[]
   language: string
+  theme: { label: string; system: string; light: string; dark: string }
   newTab: string
   stack: string
   toolbox: string

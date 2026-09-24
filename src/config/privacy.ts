@@ -54,7 +54,7 @@ const en: Policy = {
         'the site that referred you.',
       ],
       after: [
-        'Your answer to the consent banner is kept in your browser’s local storage, under the key “rafer.consent”, so you aren’t asked again. If you pick a language, that choice is kept the same way, under “rafer.lang”. Neither ever leaves your device.',
+        'Your answer to the consent banner is kept in your browser’s local storage, under the key “rafer.consent”, so you aren’t asked again. If you pick a language or a light or dark theme, those choices are kept the same way, under “rafer.lang” and “rafer.theme”. None of them ever leaves your device.',
       ],
     },
     {
@@ -142,7 +142,7 @@ const pt: Policy = {
         'o site que trouxe você até aqui.',
       ],
       after: [
-        'Sua resposta ao aviso de consentimento fica guardada no armazenamento local do seu navegador, na chave “rafer.consent”, para que a pergunta não se repita. Se você escolher um idioma, essa escolha fica guardada do mesmo jeito, na chave “rafer.lang”. Nenhuma das duas sai do seu dispositivo.',
+        'Sua resposta ao aviso de consentimento fica guardada no armazenamento local do seu navegador, na chave “rafer.consent”, para que a pergunta não se repita. Se você escolher um idioma ou um tema claro ou escuro, essas escolhas ficam guardadas do mesmo jeito, nas chaves “rafer.lang” e “rafer.theme”. Nenhuma delas sai do seu dispositivo.',
       ],
     },
     {

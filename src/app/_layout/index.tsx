@@ -4,6 +4,7 @@ import { cn } from '@/utils/cn'
 
 import { getContent } from '@/config/content'
 import { htmlLang, languageRedirect, Locale, paths } from '@/config/i18n'
+import { themeInit } from '@/config/theme'
 import { fontHand, fontMono, fontSans } from '@/lib/fonts'
 import { DevTools } from '@/components/DevTools'
 
@@ -22,11 +23,12 @@ const RootLayout = ({ locale, children }: RootLayoutProps) => {
 
   return (
     <html lang={htmlLang[locale]} suppressHydrationWarning>
-      {locale === 'en' && (
-        <head>
+      <head>
+        {locale === 'en' && (
           <script dangerouslySetInnerHTML={{ __html: languageRedirect }} />
-        </head>
-      )}
+        )}
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+      </head>
       <body
         className={cn(
           'min-h-screen bg-paper font-sans text-ink antialiased',

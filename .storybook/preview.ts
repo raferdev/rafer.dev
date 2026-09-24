@@ -5,6 +5,29 @@ import './public/css/font.css'
 import './public/css/bgTransparent.css'
 
 const preview: Preview = {
+  globalTypes: {
+    theme: {
+      description: 'Site color theme',
+      toolbar: {
+        title: 'Theme',
+        icon: 'mirror',
+        items: [
+          { value: 'light', icon: 'sun', title: 'Light' },
+          { value: 'dark', icon: 'moon', title: 'Dark' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
+  initialGlobals: {
+    theme: 'light',
+  },
+  decorators: [
+    (Story, { globals }) => {
+      document.documentElement.setAttribute('data-theme', globals.theme)
+      return Story()
+    },
+  ],
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
