@@ -11,6 +11,7 @@ type AnalyticsEvents = {
   contact_click: { method: string }
   nav_click: { section: string }
   language_change: { language: string }
+  theme_change: { theme: string }
   section_view: { section: string }
 }
 

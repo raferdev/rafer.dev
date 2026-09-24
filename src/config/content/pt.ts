@@ -18,6 +18,7 @@ const pt: SiteContent = {
       { id: 'contact', label: 'Contato', href: homeAnchor('pt', 'contact') },
     ],
     language: 'Idioma',
+    theme: { label: 'Tema', system: 'Sistema', light: 'Claro', dark: 'Escuro' },
     newTab: '(abre em nova aba)',
     stack: 'Stack',
     toolbox: 'Ferramentas',

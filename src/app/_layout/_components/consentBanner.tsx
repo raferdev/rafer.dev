@@ -57,7 +57,7 @@ const ConsentBanner = ({
   return (
     <section
       aria-label={region}
-      className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-md border border-line bg-paper-card p-5 shadow-[0_8px_30px_hsl(var(--ink)/0.12)] sm:inset-x-6 sm:bottom-6"
+      className="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-xl rounded-md border border-line bg-paper-card p-5 shadow-[0_8px_30px_hsl(var(--shadow)/0.12)] sm:inset-x-6 sm:bottom-6"
     >
       <p className="font-mono text-xs leading-5 text-ink-soft">
         {text}{' '}

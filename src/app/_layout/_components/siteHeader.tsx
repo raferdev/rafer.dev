@@ -5,6 +5,7 @@ import { Container } from '@/components/Container'
 import { Brand } from './brand'
 import { LanguageToggle } from './languageToggle'
 import { Navigation } from './navigation'
+import { ThemeToggle } from './themeToggle'
 
 const SiteHeader = ({ locale }: { locale: Locale }) => {
   const { ui } = getContent(locale)
@@ -19,11 +20,10 @@ const SiteHeader = ({ locale }: { locale: Locale }) => {
       </a>
       <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4 md:h-16 md:flex-nowrap md:py-0">
         <Brand href={homeAnchor(locale, 'top')} />
-        <LanguageToggle
-          locale={locale}
-          label={ui.language}
-          className="md:order-last"
-        />
+        <div className="flex items-center gap-4 md:order-last">
+          <LanguageToggle locale={locale} label={ui.language} />
+          <ThemeToggle labels={ui.theme} />
+        </div>
         <Navigation
           items={ui.nav}
           label={ui.primaryNav}

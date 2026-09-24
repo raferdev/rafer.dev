@@ -2,6 +2,7 @@ import { Metadata, Viewport } from 'next'
 
 import { Locale, ogLocale, paths } from '@/config/i18n'
 import { __site } from '@/config/site'
+import { themeColor } from '@/config/theme'
 
 const { metadata: meta } = __site
 
@@ -86,7 +87,10 @@ const buildMetadata = (locale: Locale): Metadata => ({
 })
 
 const viewport: Viewport = {
-  themeColor: [{ media: '(prefers-color-scheme: light)', color: '#f7f6f2' }],
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: themeColor.light },
+    { media: '(prefers-color-scheme: dark)', color: themeColor.dark },
+  ],
 }
 
 export { buildMetadata, viewport }

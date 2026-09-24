@@ -8,7 +8,7 @@ type WindowProps = OptChildClassNameProps & {
 const Window = ({ children, className, chrome = true }: WindowProps) => (
   <div
     className={cn(
-      'rounded-md border border-line bg-paper-card p-4 text-[11px] text-ink shadow-[0_1px_2px_hsl(var(--ink)/0.04)]',
+      'rounded-md border border-line bg-paper-card p-4 text-[11px] text-ink shadow-[0_1px_2px_hsl(var(--shadow)/0.04)]',
       className
     )}
   >
