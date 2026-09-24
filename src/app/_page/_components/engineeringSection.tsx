@@ -57,7 +57,7 @@ const EngineeringSection = ({ locale }: { locale: Locale }) => {
           <h3 className="font-mono text-sm font-medium text-pen">
             {ui.toolbox}
           </h3>
-          <ul className="mt-4 grid grid-cols-2 gap-x-6 sm:grid-cols-4">
+          <ul className="mt-4 grid grid-cols-1 gap-x-6 min-[320px]:grid-cols-2 sm:grid-cols-4">
             {toolbox.map(({ id, label, items }) => {
               const Icon = icons[id]
 
@@ -84,7 +84,7 @@ const EngineeringSection = ({ locale }: { locale: Locale }) => {
           <Annotation
             lines={engineering.principle}
             underline
-            className="mt-8 -rotate-[4deg] text-[1.6rem]"
+            className="mt-8 -rotate-[4deg] text-[1.35rem] min-[320px]:text-[1.6rem]"
           />
         </div>
       </Container>

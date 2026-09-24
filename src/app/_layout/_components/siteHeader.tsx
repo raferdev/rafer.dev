@@ -18,7 +18,7 @@ const SiteHeader = ({ locale }: { locale: Locale }) => {
       >
         {ui.skipToContent}
       </a>
-      <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4 md:h-16 md:flex-nowrap md:py-0">
+      <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-3 pt-4 md:h-16 md:flex-nowrap md:py-0">
         <Brand href={homeAnchor(locale, 'top')} />
         <div className="flex items-center gap-4 md:order-last">
           <LanguageToggle locale={locale} label={ui.language} />
