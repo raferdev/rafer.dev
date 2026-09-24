@@ -1,30 +1,30 @@
-import { Caveat, Inter, JetBrains_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const fontSans = Inter({
-  subsets: ['latin'],
+const fontSans = localFont({
+  src: '../fonts/inter-latin.woff2',
+  weight: '100 900',
   display: 'swap',
   fallback: ['ui-sans-serif', 'system-ui', '-apple-system'],
   preload: true,
   variable: '--font-sans',
-  weight: ['400', '500', '600', '700'],
 })
 
-const fontMono = JetBrains_Mono({
-  subsets: ['latin'],
+const fontMono = localFont({
+  src: '../fonts/jetbrains-mono-latin.woff2',
+  weight: '400 800',
   display: 'swap',
   fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
   preload: true,
   variable: '--font-mono',
-  weight: ['400', '500', '700'],
 })
 
-const fontHand = Caveat({
-  subsets: ['latin'],
+const fontHand = localFont({
+  src: '../fonts/caveat-latin.woff2',
+  weight: '400 700',
   display: 'swap',
   fallback: ['cursive'],
   preload: true,
   variable: '--font-hand',
-  weight: ['400', '600', '700'],
 })
 
 export { fontHand, fontMono, fontSans }
