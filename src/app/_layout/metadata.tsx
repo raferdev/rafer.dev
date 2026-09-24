@@ -75,15 +75,17 @@ const buildMetadata = (locale: Locale): Metadata => ({
     creator: '@raferdev',
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
+    icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
     apple: '/apple-touch-icon.png',
   },
   robots: {
     index: true,
     follow: true,
   },
-  manifest: `${meta.url}/site.webmanifest`,
+  manifest: '/manifest.webmanifest',
 })
 
 const viewport: Viewport = {
