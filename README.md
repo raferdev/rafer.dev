@@ -24,6 +24,7 @@
 
 - [About](#about)
 - [What's inside](#whats-inside)
+- [Analytics](#analytics)
 - [Architecture](#architecture)
 - [Running locally](#running-locally)
 - [Quality gates](#quality-gates)
@@ -44,6 +45,17 @@ The site is also a working example of the rest of the delivery chain: a static b
 - **Privacy first.** Google Analytics runs in consent mode and stays denied until the visitor accepts. Click tracking is declarative through `data-*` attributes. Bilingual privacy policy (LGPD) at `/privacy` and `/pt/privacidade`.
 - **Accessible.** axe-core runs on every page, in both languages, on desktop and mobile.
 - **Documented components.** Storybook for the UI building blocks, published at [storybook.rafer.dev](https://storybook.rafer.dev).
+
+## Analytics
+
+Only after a visitor accepts the banner, Google Analytics 4 receives page views, `section_view`, `select_content`, `contact_click`, `social_click`, `nav_click`, `language_change` and `theme_change`, plus the user properties `site_language` and `color_scheme`.
+
+Two switches for the site owner, set by visiting a URL once and stripped from the address bar right away:
+
+| URL            | Effect                                                                                                                                    |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `/?internal=1` | Tags this browser as internal traffic (`traffic_type=internal`) so GA's Internal Traffic filter can exclude it. `/?internal=0` undoes it. |
+| `/?ga_debug=1` | Sends this tab's visit to GA DebugView (`debug_mode`). It ends with the tab; `/?ga_debug=0` turns it off earlier.                         |
 
 ## Architecture
 

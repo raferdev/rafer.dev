@@ -136,3 +136,135 @@ test.describe('Analytics - Consent and tracking', () => {
     await expect(page.getByRole('button', { name: 'Accept' })).toBeFocused()
   })
 })
+
+test.describe('Analytics - Insights', () => {
+  const config = async (page: Page) =>
+    (await dataLayer(page)).find(([command]) => command === 'config')
+
+  const userProperties = async (page: Page) =>
+    (await dataLayer(page))
+      .filter(
+        ([command, target]) => command === 'set' && target === 'user_properties'
+      )
+      .map(([, , value]) => value)
+
+  test.beforeEach(async ({ page, context }) => {
+    await context.route(
+      /googletagmanager\.com|google-analytics\.com/,
+      (route) => route.abort()
+    )
+    await page.addInitScript(
+      (key) => localStorage.setItem(key, 'granted'),
+      CONSENT_KEY
+    )
+  })
+
+  test('Expected - Language and color scheme sent as user properties', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ colorScheme: 'light' })
+    await page.goto(HOME)
+
+    await expect
+      .poll(() => userProperties(page))
+      .toEqual([{ site_language: 'en', color_scheme: 'light' }])
+
+    const commands = (await dataLayer(page)).map(([command]) => command)
+    expect(commands.indexOf('set')).toBeLessThan(commands.indexOf('config'))
+  })
+
+  test('Expected - Portuguese in dark mode reported as such', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ colorScheme: 'dark' })
+    await page.goto('/pt')
+
+    await expect
+      .poll(() => userProperties(page))
+      .toEqual([{ site_language: 'pt-BR', color_scheme: 'dark' }])
+  })
+
+  test('Expected - Switching theme updates the color scheme', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ colorScheme: 'light' })
+    await page.goto(HOME)
+
+    await page
+      .getByRole('group', { name: 'Theme' })
+      .getByRole('button', { name: 'Dark', exact: true })
+      .click()
+
+    await expect
+      .poll(async () => (await userProperties(page)).at(-1))
+      .toEqual({ site_language: 'en', color_scheme: 'dark' })
+  })
+
+  test('Expected - Regular visits carry no internal or debug flags', async ({
+    page,
+  }) => {
+    await page.goto(HOME)
+
+    await expect.poll(async () => (await config(page))?.[2]).toEqual({})
+  })
+
+  test('Expected - ?internal=1 tags this browser until ?internal=0', async ({
+    page,
+  }) => {
+    await page.goto('/?internal=1#work')
+
+    await expect(page).toHaveURL(/\/#work$/)
+    await expect
+      .poll(async () => (await config(page))?.[2])
+      .toEqual({ traffic_type: 'internal' })
+
+    await page.goto('/pt')
+    await expect
+      .poll(async () => (await config(page))?.[2])
+      .toEqual({ traffic_type: 'internal' })
+
+    await page.goto('/?internal=0')
+    await expect(page).toHaveURL(/\/$/)
+    await expect.poll(async () => (await config(page))?.[2]).toEqual({})
+    expect(
+      await page.evaluate(() => localStorage.getItem('rafer.internal'))
+    ).toBeNull()
+  })
+
+  test('Expected - ?ga_debug=1 enables DebugView for the tab only', async ({
+    page,
+    context,
+  }) => {
+    await page.goto('/?ga_debug=1')
+
+    await expect(page).toHaveURL(/\/$/)
+    await expect
+      .poll(async () => (await config(page))?.[2])
+      .toEqual({ debug_mode: true })
+
+    const other = await context.newPage()
+    await other.goto(HOME)
+    await expect.poll(async () => (await config(other))?.[2]).toEqual({})
+  })
+
+  test('Expected - Flags are stored even before consent is given', async ({
+    browser,
+  }) => {
+    const context = await browser.newContext()
+    await context.route(
+      /googletagmanager\.com|google-analytics\.com/,
+      (route) => route.abort()
+    )
+    const page = await context.newPage()
+
+    await page.goto('/?internal=1')
+
+    await expect(page).toHaveURL(/\/$/)
+    expect(
+      await page.evaluate(() => localStorage.getItem('rafer.internal'))
+    ).toBe('1')
+    expect(await page.evaluate(() => typeof window.gtag)).toBe('undefined')
+
+    await context.close()
+  })
+})
