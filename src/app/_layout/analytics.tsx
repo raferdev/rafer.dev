@@ -2,7 +2,14 @@
 
 import { useEffect } from 'react'
 
-import { clearAnalyticsCookies, send, startAnalytics } from '@/lib/analytics'
+import { DARK_QUERY, THEME_EVENT } from '@/config/theme'
+import {
+  applyAnalyticsFlags,
+  clearAnalyticsCookies,
+  send,
+  startAnalytics,
+  updateUserProperties,
+} from '@/lib/analytics'
 import { hasConsent, onConsentChange } from '@/lib/consent'
 
 const useConsentedTags = () => {
@@ -15,6 +22,7 @@ const useConsentedTags = () => {
       startAnalytics()
     }
 
+    applyAnalyticsFlags()
     if (hasConsent()) start()
 
     return onConsentChange((value) => {
@@ -87,8 +95,23 @@ const useSectionViews = () => {
   }, [])
 }
 
+const useThemeProperty = () => {
+  useEffect(() => {
+    const media = window.matchMedia(DARK_QUERY)
+
+    window.addEventListener(THEME_EVENT, updateUserProperties)
+    media.addEventListener('change', updateUserProperties)
+
+    return () => {
+      window.removeEventListener(THEME_EVENT, updateUserProperties)
+      media.removeEventListener('change', updateUserProperties)
+    }
+  }, [])
+}
+
 const Analytics = () => {
   useConsentedTags()
+  useThemeProperty()
   useClickTracking()
   useSectionViews()
 

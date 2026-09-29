@@ -32,7 +32,7 @@ const en: Policy = {
   title: 'Privacy policy',
   description:
     'What data rafer.dev collects, why, and what you can do about it.',
-  updated: 'Last updated: September 23, 2026',
+  updated: 'Last updated: September 29, 2026',
   path: paths.en.privacy,
   intro: [
     'This policy explains what data rafer.dev collects, why, and what you can do about it.',
@@ -51,6 +51,7 @@ const en: Policy = {
         'links clicked, such as a project or a contact channel;',
         'approximate location (country and city, derived from your IP address);',
         'device type, operating system and browser;',
+        'the language version you read and whether the site is shown in light or dark mode;',
         'the site that referred you.',
       ],
       after: [
@@ -120,7 +121,7 @@ const pt: Policy = {
   title: 'Política de privacidade',
   description:
     'Quais dados o rafer.dev coleta, por quê, e o que você pode fazer a respeito.',
-  updated: 'Última atualização: 23 de setembro de 2026',
+  updated: 'Última atualização: 29 de setembro de 2026',
   path: paths.pt.privacy,
   intro: [
     'Esta política explica quais dados o rafer.dev coleta, por quê, e o que você pode fazer a respeito.',
@@ -139,6 +140,7 @@ const pt: Policy = {
         'links clicados, como um projeto ou um canal de contato;',
         'localização aproximada (país e cidade, a partir do seu endereço IP);',
         'tipo de dispositivo, sistema operacional e navegador;',
+        'a versão de idioma que você lê e se o site aparece no modo claro ou escuro;',
         'o site que trouxe você até aqui.',
       ],
       after: [
