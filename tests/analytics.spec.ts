@@ -23,20 +23,54 @@ test.describe('Analytics - Consent and tracking', () => {
     page.on('popup', (popup) => popup.close())
   })
 
-  test('Expected - Nothing loads before the visitor answers', async ({
+  test('Expected - Analytics runs by default while the notice is shown', async ({
     page,
   }) => {
     await page.goto(HOME)
 
-    const banner = page.getByRole('region', { name: 'Privacy choices' })
-
-    await expect(banner).toBeVisible()
-    expect(await page.evaluate(() => typeof window.gtag)).toBe('undefined')
+    await expect(
+      page.getByRole('region', { name: 'Privacy choices' })
+    ).toBeVisible()
+    await expect
+      .poll(async () => (await dataLayer(page)).map(([command]) => command))
+      .toContain('config')
   })
 
-  test('Expected - Declining keeps analytics off', async ({ page }) => {
+  test('Expected - OK keeps tracking and hides the notice', async ({
+    page,
+  }) => {
     await page.goto(HOME)
-    await page.getByRole('button', { name: 'Decline' }).click()
+    await page.getByRole('button', { name: 'OK', exact: true }).click()
+
+    await expect(
+      page.getByRole('region', { name: 'Privacy choices' })
+    ).toBeHidden()
+    expect(
+      await page.evaluate((key) => localStorage.getItem(key), CONSENT_KEY)
+    ).toBe('granted')
+
+    await page
+      .locator('#projects')
+      .getByRole('link', { name: /^Home MyWorldx/ })
+      .click()
+
+    expect(await events(page)).toContainEqual([
+      'event',
+      'select_content',
+      { content_type: 'project', content_id: 'myworldx-home' },
+    ])
+  })
+
+  test('Expected - No thanks stops tracking at once, without a reload', async ({
+    page,
+  }) => {
+    await page.goto(HOME)
+    await page.evaluate(() => {
+      ;(window as unknown as { marker: boolean }).marker = true
+      document.cookie = '_ga=GA1.1.test; path=/'
+    })
+
+    await page.getByRole('button', { name: 'No thanks' }).click()
 
     await expect(
       page.getByRole('region', { name: 'Privacy choices' })
@@ -44,19 +78,74 @@ test.describe('Analytics - Consent and tracking', () => {
     expect(
       await page.evaluate((key) => localStorage.getItem(key), CONSENT_KEY)
     ).toBe('denied')
+    expect(
+      await page.evaluate(
+        () => (window as unknown as { marker?: boolean }).marker
+      )
+    ).toBe(true)
+    expect(await page.evaluate(() => document.cookie)).not.toContain('_ga=')
+    expect(await dataLayer(page)).toContainEqual([
+      'consent',
+      'update',
+      { analytics_storage: 'denied' },
+    ])
 
     await page
       .locator('#projects')
       .getByRole('link', { name: /^Home MyWorldx/ })
       .click()
 
+    expect(
+      (await events(page)).filter(([, name]) => name === 'select_content')
+    ).toEqual([])
+  })
+
+  test('Expected - A remembered opt-out keeps analytics off', async ({
+    page,
+  }) => {
+    await page.addInitScript(
+      (key) => localStorage.setItem(key, 'denied'),
+      CONSENT_KEY
+    )
+    await page.goto(HOME)
+
     expect(await page.evaluate(() => typeof window.gtag)).toBe('undefined')
     expect(await dataLayer(page)).toEqual([])
   })
 
-  test('Expected - Accepting tracks project clicks', async ({ page }) => {
+  for (const signal of ['globalPrivacyControl', 'doNotTrack'] as const) {
+    test(`Expected - A ${signal} signal keeps analytics off until OK`, async ({
+      page,
+    }) => {
+      await page.addInitScript((name) => {
+        Object.defineProperty(Navigator.prototype, name, {
+          get: () => (name === 'doNotTrack' ? '1' : true),
+        })
+      }, signal)
+      await page.goto(HOME)
+
+      await expect(
+        page.getByRole('region', { name: 'Privacy choices' })
+      ).toBeVisible()
+      expect(await page.evaluate(() => typeof window.gtag)).toBe('undefined')
+
+      await page.getByRole('button', { name: 'OK', exact: true }).click()
+
+      expect(await page.evaluate(() => typeof window.gtag)).toBe('function')
+    })
+  }
+
+  test('Expected - Opting back in resumes tracking', async ({ page }) => {
     await page.goto(HOME)
-    await page.getByRole('button', { name: 'Accept' }).click()
+    await page.getByRole('button', { name: 'No thanks' }).click()
+    await page.getByRole('button', { name: 'Privacy choices' }).click()
+    await page.getByRole('button', { name: 'OK', exact: true }).click()
+
+    expect(await dataLayer(page)).toContainEqual([
+      'consent',
+      'update',
+      { analytics_storage: 'granted' },
+    ])
 
     await page
       .locator('#projects')
@@ -133,7 +222,9 @@ test.describe('Analytics - Consent and tracking', () => {
     await expect(
       page.getByRole('region', { name: 'Privacy choices' })
     ).toBeVisible()
-    await expect(page.getByRole('button', { name: 'Accept' })).toBeFocused()
+    await expect(
+      page.getByRole('button', { name: 'OK', exact: true })
+    ).toBeFocused()
   })
 })
 
@@ -247,7 +338,7 @@ test.describe('Analytics - Insights', () => {
     await expect.poll(async () => (await config(other))?.[2]).toEqual({})
   })
 
-  test('Expected - Flags are stored even before consent is given', async ({
+  test('Expected - Flags are stored even when analytics is off', async ({
     browser,
   }) => {
     const context = await browser.newContext()
@@ -256,6 +347,10 @@ test.describe('Analytics - Insights', () => {
       (route) => route.abort()
     )
     const page = await context.newPage()
+    await page.addInitScript(
+      (key) => localStorage.setItem(key, 'denied'),
+      CONSENT_KEY
+    )
 
     await page.goto('/?internal=1')
 

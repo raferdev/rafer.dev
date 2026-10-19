@@ -105,8 +105,19 @@ const loadScript = (src: string) => {
   document.head.appendChild(script)
 }
 
+const disableKey = () => `ga-disable-${__env.NEXT_PUBLIC_GA_TAG_ID}`
+
+const setDisabled = (disabled: boolean) => {
+  ;(window as unknown as Record<string, unknown>)[disableKey()] = disabled
+}
+
 const startAnalytics = () => {
-  if (window.gtag) return
+  if (window.gtag) {
+    setDisabled(false)
+    window.gtag('consent', 'update', { analytics_storage: 'granted' })
+    window.gtag('set', 'user_properties', userProperties())
+    return
+  }
 
   window.dataLayer = window.dataLayer || []
   window.gtag = function gtag() {
@@ -125,6 +136,14 @@ const startAnalytics = () => {
   window.gtag('config', __env.NEXT_PUBLIC_GA_TAG_ID, configParams())
 
   if (isProduction) loadScript(__env.NEXT_PUBLIC_GA_SRC)
+}
+
+const stopAnalytics = () => {
+  if (window.gtag) {
+    setDisabled(true)
+    window.gtag('consent', 'update', { analytics_storage: 'denied' })
+  }
+  clearAnalyticsCookies()
 }
 
 const clearAnalyticsCookies = () => {
@@ -149,6 +168,7 @@ export {
   clearAnalyticsCookies,
   send,
   startAnalytics,
+  stopAnalytics,
   track,
   trackable,
   updateUserProperties,

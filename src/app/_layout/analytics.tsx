@@ -5,34 +5,21 @@ import { useEffect } from 'react'
 import { DARK_QUERY, THEME_EVENT } from '@/config/theme'
 import {
   applyAnalyticsFlags,
-  clearAnalyticsCookies,
   send,
   startAnalytics,
+  stopAnalytics,
   updateUserProperties,
 } from '@/lib/analytics'
 import { hasConsent, onConsentChange } from '@/lib/consent'
 
 const useConsentedTags = () => {
   useEffect(() => {
-    let started = false
-
-    const start = () => {
-      if (started) return
-      started = true
-      startAnalytics()
-    }
-
     applyAnalyticsFlags()
-    if (hasConsent()) start()
+    if (hasConsent()) startAnalytics()
 
     return onConsentChange((value) => {
-      if (value === 'granted') {
-        start()
-        return
-      }
-
-      clearAnalyticsCookies()
-      if (started) window.location.reload()
+      if (value === 'granted') startAnalytics()
+      else stopAnalytics()
     })
   }, [])
 }
