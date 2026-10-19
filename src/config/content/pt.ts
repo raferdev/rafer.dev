@@ -27,10 +27,10 @@ const pt: SiteContent = {
     columns: { contact: 'Contato', social: 'Em outros lugares', site: 'Site' },
     privacyChoices: 'Preferências de privacidade',
     consent: {
-      text: 'Uso o Google Analytics para ver quais projetos as pessoas leem. Sem anúncios, nada é vendido, e nada carrega sem o seu sim.',
+      text: 'Uso o Google Analytics para ver quais projetos as pessoas leem. Sem anúncios, nada é vendido, e você pode desativar quando quiser.',
       policy: 'Política de privacidade',
-      accept: 'Aceitar',
-      decline: 'Recusar',
+      accept: 'OK',
+      decline: 'Não, obrigado',
       note: ['você decide :)'],
     },
   },

@@ -11,6 +11,11 @@ export default defineConfig({
     baseURL: process.env.WEB_SERVER_URL || 'http://localhost:3000',
 
     trace: 'on-first-retry',
+    launchOptions: {
+      args: [
+        '--host-resolver-rules=MAP *.googletagmanager.com ~NOTFOUND, MAP *.google-analytics.com ~NOTFOUND',
+      ],
+    },
   },
 
   projects: [

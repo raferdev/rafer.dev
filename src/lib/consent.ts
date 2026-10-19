@@ -22,7 +22,18 @@ const setConsent = (value: Consent) => {
   )
 }
 
-const hasConsent = () => getConsent() === 'granted'
+const hasPrivacySignal = () => {
+  const { globalPrivacyControl, doNotTrack } = window.navigator as Navigator & {
+    globalPrivacyControl?: boolean
+  }
+  return globalPrivacyControl === true || doNotTrack === '1'
+}
+
+const hasConsent = () => {
+  const consent = getConsent()
+  if (consent !== null) return consent === 'granted'
+  return !hasPrivacySignal()
+}
 
 const onConsentChange = (listener: (value: Consent) => void) => {
   const handler = (event: Event) =>

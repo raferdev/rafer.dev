@@ -27,10 +27,10 @@ const en: SiteContent = {
     columns: { contact: 'Contact', social: 'Elsewhere', site: 'Site' },
     privacyChoices: 'Privacy choices',
     consent: {
-      text: 'I use Google Analytics to see which projects people read. No ads, nothing is sold, and nothing loads unless you say yes.',
+      text: 'I use Google Analytics to see which projects people read. No ads, nothing is sold, and you can turn it off any time.',
       policy: 'Privacy policy',
-      accept: 'Accept',
-      decline: 'Decline',
+      accept: 'OK',
+      decline: 'No thanks',
       note: ['your call :)'],
     },
   },

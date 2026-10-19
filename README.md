@@ -42,13 +42,13 @@ The site is also a working example of the rest of the delivery chain: a static b
 
 - **Bilingual, statically.** English at `/` and Brazilian Portuguese at `/pt`, each with its own root layout and correct `<html lang>`. First-time visitors are sent to their browser's language by a tiny inline script. After that, the language toggle's choice wins.
 - **Content as data.** All copy lives in typed modules under `src/config/content`, one per locale, behind a single `SiteContent` type. A missing translation is a type error.
-- **Privacy first.** Google Analytics runs in consent mode and stays denied until the visitor accepts. Click tracking is declarative through `data-*` attributes. Bilingual privacy policy (LGPD) at `/privacy` and `/pt/privacidade`.
+- **Privacy minded.** Google Analytics runs by default with ads features off, behind a notice where visitors can opt out at any time. Opting out stops tracking at once and deletes its cookies, and Global Privacy Control or Do Not Track signals keep it off. Click tracking is declarative through `data-*` attributes. Bilingual privacy policy (LGPD) at `/privacy` and `/pt/privacidade`.
 - **Accessible.** axe-core runs on every page, in both languages, on desktop and mobile.
 - **Documented components.** Storybook for the UI building blocks, published at [storybook.rafer.dev](https://storybook.rafer.dev).
 
 ## Analytics
 
-Only after a visitor accepts the banner, Google Analytics 4 receives page views, `section_view`, `select_content`, `contact_click`, `social_click`, `nav_click`, `language_change` and `theme_change`, plus the user properties `site_language` and `color_scheme`.
+Unless a visitor opts out or their browser sends a privacy signal, Google Analytics 4 receives page views, `section_view`, `select_content`, `contact_click`, `social_click`, `nav_click`, `language_change` and `theme_change`, plus the user properties `site_language` and `color_scheme`.
 
 Two switches for the site owner, set by visiting a URL once and stripped from the address bar right away:
 
